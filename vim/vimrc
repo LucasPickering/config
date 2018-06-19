@@ -1,0 +1,10 @@
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+
+set cc=100
+colorscheme lumberjack
+syntax on
+
+set noeb vb t_vb=

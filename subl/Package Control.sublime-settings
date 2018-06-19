@@ -1,0 +1,25 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Babel",
+		"Colorsublime",
+		"CSS Format",
+		"Dockerfile Syntax Highlighting",
+		"DoxyDoxygen",
+		"GitGutter",
+		"JSON Reindent",
+		"LaTeXTools",
+		"MarkdownPreview",
+		"Origami",
+		"Package Control",
+		"Rust Enhanced",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"SublimeLinter-pycodestyle"
+	]
+}
