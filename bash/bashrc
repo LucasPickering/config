@@ -43,7 +43,7 @@ case "$(uname)" in
     "Linux" )
         export PATH="$PATH:~/go/bin"
 
-        alias open='xdg-open'
+        alias open='xdg-open > /dev/null'
         alias copy='xsel -ib'
         alias paste='xsel -ob'
     ;;
