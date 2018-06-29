@@ -19,7 +19,15 @@ git submodule update
 # Bash
 echo "Initializing bash..."
 delete_and_link ~/.bash bash
-echo "source ~/.bash/bashrc" >> ~/.bashrc
+case "$(uname)" in
+    "Darwin" )
+        bash_file=~/.bash_profile
+    ;;
+    "Linux" )
+        bash_file=~/.bashrc
+    ;;
+esac
+echo "source ~/.bash/bashrc" >> $bash_file
 
 # Git
 echo "Initializing git..."
