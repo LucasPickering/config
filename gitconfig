@@ -3,7 +3,7 @@
 [alias]
 	l = log --oneline --decorate --graph
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	publish = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --assume-unchanged"
 	remember = "update-index --no-assume-unchanged"
 	destroy = !"git push -d origin $1; git branch -d"
