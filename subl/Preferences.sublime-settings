@@ -5,12 +5,14 @@
 	"drag_text": false,
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
+	"file_exclude_patterns": ["package-lock.json"],
 	"folder_exclude_patterns":
 	[
 		"node_modules",
-		".git"
+		".git",
+		".database"
 	],
-	"font_size": 9,
+	"font_size": 10,
 	"ignored_packages":
 	[
 		"Rust",
