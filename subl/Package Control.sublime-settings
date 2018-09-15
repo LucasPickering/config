@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Anaconda",
+		"anaconda_rust",
 		"Babel",
 		"Colorsublime",
 		"CSS Format",
@@ -18,8 +19,10 @@
 		"Origami",
 		"Package Control",
 		"Rust Enhanced",
+		"RustFmt",
 		"SublimeLinter",
 		"SublimeLinter-eslint",
-		"SublimeLinter-pycodestyle"
+		"SublimeLinter-pycodestyle",
+		"TOML"
 	]
 }

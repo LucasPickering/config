@@ -7,13 +7,16 @@
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
-		"package-lock.json"
+		"package-lock.json",
+		"*.pyc"
 	],
 	"folder_exclude_patterns":
 	[
 		"node_modules",
 		".git",
-		".database"
+		".database",
+		"*.egg-info",
+		"target"
 	],
 	"font_size": 9,
 	"ignored_packages":
