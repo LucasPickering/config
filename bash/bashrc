@@ -26,6 +26,12 @@ checksum() {
     fi
 }
 
+# Searches all diffed files
+todo() {
+    ref=${1:-master} # Diff against this git ref will be searched (use master as default)
+    git diff $ref | grep ^+ | grep -i todo # Search added lines for 'todo' (caseless)
+}
+
 # OS-based config
 case "$(uname)" in
     "Darwin" )
@@ -49,9 +55,10 @@ case "$(uname)" in
     ;;
 esac
 
-# Add cargo bin directory to PATH
+# Add Rust variables
 if [ -e ~/.cargo/env ]; then
     . ~/.cargo/env
+    export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 fi
 
 # Aliases
