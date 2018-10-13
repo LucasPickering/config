@@ -6,5 +6,15 @@
             { "key": "preceding_text", "operator": "regex_match", "operand": ".*<$", "match_all": true },
             { "key": "setting.auto_close_tags" }
         ]
+    },
+    {
+        "command": "rust_goto", "keys": ["ctrl+r", "ctrl+g"], "context": [
+            {"key": "selector", "operator": "equal", "operand": "source.rust"}
+        ]
+    },
+    {
+        "command": "rust_doc", "keys": ["ctrl+r", "ctrl+d"], "context": [
+            {"key": "selector", "operator": "equal", "operand": "source.rust"}
+        ]
     }
 ]
