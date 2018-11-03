@@ -19,7 +19,7 @@
 		"*.egg-info",
 		"target"
 	],
-	"font_size": 10,
+	"font_size": 9,
 	"ignored_packages":
 	[
 		"Anaconda",

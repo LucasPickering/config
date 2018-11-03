@@ -26,12 +26,6 @@ checksum() {
     fi
 }
 
-# Searches all diffed files
-todo() {
-    ref=${1:-master} # Diff against this git ref will be searched (use master as default)
-    git diff $ref | grep ^+ | grep -i todo # Search added lines for 'todo' (caseless)
-}
-
 # OS-based config
 case "$(uname)" in
     "Darwin" )
