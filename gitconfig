@@ -9,7 +9,7 @@
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
-	destroy = !"git push -d origin $1; git branch -d"
+	destroy = !"git push -d origin $@ && git branch -d"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
 	fix-author = filter-branch -f --env-filter "GIT_AUTHOR_EMAIL='lucas@lucaspickering.me'" --env-filter "GIT_COMMITTER_EMAIL='lucas@lucaspickering.me'"
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
