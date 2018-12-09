@@ -27,24 +27,16 @@ case "$(uname)" in
         bash_file=~/.bashrc
     ;;
 esac
-echo "source ~/.bash/bashrc" >> $bash_file
+echo "source ~/.bash/bashrc.sh" >> $bash_file
 
 # Git
 echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
 
-# Sublime
-echo "Initializing Sublime..."
-case "$(uname)" in
-    "Darwin" )
-        sublime_dir=~/Library/Application\ Support/Sublime\ Text\ 3
-    ;;
-    "Linux" )
-        sublime_dir=~/.config/sublime-text-3
-    ;;
-esac
-delete_and_link $sublime_dir/Packages/User subl
-
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
+
+# Tmux
+echo "Initialize tmux..."
+delete_and_link ~/.tmux.conf tmux.conf
