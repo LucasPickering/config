@@ -50,15 +50,13 @@ case "$(uname)" in
 esac
 
 # Add Rust variables
-if [ -e ~/.cargo/env ]; then
-    . ~/.cargo/env
+if [ -x "$(command -v rustc)" ]; then
     export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 fi
 
 # Aliases
 alias src="source $BASH_SOURCE"
 alias vbp="vim $BASH_SOURCE"
-alias sbp="subl $BASH_SOURCE"
 alias ls="ls --color=auto" # Show color
 alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
