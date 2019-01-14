@@ -1,7 +1,0 @@
-[
-    {
-        "command": "rust_goto", "keys": ["super+r", "super+g"], "context": [
-            {"key": "selector", "operator": "equal", "operand": "source.rust"}
-        ]
-    }
-]
