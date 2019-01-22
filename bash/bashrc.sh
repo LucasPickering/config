@@ -98,7 +98,7 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 # Choose prompt color based on hostname
 prompt_color=$txtred # Default color
 case "$(hostname)" in
-    "metagross" | "Lucario" )
+    "metagross" | "Lucario" | "giratina" )
         prompt_color=$txtcyn
     ;;
     "salamence" )
