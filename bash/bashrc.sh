@@ -3,7 +3,14 @@ sshmount() {
     host=$1
     local_dir=$2
     mkdir -p "$local_dir"
-    sshfs -o allow_other,defer_permissions "$host" "$local_dir"
+
+    opts=allow_other
+    case "$(uname)" in
+        "Darwin" )
+            opts=$opts,defer_permissions
+        ;;
+    esac
+    sshfs -o $opts "$host" "$local_dir"
     if [ $? -eq 0 ]; then
         echo "Mounted to $local_dir"
     fi
@@ -11,7 +18,14 @@ sshmount() {
 
 sshumount() {
     local_dir=$1
-    umount -f "$local_dir"
+    case "$(uname)" in
+        "Darwin" )
+            umount -f "$local_dir"
+        ;;
+        "Linux" )
+            fusermount -u "$local_dir"
+        ;;
+    esac
     if [ $? -eq 0 ]; then
         echo "Unmounted $local_dir"
         rmdir "$local_dir"
@@ -57,6 +71,7 @@ fi
 # Aliases
 alias src="source $BASH_SOURCE"
 alias vbp="vim $BASH_SOURCE"
+alias cbp="code $BASH_SOURCE"
 alias ls="ls --color=auto" # Show color
 alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"

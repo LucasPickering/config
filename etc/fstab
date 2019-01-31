@@ -1,0 +1,3 @@
+# This file is incomplete - copy these lines into the default file
+gdfuse#default  /home/lucas/drive     fuse    uid=1000,gid=1000,allow_other,user,_netdev     0       0
+sshfs#salamence:/home/lucas/git /home/lucas/salamence fuse uid=1000,gid=1000,defaults,allow_other,user 0 0
