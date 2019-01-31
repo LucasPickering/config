@@ -29,6 +29,9 @@ case "$(uname)" in
 esac
 echo "source ~/.bash/bashrc.sh" >> $bash_file
 
+echo "Initializing SSH config..."
+delete_and_link ~/.ssh ssh
+
 # Git
 echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
