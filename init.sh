@@ -27,10 +27,15 @@ case "$(uname)" in
         bash_file=~/.bashrc
     ;;
 esac
-echo "source ~/.bash/bashrc.sh" >> $bash_file
+line_to_add="source ~/.bash/bashrc.sh"
+# Only add the source line if it isn't there already
+if [[ $(tail -n 1 $bash_file) != $line_to_add ]]; then
+    echo "source ~/.bash/bashrc.sh" >> $bash_file
+fi
 
 echo "Initializing SSH config..."
-delete_and_link ~/.ssh ssh
+mkdir -p ~/.ssh
+delete_and_link ~/.ssh/config ssh/config
 
 # Git
 echo "Initializing git..."
