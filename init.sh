@@ -47,6 +47,6 @@ delete_and_link ~/.vim vim
 
 # Tmux
 echo "Initializing tmux..."
-delete_and_link ~/.tmux.conf tmux/tmux.conf
 mkdir -p ~/.tmux/plugins
+delete_and_link ~/.tmux.conf tmux/tmux.conf
 delete_and_link ~/.tmux/plugins/tpm tmux/tpm
