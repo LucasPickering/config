@@ -7,6 +7,7 @@
 	co = "checkout"
 	cob = "checkout -b"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
 	destroy = !"git push -d origin $@ && git branch -d"
