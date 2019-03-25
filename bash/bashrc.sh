@@ -40,6 +40,11 @@ checksum() {
     fi
 }
 
+mkpy() {
+    mkdir -p $1
+    touch $1/__init__.py
+}
+
 # OS-based config
 case "$(uname)" in
     "Darwin" )
@@ -64,6 +69,9 @@ case "$(uname)" in
 esac
 
 # Add Rust variables
+if [ -e ~/.cargo ]; then
+		export PATH=~/.cargo/bin:$PATH
+fi
 if [ -x "$(command -v rustc)" ]; then
     export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 fi
