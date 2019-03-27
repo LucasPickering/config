@@ -119,6 +119,14 @@ case "$(hostname)" in
         prompt_color=$txtblu
     ;;
 esac
-export PS1="\[$prompt_color\]\u@\h:\w \[$txtgrn\]\$git_branch\[$txtrst\]\$ "
+
+# Add docker-machine host
+docker_machine=""
+if hash __docker_machine_ps1 2>/dev/null; then
+    docker_machine='$(__docker_machine_ps1 "\[$txtred\] [%s]")'
+fi
+git_status="\[$txtgrn\]\$git_branch\$git_dirty"
+
+export PS1="\[$prompt_color\]\u@\h:\w$docker_machine $git_status\[$txtrst\]\$ "
 
 eval "$(dircolors)" # Populate LS_COLORS variable
