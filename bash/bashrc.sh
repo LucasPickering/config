@@ -45,6 +45,22 @@ mkpy() {
     touch $1/__init__.py
 }
 
+# https://gist.github.com/inooid/e0a6152d36676b765535
+dm-set () {
+  if [ -z "$1" ] ; then
+    echo "${txtred}ERROR:${txtrst} no argument supplied"
+    return;
+  fi
+
+  eval "$(docker-machine env $1)"
+  echo "${txtgrn}SUCCESS:${txtrst} set to $1"
+}
+
+dm-clr () {
+  eval "$(docker-machine env -u)"
+  echo "${txtgrn}SUCCESS:${txtrst} cleared"
+}
+
 # OS-based config
 case "$(uname)" in
     "Darwin" )
