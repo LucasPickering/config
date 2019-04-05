@@ -102,7 +102,7 @@ alias cls="printf '\ec'"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias potato="ssh pickl@login.ccs.neu.edu"
 alias potatomount="sshmount pickl@login.ccs.neu.edu:/home/pickl ccs"
-alias purge="sudo apt-get purge $(dpkg -l | grep '^rc' | awk '{print $2}')"
+alias purge='sudo apt-get purge $(dpkg -l | grep "^rc" | awk "{print $2}")'
 
 # Env variables
 export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ' # Set iTerm2/guake tab names
