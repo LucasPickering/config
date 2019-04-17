@@ -76,7 +76,7 @@ case "$(uname)" in
         alias paste='pbpaste'
     ;;
     "Linux" )
-        export PATH="$PATH:~/go/bin"
+        export PATH="$PATH:~/go/bin:~/.npm/bin"
 
         alias open='xdg-open > /dev/null'
         alias copy='xsel -ib'
