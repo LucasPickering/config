@@ -50,3 +50,4 @@ echo "Initializing tmux..."
 mkdir -p ~/.tmux/plugins
 delete_and_link ~/.tmux.conf tmux/tmux.conf
 delete_and_link ~/.tmux/plugins/tpm tmux/tpm
+echo "Press <shortcut>+I to install plugins"
