@@ -1,0 +1,12 @@
+#!/bin/sh
+ORIG_MSG_FILE="$1"
+ORIG_MSG=$(cat "$ORIG_MSG_FILE")
+# Check if the message already starts with a ticket number - prevent doubling up when amending
+if ! grep -Eiq '^\[rp-\d+\]' <<< $ORIG_MSG; then
+    # Grab the ticket number from the branch
+    TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eio 'rp-\d+')
+    # If we have a ticket number, add it to the message
+    if [[ ! -z $TICKET ]]; then
+        echo "[$TICKET]" "$ORIG_MSG" > "$ORIG_MSG_FILE"
+    fi
+fi

@@ -61,6 +61,19 @@ dm-clr () {
   echo "${txtgrn}SUCCESS:${txtrst} cleared"
 }
 
+function get_mysql_docker_credentials() {
+    # Mysql docker credentials
+    mysql_creds=`aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:container_rds_credentials-hLp3Ja`
+    read -d "\n" LOCAL_DB_USER LOCAL_DB_PASSWORD <<< $(echo $mysql_creds | jq -r '.SecretString' | jq -r '.docker_portal_user, .docker_portal_passwd')
+    echo "User: $LOCAL_DB_USER"
+    echo "Password: $LOCAL_DB_PASSWORD"
+}
+alias mysqlcreds=get_mysql_docker_credentials
+
+bspep8() {
+	(git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
+}
+
 # OS-based config
 case "$(uname)" in
     "Darwin" )
@@ -110,10 +123,13 @@ export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
 export HISTSIZE=5000
 export HISTFILESIZE=$HISTSIZE
 export VIMINIT="source ~/.vim/vimrc"
+export AWS_DB_USER=portal
+export AWS_DB_PASSWORD=bitsight
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 . "$GITAWAREPROMPT/main.sh"
 
 # Host-specific config
+prefix="\u@\h"
 prompt_color=$txtred # Default color
 case "$(hostname)" in
     "metagross" )
@@ -123,6 +139,9 @@ case "$(hostname)" in
         prompt_color=$txtcyn
     ;;
     "giratina" )
+        prompt_color=$txtcyn
+    ;;
+    "Lucas Pickering's MBP" )
         prompt_color=$txtcyn
     ;;
     "salamence" )
@@ -143,6 +162,6 @@ if hash __docker_machine_ps1 2>/dev/null; then
 fi
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
 
-export PS1="\[$prompt_color\]\u@\h:\w$docker_machine $git_status\[$txtrst\]\$ "
+export PS1="\[$prompt_color\]\u@mbp:\w$docker_machine $git_status\[$txtrst\]\$ "
 
 eval "$(dircolors)" # Populate LS_COLORS variable
