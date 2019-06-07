@@ -47,31 +47,40 @@ mkpy() {
 
 # https://gist.github.com/inooid/e0a6152d36676b765535
 dm-set () {
-  if [ -z "$1" ] ; then
-    echo "${txtred}ERROR:${txtrst} no argument supplied"
-    return;
-  fi
+    if [ -z "$1" ] ; then
+        echo "${txtred}ERROR:${txtrst} no argument supplied"
+        return;
+    fi
 
-  eval "$(docker-machine env $1)"
-  echo "${txtgrn}SUCCESS:${txtrst} set to $1"
+    eval "$(docker-machine env $1)"
+    echo "${txtgrn}SUCCESS:${txtrst} set to $1"
 }
 
 dm-clr () {
-  eval "$(docker-machine env -u)"
-  echo "${txtgrn}SUCCESS:${txtrst} cleared"
+    eval "$(docker-machine env -u)"
+    echo "${txtgrn}SUCCESS:${txtrst} cleared"
 }
 
 function get_mysql_docker_credentials() {
     # Mysql docker credentials
     mysql_creds=`aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:container_rds_credentials-hLp3Ja`
-    read -d "\n" LOCAL_DB_USER LOCAL_DB_PASSWORD <<< $(echo $mysql_creds | jq -r '.SecretString' | jq -r '.docker_portal_user, .docker_portal_passwd')
-    echo "User: $LOCAL_DB_USER"
-    echo "Password: $LOCAL_DB_PASSWORD"
+    read -d "\n" AWS_DB_USER AWS_DB_PASSWORD <<< $(echo $mysql_creds | jq -r '.SecretString' | jq -r '.docker_portal_user, .docker_portal_passwd')
+    export AWS_DB_USER
+    export AWS_DB_PASSWORD
+    echo "User: $AWS_DB_USER; Password: $AWS_DB_PASSWORD"
 }
-alias mysqlcreds=get_mysql_docker_credentials
+function get_mysql_remote_credentials() {
+    mysql_creds=`aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:cp_rds_credentials-3bM21P`
+    read -d "\n" AWS_DB_USER AWS_DB_PASSWORD <<< $(echo $mysql_creds | jq -r '.SecretString' | jq -r '.dev_rds_master_user, .dev_rds_master_pass')
+    export AWS_DB_USER
+    export AWS_DB_PASSWORD
+    echo "User: $AWS_DB_USER; Password: $AWS_DB_PASSWORD"
+}
+alias mysqlcreds_local=get_mysql_docker_credentials
+alias mysqlcreds_remote=get_mysql_remote_credentials
 
 bspep8() {
-	(git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
+    (git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
 }
 
 # OS-based config
@@ -123,8 +132,8 @@ export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
 export HISTSIZE=5000
 export HISTFILESIZE=$HISTSIZE
 export VIMINIT="source ~/.vim/vimrc"
-export AWS_DB_USER=portal
-export AWS_DB_PASSWORD=bitsight
+# export AWS_DB_USER=portal
+# export AWS_DB_PASSWORD=bitsight
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 . "$GITAWAREPROMPT/main.sh"
 
