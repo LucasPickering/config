@@ -19,6 +19,8 @@ case "$(uname)" in
         alias open='xdg-open > /dev/null'
         alias copy='xsel -ib'
         alias paste='xsel -ob'
+
+        eval $(ssh-agent)
     ;;
 esac
 
