@@ -54,6 +54,15 @@ bspep8() {
   (git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
 }
 
+function repeat() {
+  i=1
+  while true; do
+    echo "===== RUN $i ====="
+    eval $@ || break
+    i=$((i+1))
+  done
+}
+
 # Aliases
 alias copy='pbcopy'
 alias paste='pbpaste'
@@ -91,4 +100,4 @@ source "$GITAWAREPROMPT/main.sh"
 source ~/.nvm/nvm.sh
 
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
-export PS1="\[$txtcyn\]\w $git_status\[$txtrst\]\$ "
+export PS1="\[$txtred\][\T] \[$txtcyn\]\w $git_status\[$txtrst\]\n\$ "
