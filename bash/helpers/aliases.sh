@@ -1,7 +1,8 @@
 # Aliases
-alias src="source $BASH_SOURCE"
-alias vbp="vim $BASH_SOURCE"
-alias cbp="code $BASH_SOURCE"
+BASHRC_SRC=~/.bashrc
+alias src="source $BASHRC_SRC"
+alias vbp="vim $BASHRC_SRC"
+alias cbp="code $BASHRC_SRC"
 alias ls="ls --color=auto" # Show color
 alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
