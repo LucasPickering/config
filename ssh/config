@@ -1,6 +1,6 @@
 AddKeysToAgent yes
 Host *
 	UseKeychain yes
-Host cp101.*
+Host *101.*
 	HostName %h.ame1.bitsighttech.com
 	User lucas.pickering

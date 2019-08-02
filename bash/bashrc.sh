@@ -14,7 +14,7 @@ mkpy() {
 }
 
 function cpenv () {
-    # Thanks ~Satan~ Yitao
+  # Thanks ~Satan~ Yitao
   if [ ! "$(docker ps -q -f name=portal_env)" ]; then
     if [ ! "$(docker ps -aq -f name=portal_env)" ]; then
       docker-compose -f docker-compose-django.yml run --name=portal_env --service-ports portal bash
@@ -27,7 +27,7 @@ function cpenv () {
 }
 
 function mysqlcreds() {
-    # Mysql docker credentials
+  # Mysql docker credentials
   scope=$1
   case "$scope" in
     "local")
@@ -57,6 +57,7 @@ bspep8() {
 function repeat() {
   i=1
   while true; do
+    echo ""
     echo "===== RUN $i ====="
     eval $@ || break
     i=$((i+1))
@@ -75,6 +76,7 @@ alias cls="printf '\ec'"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules/ && yarn install"
 alias dcd="docker-compose -f docker-compose-django.yml"
+alias links="fd -IH -d 1 -t l . node_modules"
 
 # Env variables
 # The first path here can be obtained from `brew --prefix coreutils`, but that's slow
