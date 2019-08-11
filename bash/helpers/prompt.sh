@@ -24,4 +24,4 @@ if hash __docker_machine_ps1 2>/dev/null; then
 fi
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
 
-export PS1="\[$txtred\][\T] \[$prompt_color\]\u@\h:\w$docker_machine $git_status\[$txtrst\]\\n$ "
+export PS1="\[$txtred\][\T] \[$prompt_color\]\u@\h:\w$docker_machine $git_status\[$txtrst\]\\nλ "
