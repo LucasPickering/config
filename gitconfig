@@ -2,12 +2,16 @@
 	ui = true
 [alias]
 	ai = "add -i"
+	s = "status"
+	d = "diff"
 	c = "commit"
 	ca = "commit --amend"
 	can = "commit --amend --no-edit"
 	co = "checkout"
 	cob = "checkout -b"
 	cog = !"sh ~/.bash/gbgrep.sh"
+	r = "rebase"
+	ri = "rebase -i"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	mbm = "merge-base master HEAD"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
@@ -15,10 +19,11 @@
 	remember = "update-index --no-skip-worktree"
 	hide = !"git remember $1; git stash push -m $1 -- $1"
 	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
-	destroy = !"git push -d origin $@ && git branch -d"
+	destroy = !"git push -d origin $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
-	todo = !"git diff `git mbm` --name-only | xargs rg -C3 -i todo "
-	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	todo = !git diff `git mbm` --name-only | xargs rg -C3 -i todo
+	pr = !sh ~/.bash/open_pr.sh
+	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 [user]
 	email = lucas.pickering@bitsighttech.com
