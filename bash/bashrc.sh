@@ -98,8 +98,8 @@ export PORTAL_SECRET_KEY=$aws_secret_access_key
 
 source $(brew --prefix)/etc/bash_completion # git bash completion
 source "$GITAWAREPROMPT/main.sh"
-# source "$HOME/git/infrav3/aliases.sh"
+source ~/git/infrav3/aliases.sh
 source ~/.nvm/nvm.sh
 
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
-export PS1="\[$txtred\][\T] \[$txtcyn\]\w $git_status\[$txtrst\]\n\$ "
+export PS1="\[$txtred\][\T] \[$txtcyn\]\w \[$txtblu\]($(namespace)@$(kubectl config current-context)) $git_status \[$txtrst\]\nλ "
