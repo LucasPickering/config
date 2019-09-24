@@ -64,6 +64,34 @@ function repeat() {
   done
 }
 
+function deploy() {
+  target=$1
+  if [ -z "$target" ]; then
+    echo "Deploying to $(namespace)"
+    args=(proxy)
+  else
+    echo "Deploying to EC2 node $target"
+    args="ec2 cp101.$target.ame1.bitsighttech.com"
+  fi
+  ./dev.sh manifest $args | bskube manifest run
+}
+
+function proxy() {
+  target=$1
+  if [ -z "$target" ]; then
+    echo "No target specified"
+    return 1
+  elif [ "$target" == "local" ]; then
+    url="http://local.bitsighttech.com:8000"
+  else
+    url="https://cp101.$target.ame1.bitsighttech.com"
+  fi
+
+  file="proxy.config.json"
+  sed -i '' -E 's@"target": .*$@"target": "'"$url"'",@' "$file"
+  cat "$file"
+}
+
 # Aliases
 alias copy='pbcopy'
 alias paste='pbpaste'
@@ -77,19 +105,24 @@ alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules/ && yarn install"
 alias dcd="docker-compose -f docker-compose-django.yml"
 alias links="fd -IH -d 1 -t l . node_modules"
+alias g="git"
+alias d="docker"
+alias y="yarn"
 
 # Env variables
 # The first path here can be obtained from `brew --prefix coreutils`, but that's slow
 # (about 500 ms) so we don't do it every time.
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:~/.bskube/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bskube/bin:$PATH"
 export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ' # Set iTerm2/guake tab names
 export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
 export HISTSIZE=5000
 export HISTFILESIZE=$HISTSIZE
 export VIMINIT="source ~/.vim/vimrc"
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
+export PORTAL_BASE=~/git/portal/cust-portal/app
 
 eval "$(dircolors)" # Populate LS_COLORS variable
+eval "$(jira --completion-script-bash)"
 
 # Load AWS creds
 source <(grep = ~/.aws/credentials | sed 's/ *= */=/g')
@@ -101,5 +134,6 @@ source "$GITAWAREPROMPT/main.sh"
 source ~/git/infrav3/aliases.sh
 source ~/.nvm/nvm.sh
 
+kube_status="\[$txtblu\](\$(namespace)@\$(kubectl config current-context))"
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
-export PS1="\[$txtred\][\T] \[$txtcyn\]\w \[$txtblu\]($(namespace)@$(kubectl config current-context)) $git_status \[$txtrst\]\nλ "
+export PS1="\[$txtred\][\T] \[$txtcyn\]\w $kube_status $git_status \[$txtrst\]\nλ "

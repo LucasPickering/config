@@ -1,7 +1,9 @@
 [color]
 	ui = true
 [alias]
+	a = "add"
 	ai = "add -i"
+	b = "branch"
 	s = "status"
 	d = "diff"
 	c = "commit"
@@ -12,6 +14,7 @@
 	cog = !"sh ~/.bash/gbgrep.sh"
 	r = "rebase"
 	ri = "rebase -i"
+	rd = !"git fetch; git rebase origin/develop"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	mbm = "merge-base master HEAD"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
