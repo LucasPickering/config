@@ -13,7 +13,7 @@ mkpy() {
     touch $1/__init__.py
 }
 
-function cpenv () {
+cpenv () {
   # Thanks ~Satan~ Yitao
   if [ ! "$(docker ps -q -f name=portal_env)" ]; then
     if [ ! "$(docker ps -aq -f name=portal_env)" ]; then
@@ -26,7 +26,7 @@ function cpenv () {
   fi
 }
 
-function mysqlcreds() {
+mysqlcreds() {
   # Mysql docker credentials
   scope=$1
   case "$scope" in
@@ -54,7 +54,7 @@ bspep8() {
   (git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
 }
 
-function repeat() {
+repeat() {
   i=1
   while true; do
     echo ""
@@ -64,7 +64,7 @@ function repeat() {
   done
 }
 
-function deploy() {
+deploy() {
   target=$1
   if [ -z "$target" ]; then
     echo "Deploying to $(namespace)"
@@ -76,20 +76,22 @@ function deploy() {
   ./dev.sh manifest $args | bskube manifest run
 }
 
-function proxy() {
+proxy() {
   target=$1
+  file="proxy.config.json"
+
   if [ -z "$target" ]; then
-    echo "No target specified"
-    return 1
+    cat "$file"
+    return 0
   elif [ "$target" == "local" ]; then
     url="http://local.bitsighttech.com:8000"
   else
     url="https://cp101.$target.ame1.bitsighttech.com"
   fi
+  echo "$url"
 
-  file="proxy.config.json"
-  sed -i '' -E 's@"target": .*$@"target": "'"$url"'",@' "$file"
-  cat "$file"
+  sed -E 's@"target": .*$@"target": "'"$url"'",@' "$file" | tee "$file"
+  echo "Wrote to $file"
 }
 
 # Aliases

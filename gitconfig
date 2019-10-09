@@ -16,7 +16,7 @@
 	ri = "rebase -i"
 	rd = !"git fetch; git rebase origin/develop"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-	mbm = "merge-base master HEAD"
+	mbm = !"git merge-base $(git symbolic-ref refs/remotes/origin/HEAD) HEAD"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
@@ -24,7 +24,7 @@
 	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
 	destroy = !"git push -d origin $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
-	todo = !git diff `git mbm` --name-only | xargs rg -C3 -i todo
+	todo = !"git diff `git mbm` --diff-filter ACMR | rg -C3 -i todo"
 	pr = !sh ~/.bash/open_pr.sh
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
