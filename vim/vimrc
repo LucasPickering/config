@@ -8,3 +8,6 @@ colorscheme lumberjack
 syntax on
 
 set noeb vb t_vb=
+
+set list
+set listchars=tab:»-,trail:·,space:·

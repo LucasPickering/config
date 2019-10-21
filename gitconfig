@@ -32,7 +32,7 @@
 	email = lucas.pickering@bitsighttech.com
 	name = Lucas Pickering
 [core]
-	editor = code --wait
+	editor = vim
 [fetch]
 	recurseSubmodules = false
 [push]
