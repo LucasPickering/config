@@ -24,6 +24,12 @@ case "$(uname)" in
     ;;
 esac
 
+case "$(hostname)" in
+    "Lucario" )
+        export DOCKER_HOST="tcp://salamence:2375"
+    ;;
+esac
+
 # Env variables
 export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ' # Set iTerm2/guake tab names
 export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
