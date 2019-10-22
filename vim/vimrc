@@ -1,13 +1,20 @@
+" Indentation "
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
 
+" Line numbers/rulers "
 set cc=100
+set number relativenumber
+
+" Colors "
 colorscheme lumberjack
 syntax on
 
+" Disable beep "
 set noeb vb t_vb=
 
+" Show whitespace chars "
 set list
 set listchars=tab:»-,trail:·,space:·
