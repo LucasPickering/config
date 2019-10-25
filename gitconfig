@@ -14,9 +14,11 @@
 	cog = !"sh ~/.bash/gbgrep.sh"
 	r = "rebase"
 	ri = "rebase -i"
-	rd = !"git fetch; git rebase origin/develop"
+	rem = !"git fetch; git rebase $(git default)"
+	rim = !"git fetch; git rebase -i $(git default)"
+	default = !"git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/@@'"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-	mbm = !"git merge-base $(git symbolic-ref refs/remotes/origin/HEAD) HEAD"
+	mbm = !"git merge-base $(git default) HEAD"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
@@ -27,6 +29,7 @@
 	todo = !"git diff `git mbm` --diff-filter ACMR | rg -C3 -i todo"
 	pr = !sh ~/.bash/open_pr.sh
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lm = !"git l $(git default) HEAD"
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 [user]
 	email = lucas.pickering@bitsighttech.com
