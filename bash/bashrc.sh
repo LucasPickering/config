@@ -57,9 +57,9 @@ bspep8() {
 repeat() {
   i=1
   while true; do
-    echo ""
-    echo "===== RUN $i ====="
+    echo "===== RUN $i ($(date)) ====="
     eval $@ || break
+    echo ""
     i=$((i+1))
   done
 }
@@ -92,6 +92,28 @@ proxy() {
 
   sed -E 's@"target": .*$@"target": "'"$url"'",@' "$file" | tee "$file"
   echo "Wrote to $file"
+}
+
+verify_bsc() {
+  version=$1
+  tag="bs-components@$version"
+  branch=verify-bs-components-$version
+
+  if [ -z "$version" ]; then
+    echo "No version specified"
+    return 1
+  fi
+
+  set -x
+  echo "Running tests for $tag"
+  git checkout develop
+  git pull
+  (git checkout -b $branch || git checkout $branch)
+  yarn upgrade $tag
+  git commit -am "Upgrade to $tag for verification"
+  git push -u origin $branch
+  yarn test:remote
+  set +x
 }
 
 # Aliases
