@@ -1,0 +1,22 @@
+endpoint: https://bitsight.atlassian.net
+editor: vim
+user: lucas.pickering@bitsighttech.com
+authentication-method: api-token
+password-source: keyring
+queries:
+  me: |
+    assignee = currentUser() AND resolution = unresolved ORDER BY status DESC, priority DESC, updated DESC
+  vow: |
+    assignee = currentUser() AND resolution = unresolved AND affectedVersion = "Onboarding Workflow" ORDER BY status DESC, priority DESC, updated DESC
+custom-commands:
+  - name: q
+    help: Run a named query
+    args:
+      - name: NAME
+        required: true
+    script: |-
+      {{jira}} ls -t list-table -n {{args.NAME}} -f priority,status,labels,versions,timetracking
+  - name: go
+    help: Open the ticket associated with the current git branch
+    script: |-
+      for ticket in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+'); do {{jira}} browse $ticket; done
