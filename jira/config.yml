@@ -19,4 +19,8 @@ custom-commands:
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
-      for ticket in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+'); do {{jira}} browse $ticket; done
+      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\bRP-\d+')
+  - name: goc
+    help: Open all tickets referenced by commits in the current git branch
+    script: |-
+      for ticket in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+' | uniq); do {{jira}} browse $ticket; done
