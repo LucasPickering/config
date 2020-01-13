@@ -1,0 +1,31 @@
+fields:
+  project:
+    key: RP
+  issuetype:
+    name: Deployment
+  summary: >-
+    IsoPOD (Team) YYYY-MM-DD
+  components: # Values: Access Control, Accounts, Annotations, Automapper, BitSight Labs, BLIS, BRDS, BRIS, bs-components, bs-emr-tools, Business Graph, Collection Management, committed_20190429, CSV Generation, Customer Team, Dark Web, Darwin, Data Ops, Data Refresh, Data Science, Data Source, Data Source Aggregation, Discover, EDS, EM, Entity Data, Entity Management, Entity Pull, Entity-Join, Entity-Sync, Escalations, Evaluations of Data Sources, EventStore, Executive Reports, Feature Extractor, Feeds, First Party, Folders, Frontend, Groma, Group Admin Role, Hadoop, IGOR, Infection Collector Service, Infrastructure, Infrav3, Insights, Instant Gratification, Isopod, JIRA, JS, Kubernetes, Logging, Mailspike, Main Website, milestone, MPS, Ops, Ops : Build, Ops : Chef, Ops : Fabric, Ops : Scripting, Ops : Test, Order Management, Order Mgmt, Pipeline, Portal, Portal : API, Portal : Cluster Curation, Portal : Collection Management, Portal : Customer - Management, Portal : Customer - User, Portal : Entity Management, Portal : Knowledge Base, Portal : Pull Request Tracker, Preprocessors, Quality Assurance, Rapid7, Risk Management, RTA Orchestrator, Salesforce, SAML, Scoring, Scoring Diff, Security Ratings - Customer API, Service Providers, Sovereign Ratings, Sync/Switch Customer Web Portal, Tacyt, Tooling, uTest Testing, WiFense, Zendesk,
+  assignee:
+    name: lucas.pickering@bitsighttech.com
+  priority: # Values: Blocker, Critical, Major, Minor, Trivial, Low,
+    name: Major
+  description: |~
+    h4. DEPLOYMENT FOR ISOPOD
+    # Merge the following PR into master:
+        []
+    # Roll out new code and to stg/prd namespace (using the IsoPOD production deploy job)
+        BRANCH: origin/master
+        DRY_RUN: false (unchecked)
+    # Follow along with the deployment in the #ops_talk channel on slack, any failures should be investigated via the deployment job.
+    # Verify that the correct branch has been deployed to PRD by running
+        {noformat}curl -XGET http://prd.isopod.bsku.be/health-status{noformat} and checking that the hash matches master.
+    # Generate a Portfolio Impact Report and a Company Comparison Report to ensure that portal/isopod/pos are all talking.
+    *ON-CALL CONTACTS*
+    ||Group ||Who ||Sign off ||
+    |Development |[lucas.pickering@bitsighttech.com] |(/)|
+    |QA |[] |(x)|
+  labels:
+    - frontend
+  versions:
+    - name: Core UI

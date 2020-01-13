@@ -3,11 +3,14 @@ editor: vim
 user: lucas.pickering@bitsighttech.com
 authentication-method: api-token
 password-source: keyring
+project: RP
 queries:
   me: |
-    assignee = currentUser() AND resolution = unresolved ORDER BY status DESC, priority DESC, updated DESC
+    assignee = currentUser() AND resolution = unresolved AND (labels IS EMPTY OR labels != "ignore") ORDER BY status DESC, priority DESC, updated DESC
   vow: |
     assignee = currentUser() AND resolution = unresolved AND affectedVersion = "Onboarding Workflow" ORDER BY status DESC, priority DESC, updated DESC
+  ignored: |
+    assignee = currentUser() AND resolution = unresolved AND labels = "ignore" ORDER BY status DESC, priority DESC, updated DESC
 custom-commands:
   - name: q
     help: Run a named query
@@ -23,4 +26,17 @@ custom-commands:
   - name: goc
     help: Open all tickets referenced by commits in the current git branch
     script: |-
-      for ticket in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+' | uniq); do {{jira}} browse $ticket; done
+      for issue in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+' | uniq); do
+        {{jira}} browse $issue;
+      done
+  - name: commit
+    help: Assign the proper committed label for this week to the given ticket
+    args:
+      - name: ISSUES
+        required: true
+        repeat: true
+    script: |-
+      d=$(date -dmonday +%Y%m%d)
+      {{range args.ISSUES}}
+        {{jira}} labels add {{.}} committed_${d}
+      {{end}}

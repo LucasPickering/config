@@ -1,15 +1,21 @@
 {{/* table template */ -}}
-{{$w := sub termWidth 55 -}}
+{{$w := sub termWidth 85 -}}
 
 {{ "Issue" | printf "%-9s" -}}
   | {{ "Summary" | printf (printf "%%-%ds" (sub $w 2)) -}}
   | {{ "Priority" | printf "%-11s" -}}
   | {{ "Status" | printf "%-17s" -}}
-  | {{ "Estimate" | printf "%-11s" }}
-{{ "-" | rep 9 }}+{{ "-" | rep (sub $w 1) }}+{{ "-" | rep 12 }}+{{ "-" | rep 18 }}+{{ "-" | rep 12 }}
+  | {{ "Estimate" | printf "%-11s" -}}
+  | {{ "Labels" | printf "%-20s" }}
+{{ "-" | rep 9 }}+{{ "-" | rep (sub $w 1) }}+{{ "-" | rep 12 }}+{{ "-" | rep 18 }}+{{ "-" | rep 12 }}+{{ "-" | rep 21 }}
 {{ range .issues}}{{ .key | printf "%-9s" -}}
   | {{ .fields.summary | abbrev (sub $w 2) | printf (printf "%%-%ds" (sub $w 2)) -}}
   | {{.fields.priority.name | printf "%-11s" -}}
   | {{.fields.status.name | printf "%-17s" -}}
-  | {{if .fields.timetracking.remainingEstimate}}{{.fields.timetracking.remainingEstimate }}{{else}}{{end}}
+  | {{if .fields.timetracking.remainingEstimate -}}
+      {{.fields.timetracking.remainingEstimate | printf "%-11s" -}}
+    {{else -}}
+      {{ "" | printf "%-11s" -}}
+    {{end -}}
+  | {{range .fields.labels}}{{.}} {{end}}
 {{ end -}}
