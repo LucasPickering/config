@@ -58,7 +58,7 @@ repeat() {
   i=1
   while true; do
     echo "===== RUN $i ($(date)) ====="
-    eval $@ || break
+    eval $@ || (echo "Failed on run $i"; break)
     echo ""
     i=$((i+1))
   done
@@ -142,6 +142,7 @@ export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
 export HISTSIZE=5000
 export HISTFILESIZE=$HISTSIZE
 export VIMINIT="source ~/.vim/vimrc"
+export GIT_COMPLETION_CHECKOUT_NO_GUESS=1 # Don't tab-complete remote branches
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 export PORTAL_BASE=~/git/portal/cust-portal/app
 
