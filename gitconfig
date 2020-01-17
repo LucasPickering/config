@@ -19,7 +19,7 @@
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 	pd = "push --no-verify -d origin"
 	mbm = !"git merge-base origin/$(git default) HEAD"
-	jb = !"git cob $1-$(jira view $1 -t summary | sed 's@ @-@g' | tr '[:upper:]' '[:lower:]'); :"
+	jb = !"git cob $2$1-$(jira view $1 -t summary | sed 's@ @-@g' | tr '[:upper:]' '[:lower:]'); :"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
