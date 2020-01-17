@@ -1,0 +1,12 @@
+{{/* create template */ -}}
+fields:
+  summary: >-
+    {{ or .overrides.summary .fields.summary "" }}
+  assignee:
+    name: lucas.pickering@bitsighttech.com
+  labels:
+    - frontend
+  versions:
+    - name: Core UI
+  description: |-
+    {{ or .overrides.description .fields.description "" | indent 4 }}
