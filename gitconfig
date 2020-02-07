@@ -25,7 +25,7 @@
 	remember = "update-index --no-skip-worktree"
 	hide = !"git remember $1; git stash push -m $1 -- $1"
 	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
-	destroy = !"git push --no-verify -d origin $@ && git branch -D"
+	destroy = !"git pd $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
 	todo = !"git diff `git mbm` --diff-filter ACMR | rg -C3 -i todo"
 	pr = !sh ~/.bash/open_pr.sh

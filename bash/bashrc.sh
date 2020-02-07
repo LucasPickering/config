@@ -13,19 +13,6 @@ mkpy() {
     touch $1/__init__.py
 }
 
-cpenv () {
-  # Thanks ~Satan~ Yitao
-  if [ ! "$(docker ps -q -f name=portal_env)" ]; then
-    if [ ! "$(docker ps -aq -f name=portal_env)" ]; then
-      docker-compose -f docker-compose-django.yml run --name=portal_env --service-ports portal bash
-    else
-      docker start -ai portal_env
-    fi
-  else
-    docker exec -ti portal_env bash
-  fi
-}
-
 mysqlcreds() {
   # Mysql docker credentials
   scope=$1
@@ -37,6 +24,10 @@ mysqlcreds() {
     "remote")
       secret_id="arn:aws:secretsmanager:us-east-1:692674046581:secret:cp_rds_credentials-3bM21P"
       rgx=".dev_rds_master_user, .dev_rds_master_pass"
+    ;;
+    "prd")
+      secret_id="arn:aws:secretsmanager:us-east-1:692674046581:secret:cp_rds_credentials-3bM21P"
+      rgx=".portal_user, .prod_portal_pass"
     ;;
     *)
       echo "Invalid scope"
@@ -50,15 +41,11 @@ mysqlcreds() {
   export AWS_DB_PASSWORD=$PASSWORD
 }
 
-bspep8() {
-  (git diff -w master | pycodestyle --diff --max-line-length=100 | grep -v migrations $@);
-}
-
 repeat() {
   i=1
   while true; do
     echo "===== RUN $i ($(date)) ====="
-    eval $@ || (echo "Failed on run $i"; break)
+    eval $@ || break
     echo ""
     i=$((i+1))
   done
@@ -127,16 +114,20 @@ alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules/ && yarn install"
-alias dcd="docker-compose -f docker-compose-django.yml"
 alias links="fd -IH -d 1 -t l . node_modules"
 alias g="git"
 alias d="docker"
 alias y="yarn"
+complete -F _git g
+complete -F _docker d
+complete -F _yarn y
 
 # Env variables
 # The first path here can be obtained from `brew --prefix coreutils`, but that's slow
 # (about 500 ms) so we don't do it every time.
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bskube/bin:$PATH"
+export GOPATH="~/.go"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bskube/bin:$GOPATH/bin:$PATH"
+# export GOPATH="~/.go"
 export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ' # Set iTerm2/guake tab names
 export HISTCONTROL=ignoreboth:erasedups # Don't put duplicates in history
 export HISTSIZE=5000

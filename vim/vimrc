@@ -4,6 +4,9 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 
+" Text wrapping "
+set linebreak
+
 " Line numbers/rulers "
 set cc=100
 set number relativenumber
