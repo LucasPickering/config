@@ -3,7 +3,9 @@ fields:
   project:
     key: RP
   issuetype:
-    name: Task
+    name: Sub-task
+  parent:
+    key: {{ .parent.fields.project.key }}
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   assignee:
