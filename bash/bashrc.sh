@@ -93,6 +93,7 @@ verify_bsc() {
 
   set -x
   echo "Running tests for $tag"
+  git stash push -m "Stash before bs-components verification"
   git checkout develop
   git pull
   (git checkout -b $branch || git checkout $branch)

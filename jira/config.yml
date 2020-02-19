@@ -7,6 +7,8 @@ project: RP
 queries:
   me: |
     assignee = currentUser() AND resolution = unresolved AND type != "Story" AND (labels IS EMPTY OR labels NOT IN ("ignore", "opsgenie_alert")) ORDER BY status DESC, priority DESC, updated DESC
+  commit: |
+    assignee = currentUser() AND resolution = unresolved AND labels = $(date -'dlast-sunday+1 day' +%Y%m%d) ORDER BY status DESC, priority DESC, updated DESC
   milestones: |
     assignee = currentUser() AND resolution = unresolved AND type = "Story" ORDER BY status DESC, priority DESC, updated DESC
   vow: |
@@ -17,19 +19,19 @@ queries:
     assignee = currentUser() AND type != Deployment AND resolutiondate > $(date $"date -2 weeks" +"%Y%m%d")
 custom-commands:
   - name: q
-    help: Run a query
-    args:
-      - name: QUERY
-        required: true
-    script: |-
-      {{jira}} ls -t list-table -f priority,status,labels,versions,timetracking -q '{{args.QUERY}}'
-  - name: qn
     help: Run a named query
     args:
       - name: NAME
         required: true
     script: |-
       {{jira}} ls -t list-table -f priority,status,labels,versions,timetracking -n {{args.NAME}}
+  - name: qq
+    help: Run a query
+    args:
+      - name: QUERY
+        required: true
+    script: |-
+      {{jira}} ls -t list-table -f priority,status,labels,versions,timetracking -q '{{args.QUERY}}'
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
