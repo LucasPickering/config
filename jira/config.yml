@@ -53,6 +53,14 @@ custom-commands:
       {{range args.ISSUES}}
         {{jira}} labels add {{.}} committed_${d}
       {{end}}
+  - name: milestone
+    help: Create a milestone under an epic
+    args:
+      - name: EPIC
+        required: true
+    script: |-
+      ticket=$({{jira}} create -t milestone | cut -f2 -d' ')
+      {{jira}} epic add {{args.EPIC}} $ticket
   - name: cc
     help: Clear remaining time and close
     args:
@@ -61,3 +69,13 @@ custom-commands:
     script: |-
       {{jira}} edit -o timetracking.remainingEstimate="0m" {{args.ISSUE}}
       # {{jira}} close --resolution=Fixed {{args.ISSUE}}
+
+  - name: blocks
+    help: Mark one ticket as blocking another
+    args:
+      - name: BLOCKER
+        required: true
+      - name: BLOCKEE
+        required: true
+    script: |-
+      {{jira}} issuelink {{args.BLOCKEE}} Blocks {{args.BLOCKER}}

@@ -1,11 +1,11 @@
-{{/* create template */ -}}
+{{/* subtask template */ -}}
 fields:
   project:
     key: RP
   issuetype:
     name: Sub-task
   parent:
-    key: {{ .parent.fields.project.key }}
+    key: {{ .parent.key }}
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   assignee:
