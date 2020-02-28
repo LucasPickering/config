@@ -75,9 +75,10 @@ proxy() {
   else
     url="https://cp101.$target.ame1.bitsighttech.com"
   fi
-  echo "$url"
+  echo "URL: $url"
 
-  sed -E 's@"target": .*$@"target": "'"$url"'",@' "$file" | tee "$file"
+  sed -E -i -e 's@"target": .*$@"target": "'"$url"'",@' "$file"
+  cat "$file"
   echo "Wrote to $file"
 }
 
