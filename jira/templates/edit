@@ -4,7 +4,7 @@ fields:
   summary: >-
     {{ or .overrides.summary .fields.summary }}
   assignee:
-    name: {{ if .overrides.assignee }}{{.overrides.assignee}}{{else}}{{if .fields.assignee }}{{ .fields.assignee.name }}{{end}}{{end}}
+    emailAddress: {{ if .overrides.assignee }}{{.overrides.assignee}}{{else}}{{if .fields.assignee }}{{ .fields.assignee.emailAddress }}{{end}}{{end}}
   timetracking:
     originalEstimate: {{ or .fields.timetracking.originalEstimate "" }}
     remainingEstimate: {{ or .overrides.remainingEstimate .fields.timetracking.remainingEstimate "" }}

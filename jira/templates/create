@@ -7,7 +7,7 @@ fields:
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   assignee:
-    name: lucas.pickering@bitsighttech.com
+    emailAddress: lucas.pickering@bitsighttech.com
   labels:
     - frontend
   versions:
