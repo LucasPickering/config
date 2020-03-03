@@ -41,15 +41,15 @@ mysqlcreds() {
   export AWS_DB_PASSWORD=$PASSWORD
 }
 
-repeat() {
-  i=1
-  while true; do
-    echo "===== RUN $i ($(date)) ====="
-    eval $@ || break
-    echo ""
-    i=$((i+1))
-  done
-}
+# repeat() {
+#   i=1
+#   while true; do
+#     echo "===== RUN $i ($(date)) ====="
+#     eval $@ || break
+#     echo ""
+#     i=$((i+1))
+#   done
+# }
 
 deploy() {
   target=$1
@@ -77,7 +77,7 @@ proxy() {
   fi
   echo "URL: $url"
 
-  sed -E -i -e 's@"target": .*$@"target": "'"$url"'",@' "$file"
+  sed -E -i '' 's@"target": .*$@"target": "'"$url"'",@' "$file"
   cat "$file"
   echo "Wrote to $file"
 }
@@ -114,6 +114,7 @@ alias cbp="code $BASH_SOURCE"
 alias ls="ls --color=auto" # Show color
 alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
+alias repeat="~/config/bash/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules/ && yarn install"
 alias links="fd -IH -d 1 -t l . node_modules"
@@ -127,7 +128,7 @@ complete -F _yarn y
 # Env variables
 # The first path here can be obtained from `brew --prefix coreutils`, but that's slow
 # (about 500 ms) so we don't do it every time.
-export GOPATH="~/.go"
+export GOPATH="$HOME/.go"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$HOME/.bskube/bin:$GOPATH/bin:$PATH"
 # export GOPATH="~/.go"
 export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ' # Set iTerm2/guake tab names
