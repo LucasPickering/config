@@ -4,24 +4,31 @@
 	a = "add"
 	ai = "add -i"
 	b = "branch"
+	s = "status"
+	d = "diff"
 	c = "commit"
 	ca = "commit --amend"
 	can = "commit --amend --no-edit"
 	co = "checkout"
 	cob = "checkout -b"
-	d = "diff"
 	r = "rebase"
 	ri = "rebase -i"
-	s = "status"
-
+	default = !"git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+	um = !"DEFAULT=$(git default); git fetch origin ${DEFAULT}:${DEFAULT}"
 	pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+	pd = "push --no-verify -d origin"
+	mbm = !"git merge-base origin/$(git default) HEAD"
 	scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
 	forget = "update-index --skip-worktree"
 	remember = "update-index --no-skip-worktree"
-	destroy = !"git push -d origin $@ && git branch -D"
+	hide = !"git remember $1; git stash push -m $1 -- $1"
+	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
+	destroy = !"git pd $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
-	fix-author = filter-branch -f --env-filter "GIT_AUTHOR_EMAIL='lucas@lucaspickering.me'" --env-filter "GIT_COMMITTER_EMAIL='lucas@lucaspickering.me'"
+	todo = !"git diff `git mbm` --diff-filter ACMR | rg -C3 -i todo"
+	pr = !sh ~/.bash/open_pr.sh
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lm = !"git l $(git default) HEAD"
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 [user]
 	email = lucas@lucaspickering.me
