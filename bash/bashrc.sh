@@ -15,6 +15,7 @@ case "$(uname)" in
     ;;
     "Linux" )
         export PATH="$PATH:~/go/bin:~/.npm/bin"
+        export GPG_TTY=$(tty)
 
         alias open='xdg-open > /dev/null'
         alias copy='xsel -ib'
