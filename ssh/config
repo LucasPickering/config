@@ -1,3 +1,6 @@
 AddKeysToAgent yes
 Host riolu mudkip
 	User pi
+
+Host salamence
+	HostName salamence
