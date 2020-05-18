@@ -5,6 +5,11 @@ fields:
     {{ or .overrides.summary .fields.summary }}
   assignee:
     emailAddress: {{ if .overrides.assignee }}{{.overrides.assignee}}{{else}}{{if .fields.assignee }}{{ .fields.assignee.emailAddress }}{{end}}{{end}}
+{{if .meta.fields.labels}}
+  labels: {{range .fields.labels}}
+    - {{.}}{{end}}{{if .overrides.labels}}{{range (split "," .overrides.labels)}}
+    - {{.}}{{end}}{{end}}
+{{- end}}
   timetracking:
     originalEstimate: {{ or .fields.timetracking.originalEstimate "" }}
     remainingEstimate: {{ or .overrides.remainingEstimate .fields.timetracking.remainingEstimate "" }}

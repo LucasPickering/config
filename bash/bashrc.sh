@@ -116,7 +116,7 @@ alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias repeat="~/config/bash/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
-alias nuke="rm -rf node_modules/ && yarn install"
+alias nuke="fd -I node_modules -x rm -rf && yarn install"
 alias links="fd -IH -d 1 -t l . node_modules"
 alias g="git"
 alias d="docker"
@@ -139,6 +139,7 @@ export VIMINIT="source ~/.vim/vimrc"
 export GIT_COMPLETION_CHECKOUT_NO_GUESS=1 # Don't tab-complete remote branches
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 export PORTAL_BASE=~/git/portal/cust-portal/app
+export SKIP_ESLINT_LOADER=true
 
 eval "$(dircolors)" # Populate LS_COLORS variable
 eval "$(jira --completion-script-bash)"
@@ -155,4 +156,4 @@ source ~/.nvm/nvm.sh
 
 kube_status="\[$txtblu\](\$(namespace)@\$(kubectl config current-context))"
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"
-export PS1="\[$txtred\][\T] \[$txtcyn\]\w $kube_status $git_status \[$txtrst\]\nλ "
+export PS1="\[$txtred\][\t] \[$txtcyn\]\w $kube_status $git_status \[$txtrst\]\nλ "
