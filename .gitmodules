@@ -4,3 +4,7 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "keebs/bdn9/qmk_firmware"]
+	path = keebs/bdn9/qmk_firmware
+	url = git@github.com:LucasPickering/qmk_firmware.git
+	branch = bdn9
