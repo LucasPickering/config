@@ -39,6 +39,10 @@ export HISTFILESIZE=$HISTSIZE
 export VIMINIT="source ~/.vim/vimrc"
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 
+if [[ "$(umask)" = "0000" ]]; then
+  umask 0022
+fi
+
 # Add Rust variables
 if [ -e ~/.cargo ]; then
     export PATH=~/.cargo/bin:$PATH
