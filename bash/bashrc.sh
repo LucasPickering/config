@@ -50,5 +50,8 @@ fi
 if [ -x "$(command -v rustc)" ]; then
     export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 fi
+if [ -x "$(command -v kubectl)" ]; then
+    source <(kubectl completion bash) # kube bash completion
+fi
 
 for f in ~/.bash/helpers/*; do source $f; done
