@@ -12,6 +12,8 @@ services:
     read_only: true
     cap_add:
       - net_admin
+    dns:
+      - 1.1.1.1
     tmpfs:
       - /run
       - /tmp
@@ -23,6 +25,8 @@ services:
 
   proxy:
     image: dperson/nginx
+    restart: unless-stopped
+    command: -w "http://transmission:9091;/transmission"
     depends_on:
       - transmission
     links:
@@ -35,8 +39,6 @@ services:
       - /run
       - /tmp
       - /var/cache/nginx
-    restart: unless-stopped
-    command: -w "http://transmission:9091;/transmission"
 
   transmission:
     build: ./transmission
