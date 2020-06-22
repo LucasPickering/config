@@ -4,7 +4,7 @@ fields:
   issuetype:
     name: Deployment
   summary: >-
-    IsoPOD (Team) YYYY-MM-DD
+    Portal: <Team> YYYY-MM-DD
   components: # Values: Access Control, Accounts, Annotations, Automapper, BitSight Labs, BLIS, BRDS, BRIS, bs-components, bs-emr-tools, Business Graph, Collection Management, committed_20190429, CSV Generation, Customer Team, Dark Web, Darwin, Data Ops, Data Refresh, Data Science, Data Source, Data Source Aggregation, Discover, EDS, EM, Entity Data, Entity Management, Entity Pull, Entity-Join, Entity-Sync, Escalations, Evaluations of Data Sources, EventStore, Executive Reports, Feature Extractor, Feeds, First Party, Folders, Frontend, Groma, Group Admin Role, Hadoop, IGOR, Infection Collector Service, Infrastructure, Infrav3, Insights, Instant Gratification, Isopod, JIRA, JS, Kubernetes, Logging, Mailspike, Main Website, milestone, MPS, Ops, Ops : Build, Ops : Chef, Ops : Fabric, Ops : Scripting, Ops : Test, Order Management, Order Mgmt, Pipeline, Portal, Portal : API, Portal : Cluster Curation, Portal : Collection Management, Portal : Customer - Management, Portal : Customer - User, Portal : Entity Management, Portal : Knowledge Base, Portal : Pull Request Tracker, Preprocessors, Quality Assurance, Rapid7, Risk Management, RTA Orchestrator, Salesforce, SAML, Scoring, Scoring Diff, Security Ratings - Customer API, Service Providers, Sovereign Ratings, Sync/Switch Customer Web Portal, Tacyt, Tooling, uTest Testing, WiFense, Zendesk,
   assignee:
     emailAddress: lucas.pickering@bitsighttech.com
@@ -53,6 +53,5 @@ fields:
     | Ops | xxx | (x) |
     | QA | xxx | (x) |
   labels:
-    - frontend
   versions:
     - name: Onboarding Workflow

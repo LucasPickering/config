@@ -41,16 +41,6 @@ mysqlcreds() {
   export AWS_DB_PASSWORD=$PASSWORD
 }
 
-# repeat() {
-#   i=1
-#   while true; do
-#     echo "===== RUN $i ($(date)) ====="
-#     eval $@ || break
-#     echo ""
-#     i=$((i+1))
-#   done
-# }
-
 deploy() {
   target=$1
   if [ -z "$target" ]; then
@@ -118,11 +108,15 @@ alias repeat="~/config/bash/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="fd -I node_modules -x rm -rf && yarn install"
 alias links="fd -IH -d 1 -t l . node_modules"
+alias p="~/git/portal/dev.sh"
+alias f="~/git/frontend/dev.sh"
 alias g="git"
 alias d="docker"
+alias dc="docker-compose"
 alias y="yarn"
 complete -F _git g
 complete -F _docker d
+complete -F _docker_compose dc
 complete -F _yarn y
 
 # Env variables
@@ -153,6 +147,9 @@ source $(brew --prefix)/etc/bash_completion # git bash completion
 source "$GITAWAREPROMPT/main.sh"
 source ~/git/infrav3/aliases.sh
 source ~/.nvm/nvm.sh
+source <(p api creds)
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 kube_status="\[$txtblu\](\$(namespace)@\$(kubectl config current-context))"
 git_status="\[$txtgrn\]\$git_branch\$git_dirty"

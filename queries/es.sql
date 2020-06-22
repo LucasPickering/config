@@ -1,0 +1,1 @@
+SELECT DISTINCT entity.entityid FROM subscriptions_entitysubscription AS es INNER JOIN entity ON entity.entityid = es.entity_id LEFT JOIN bitsightapp_countryfootprint AS cf ON cf.entity_id = es.entity_id WHERE es.subscription_id = 4 AND entity.is_active = 1 AND entity.map_type != "COUNTRY" AND cf.country_code = "GB" GROUP BY entity.entityid;
