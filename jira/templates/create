@@ -1,0 +1,19 @@
+{{/* create template */ -}}
+fields:
+  project:
+    key: RP
+  issuetype:
+    name: Task
+  summary: >-
+    {{ or .overrides.summary .fields.summary "" }}
+  assignee:
+    emailAddress: lucas.pickering@bitsighttech.com
+  labels:
+    - frontend
+  versions:
+    - name: Core UI
+    - name: Onboarding Workflow
+  timetracking:
+    originalEstimate:
+  description: |-
+    {{ or .overrides.description .fields.description "" | indent 4 }}
