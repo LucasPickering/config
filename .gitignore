@@ -1,4 +1,6 @@
 vim/.netrwhist
 # Most of these are plugins
 fish/functions/*
+fish/completions
 !fish/functions/fish_prompt.fish
+!fish/functions/repeat.fish

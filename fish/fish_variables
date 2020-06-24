@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export SKIP_ESLINT_LOADER:true
+SETUVAR --export VIMINIT:source\x20\x7e/\x2evim/vimrc
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:b8b8b8
 SETUVAR fish_color_cancel:\x2dr

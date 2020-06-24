@@ -4,7 +4,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # Color the prompt differently based on host
     switch (hostname)
-        case metagross Lucario
+        case metagross Lucario lpmbp
             set color_cwd cyan
         case salamence
             set color_cwd yellow
@@ -12,6 +12,8 @@ function fish_prompt --description 'Write out the prompt'
             set color_cwd purple
         case tyranitar
             set color_cwd blue
+        case '*'
+            set color_cwd red
     end
 
     echo -n -s (set_color red) '['(date "+%H:%M:%S")'] ' (set_color $color_cwd) (pwd) (set_color green) (fish_vcs_prompt) \n (set_color red) '><> ' $normal
