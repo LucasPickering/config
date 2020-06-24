@@ -1,6 +1,10 @@
 AddKeysToAgent yes
+Host *
+	UseKeychain yes
 Host riolu mudkip
 	User pi
-
 Host salamence
 	HostName salamence
+Host cp10*.*
+	HostName %h.ame1.bitsighttech.com
+	User lucas.pickering
