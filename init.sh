@@ -33,6 +33,12 @@ if [[ $(tail -n 1 $bash_file) != $line_to_add ]]; then
     echo "source ~/.bash/bashrc.sh" >> $bash_file
 fi
 
+# Fish
+echo "Initializing fish..."
+delete_and_link ~/.config/fish fish
+echo "  You'll need to install fish and set it as your shell manually"
+
+# SSH
 echo "Initializing SSH config..."
 mkdir -p ~/.ssh
 delete_and_link ~/.ssh/config ssh/config
@@ -50,4 +56,4 @@ echo "Initializing tmux..."
 mkdir -p ~/.tmux/plugins
 delete_and_link ~/.tmux.conf tmux/tmux.conf
 delete_and_link ~/.tmux/plugins/tpm tmux/tpm
-echo "Press <shortcut>+I to install plugins"
+echo "  Press <shortcut>+I to load tmux plugins"

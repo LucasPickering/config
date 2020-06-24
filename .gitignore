@@ -1,1 +1,4 @@
 vim/.netrwhist
+# Most of these are plugins
+fish/functions/*
+!fish/functions/fish_prompt.fish
