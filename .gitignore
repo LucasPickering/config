@@ -1,6 +1,8 @@
 vim/.netrwhist
 # Most of these are plugins
 fish/functions/*
+fish/conf.d/
 fish/completions
 !fish/functions/fish_prompt.fish
-!fish/functions/repeat.fish
+!fish/functions/fish_title.fish
+!fish/functions/repeat.py

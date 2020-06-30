@@ -1,20 +1,40 @@
 # Defined in /usr/local/Cellar/fish/3.1.2/share/fish/functions/fish_prompt.fish @ line 4
 function fish_prompt --description 'Write out the prompt'
-    set -l normal (set_color normal)
-
-    # Color the prompt differently based on host
+    # Color the cwd differently based on host
     switch (hostname)
         case metagross Lucario lpmbp
-            set color_cwd cyan
+            set c_cwd (set_color cyan)
         case salamence
-            set color_cwd yellow
+            set c_cwd (set_color yellow)
         case riolu
-            set color_cwd purple
+            set c_cwd (set_color purple)
         case tyranitar
-            set color_cwd blue
+            set c_cwd (set_color blue)
         case '*'
-            set color_cwd red
+            set c_cwd (set_color red)
     end
 
-    echo -n -s (set_color red) '['(date "+%H:%M:%S")'] ' (set_color $color_cwd) (pwd) (set_color green) (fish_vcs_prompt) \n (set_color red) '><> ' $normal
+    # kube context
+    set -l kns (namespace)
+    if test -n $kns
+        set -l cluster (kubectl config current-context)
+        set kubectx "[$kns@$cluster] "
+    end
+
+    # pyenv context
+    if set -q PYENV_VIRTUAL_ENV
+        set -l pv (basename $PYENV_VIRTUAL_ENV)
+        set pyctx "[$pv] "
+    end
+
+    set -l dt (date "+%H:%M:%S")
+    set -l vcs (fish_vcs_prompt)
+
+    # Color shortcuts
+    set -l c_normal (set_color normal)
+    set -l c_dt (set_color red)
+    set -l c_vcs (set_color green)
+    set -l c_ctx (set_color red)
+
+    echo -n -s $c_dt "[$dt] " $c_cwd (pwd) $c_vcs "$vcs " $c_ctx $kubectx $pyctx \n $c_normal '><> '
 end

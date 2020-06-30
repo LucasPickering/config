@@ -1,5 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export GIT_COMPLETION_CHECKOUT_NO_GUESS:1
+SETUVAR --export PROMPT_COMMAND:echo\x20\x2dne\x20\x22\x5c033\x5d\x3b\x24\x7bPWD\x23\x23\x2a/\x7d\x5c007\x22\x3b\x20
+SETUVAR --export PYENV_VIRTUALENV_DISABLE_PROMPT:1
 SETUVAR --export SKIP_ESLINT_LOADER:true
 SETUVAR --export VIMINIT:source\x20\x7e/\x2evim/vimrc
 SETUVAR __fish_initialized:3100
