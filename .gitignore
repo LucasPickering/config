@@ -5,4 +5,5 @@ fish/conf.d/
 fish/completions
 !fish/functions/fish_prompt.fish
 !fish/functions/fish_title.fish
+!fish/functions/custom.fish
 !fish/functions/repeat.py

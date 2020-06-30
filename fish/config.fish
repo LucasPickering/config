@@ -17,12 +17,7 @@ alias g="git"
 alias k="kubectl"
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
-
-# Load NVM if present
-if test -d ~/.nvm
-    bass 'source ~/.nvm/nvm.sh'
-end
-
+source ~/.config/fish/functions/custom.fish
 
 # OS-specific setup
 switch (uname)
