@@ -14,3 +14,9 @@ function namespace --description 'Get current kube namespace'
         cut -d ' ' -f 3
     end
 end
+
+function kns
+    set -l ctx (kubectl config current-context)
+    set -l new_ns $argv[1]
+    kubectl config set-context $ctx --namespace $new_ns
+end

@@ -7,7 +7,6 @@ alias y="yarn"
 
 set -Ux SKIP_ESLINT_LOADER true
 set -Ux PYENV_VIRTUALENV_DISABLE_PROMPT 1
-set -Ux GIT_COMPLETION_CHECKOUT_NO_GUESS 1 # Don't tab-complete remote branches
 
 # Load pyenv
 status --is-interactive; and pyenv init - | source
