@@ -14,6 +14,9 @@ function fish_prompt --description 'Write out the prompt'
             set c_cwd (set_color red)
     end
 
+    # cwd
+    set -l cwd (pwd | sed s@^$HOME@~@)
+
     # kube context
     set -l kns (namespace)
     if test -n $kns
@@ -36,5 +39,5 @@ function fish_prompt --description 'Write out the prompt'
     set -l c_vcs (set_color green)
     set -l c_ctx (set_color red)
 
-    echo -n -s $c_dt "[$dt] " $c_cwd (pwd) $c_vcs "$vcs " $c_ctx $kubectx $pyctx \n $c_normal '><> '
+    echo -n -s $c_dt "[$dt] " $c_cwd $cwd $c_vcs "$vcs " $c_ctx $kubectx $pyctx \n $c_normal '><> '
 end

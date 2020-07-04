@@ -30,6 +30,10 @@ switch (uname)
         alias paste="pbpaste"
 end
 
+if test -d ~/.cargo
+    set PATH $HOME/.cargo/bin $PATH
+end
+
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname).fish
 test -r $host_config; and source $host_config
