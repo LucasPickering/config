@@ -47,4 +47,4 @@ services:
     depends_on:
       - vpn
     volumes:
-      - /var/media/share/Torrents:/var/torrents:rw
+      - /media/lucas/media/data/Torrents:/var/torrents:rw
