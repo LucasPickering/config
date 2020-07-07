@@ -25,6 +25,8 @@ switch (uname)
         alias copy="xsel -ib"
         alias paste="xsel -ob"
 
+        set -Ux GPG_TTY (tty)
+
     case Darwin
         alias copy="pbcopy"
         alias paste="pbpaste"
