@@ -6,7 +6,6 @@ if not functions -q fisher
 end
 
 alias src="source ~/.config/fish/config.fish"
-alias ls="ls --color=auto" # Show color
 alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias repeat="~/.config/fish/functions/repeat.py"
