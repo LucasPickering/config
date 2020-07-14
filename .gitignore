@@ -1,7 +1,8 @@
 vim/.netrwhist
 # Most of these are plugins
 fish/completions
-fish/conf.d/
+fish/conf.d/*
+!fish/conf.d/colors.fish
 fish/fish_variables
 fish/functions/*
 !fish/functions/fish_prompt.fish
