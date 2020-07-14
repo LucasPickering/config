@@ -15,3 +15,15 @@ status --is-interactive; and pyenv virtualenv-init - | source
 
 bass 'source ~/git/infrav3/aliases.sh'
 
+function open_pr --description "Open a new PR for this branch on Bitbucket"
+    set repo_url (git ls-remote --get-url origin | sed -E 's@git\@([^:]+):(.*)@https://\1/\2@')
+    set src (git rev-parse --abbrev-ref HEAD)
+
+    # Read dest from arg, fall back to repo's default branch
+    set dest $argv[1]
+    if test -z $dest
+        set dest (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    end
+
+    open "$repo_url/pull-requests/new?source=$src&dest=$dest"
+end
