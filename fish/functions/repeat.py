@@ -25,8 +25,9 @@ def main():
 
     i = 0
     while args.n is None or i < args.n:
-        proc = subprocess.run(" ".join(args.command), shell=True)
         i += 1
+        print(f"\n===== Run #{i} =====")
+        proc = subprocess.run(" ".join(args.command), shell=True)
         if (args.stop_on == PASS and proc.returncode == 0) or (
             args.stop_on == FAIL and proc.returncode != 0
         ):

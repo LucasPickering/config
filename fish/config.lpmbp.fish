@@ -22,7 +22,7 @@ function open_pr --description "Open a new PR for this branch on Bitbucket"
     # Read dest from arg, fall back to repo's default branch
     set dest $argv[1]
     if test -z $dest
-        set dest (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+        set dest (git default)
     end
 
     open "$repo_url/pull-requests/new?source=$src&dest=$dest"
