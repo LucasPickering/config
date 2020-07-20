@@ -36,3 +36,19 @@ function kns
     set -l new_ns $argv[1]
     kubectl config set-context $ctx --namespace $new_ns
 end
+
+function dm-set --description "Set current docker machine"
+    set machine $argv[1]
+    if test -z $machine
+        echo "ERROR: No argument supplied"
+        return
+    end
+
+    eval (docker-machine env $machine)
+    echo "SUCCESS: Set to $machine"
+end
+
+function dm-clr --description "Clear current docker machine"
+    eval (docker-machine env -u)
+    echo "SUCCESS: cleared"
+end
