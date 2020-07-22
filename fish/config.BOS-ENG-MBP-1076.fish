@@ -27,3 +27,10 @@ function open_pr --description "Open a new PR for this branch on Bitbucket"
 
     open "$repo_url/pull-requests/new?source=$src&dest=$dest"
 end
+
+function docker_login
+  set region $argv[1]
+  test -z $region; and set region "us-east-1"
+  aws ecr get-login-password --region "$region" |\
+    docker login -u AWS --password-stdin 692674046581.dkr.ecr."$region".amazonaws.com
+end
