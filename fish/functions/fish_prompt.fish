@@ -17,6 +17,11 @@ function fish_prompt --description 'Write out the prompt'
     # cwd
     set -l cwd (pwd | sed s@^$HOME@~@)
 
+    # docker-machine context
+    if test -n "$DOCKER_MACHINE_NAME"
+        set dockermachinectx "[$DOCKER_MACHINE_NAME] "
+    end
+
     # kube context
     set -l kns (namespace)
     if test -n $kns
@@ -39,5 +44,5 @@ function fish_prompt --description 'Write out the prompt'
     set -l c_vcs (set_color green)
     set -l c_ctx (set_color red)
 
-    echo -n -s $c_dt "[$dt] " $c_cwd $cwd $c_vcs "$vcs " $c_ctx $kubectx $pyctx \n $c_normal '><> '
+    echo -n -s $c_dt "[$dt] " $c_cwd $cwd $c_vcs "$vcs " $c_ctx $dockermachinectx $kubectx $pyctx \n $c_normal '><> '
 end
