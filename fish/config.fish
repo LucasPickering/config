@@ -10,6 +10,7 @@ alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias repeat="~/.config/fish/functions/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
+alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
 alias g="git"
