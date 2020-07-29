@@ -29,8 +29,29 @@ function open_pr --description "Open a new PR for this branch on Bitbucket"
 end
 
 function docker_login
-  set region $argv[1]
-  test -z $region; and set region "us-east-1"
-  aws ecr get-login-password --region "$region" |\
-    docker login -u AWS --password-stdin 692674046581.dkr.ecr."$region".amazonaws.com
+    set region $argv[1]
+    test -z $region; and set region "us-east-1"
+    aws ecr get-login-password --region "$region" |\
+        docker login -u AWS --password-stdin 692674046581.dkr.ecr."$region".amazonaws.com
+end
+
+function verify_bsc
+    set bsc_version $argv[1]
+    set tag "bs-components@$bsc_version"
+    set branch "verify-bs-components-$bsc_version"
+
+    if test -z "$bsc_version"
+        echo "No version specified"
+        return 1
+    end
+
+    echo "Running tests for $tag"
+    git stash push -m "Stash before bs-components verification"
+    git checkout develop
+    git pull
+    git checkout -b $branch || git checkout $branch
+    yarn upgrade $tag
+    git commit -am "Upgrade to $tag for verification"
+    git push -u origin $branch
+    yarn test:remote
 end
