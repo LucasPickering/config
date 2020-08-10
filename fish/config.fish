@@ -30,6 +30,7 @@ switch (uname)
     case Darwin
         alias copy="pbcopy"
         alias paste="pbpaste"
+        set PATH "/usr/local/opt/coreutils/libexec/gnubin/" $PATH
 end
 
 if test -d ~/.cargo
