@@ -1,6 +1,7 @@
 alias nuke="fd -I node_modules -x rm -rf && yarn install"
 alias links="fd -IH -d 1 -t l . node_modules"
 alias creds="bass 'source <(~/git/portal/dev.sh api creds)'"
+alias test:docker="docker run -t --rm -v (pwd):/app -w /app --cpus=3 --memory=8Gi node:lts yarn run test:jest"
 alias f="~/git/frontend/dev.sh"
 alias j="jira"
 alias p="~/git/portal/dev.sh"
