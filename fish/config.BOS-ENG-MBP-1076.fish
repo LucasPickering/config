@@ -6,6 +6,7 @@ alias f="~/git/frontend/dev.sh"
 alias j="jira"
 alias p="~/git/portal/dev.sh"
 alias y="yarn"
+alias sp="d exec -it portal_portal_1 ./manage.py shell_plus --ipython"
 
 set -Ux SKIP_ESLINT_LOADER true
 set -Ux PYENV_VIRTUALENV_DISABLE_PROMPT 1

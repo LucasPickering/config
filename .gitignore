@@ -9,3 +9,4 @@ fish/functions/*
 !fish/functions/fish_title.fish
 !fish/functions/custom.fish
 !fish/functions/repeat.py
+!fish/functions/dotenv.fish
