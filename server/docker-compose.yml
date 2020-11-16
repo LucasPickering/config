@@ -10,6 +10,8 @@ services:
     stdin_open: true
     # if using '-d' or 'DNS' you can't enable the `read_only: true` option
     read_only: true
+    environment:
+      VPN_AUTH:
     cap_add:
       - net_admin
     dns:

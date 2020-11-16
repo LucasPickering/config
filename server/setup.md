@@ -1,13 +1,8 @@
 # Server Service Setup
 
-Set up whatever services you want, and comment out the ones you don't. Then when you're good to go:
-
-```
-docker-compose up -d
-docker attach server_vpn_1
-# Input VPN username and password
-# ctrl-p ctrl-q to detach
-```
+1. Set up whatever services you want, and comment out the ones you don't
+2. Edit `.env` and add your VPN username and password, like so: `VPN_AUTH=username;password`
+3. `docker-compose up -d`
 
 ## Transmission
 

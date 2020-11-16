@@ -10,3 +10,6 @@ fish/functions/*
 !fish/functions/custom.fish
 !fish/functions/repeat.py
 !fish/functions/dotenv.fish
+
+server/.env
+server/vpn/vpn.auth
