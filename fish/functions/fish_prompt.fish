@@ -6,7 +6,7 @@ end
 function fish_prompt --description 'Write out the prompt'
     # Color the cwd differently based on host
     switch (hostname)
-        case metagross Lucario BOS-ENG-MBP-1076
+        case metagross Lucario BOS-ENG-MBP-1076 MF-0819
             set c_cwd (set_color cyan)
         case salamence
             set c_cwd (set_color yellow)
@@ -27,10 +27,12 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # kube context
-    set -l kns (namespace)
-    if test -n $kns
-        set -l cluster (kubectl config current-context)
-        set kubectx "[$kns@$cluster]"
+    if type -q kubectl
+        set -l kns (namespace)
+        if test -n $kns
+            set -l cluster (kubectl config current-context)
+            set kubectx "[$kns@$cluster]"
+        end
     end
 
     # pyenv context
