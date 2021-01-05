@@ -16,25 +16,9 @@ delete_and_link() {
 git submodule init
 git submodule update
 
-# Bash
-echo "Initializing bash..."
-delete_and_link ~/.bash bash
-case "$(uname)" in
-    "Darwin" )
-        bash_file=~/.bash_profile
-    ;;
-    "Linux" )
-        bash_file=~/.bashrc
-    ;;
-esac
-line_to_add="source ~/.bash/bashrc.sh"
-# Only add the source line if it isn't there already
-if [[ $(tail -n 1 $bash_file) != $line_to_add ]]; then
-    echo "source ~/.bash/bashrc.sh" >> $bash_file
-fi
-
 # Fish
 echo "Initializing fish..."
+mkdir -p ~/.config
 delete_and_link ~/.config/fish fish
 echo "  You'll need to install fish and set it as your shell manually"
 
