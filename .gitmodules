@@ -5,3 +5,6 @@
 	path = keebs/bdn9/qmk_firmware
 	url = git@github.com:LucasPickering/qmk_firmware.git
 	branch = bdn9
+[submodule "fish/pyenv"]
+	path = fish/pyenv
+	url = https://github.com/pyenv/pyenv

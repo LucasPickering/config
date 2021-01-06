@@ -1,0 +1,9 @@
+[core]
+	ignorecase = true
+[user]
+	email = lucas.pickering@markforged.com
+	name = Lucas Pickering
+[init]
+	defaultBranch = main
+[commit]
+	template = /Users/lucas.pickering/MarkForged/Toolbox/git-commit-template.txt

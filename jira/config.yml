@@ -1,7 +1,8 @@
-endpoint: https://bitsight.atlassian.net
+endpoint: https://mfjira.io
 editor: vim
-user: lucas.pickering@bitsighttech.com
-authentication-method: api-token
+user: lucas.pickering@markforged.com
+# authentication-method: api-token
+authentication-method: session
 password-source: keyring
 project: RP
 queries:
