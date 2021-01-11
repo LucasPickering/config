@@ -1,10 +1,10 @@
-endpoint: https://mfjira.io
+endpoint: https://www.mfjira.io
 editor: vim
-user: lucas.pickering@markforged.com
+user: lucas.pickering
 # authentication-method: api-token
 authentication-method: session
 password-source: keyring
-project: RP
+project: SW
 queries:
   me: |
     assignee = currentUser() AND resolution = unresolved AND type != "Story" AND (labels IS EMPTY OR labels NOT IN ("ignore", "opsgenie_alert")) ORDER BY status DESC, priority DESC, updated DESC
@@ -38,12 +38,12 @@ custom-commands:
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
-      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\bRP-\d+')
+      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\bsw-\d+')
 
   - name: goc
     help: Open all tickets referenced by commits in the current git branch
     script: |-
-      for issue in $(git cherry -v `git mbm` | grep -Eo '\bRP-\d+' | uniq); do
+      for issue in $(git cherry -v `git mbm` | grep -Eo '\bsw-\d+' | uniq); do
         {{jira}} browse $issue;
       done
 
