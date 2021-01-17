@@ -38,12 +38,12 @@ custom-commands:
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
-      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\bsw-\d+')
+      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\b\w+-\d+')
 
   - name: goc
     help: Open all tickets referenced by commits in the current git branch
     script: |-
-      for issue in $(git cherry -v `git mbm` | grep -Eo '\bsw-\d+' | uniq); do
+      for issue in $(git cherry -v `git mbm` | grep -Eo '\b\w+-\d+' | uniq); do
         {{jira}} browse $issue;
       done
 

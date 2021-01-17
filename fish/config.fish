@@ -11,6 +11,7 @@ alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias repeat="~/.config/fish/functions/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
+alias nuke="rm -rf node_modules && npm install"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
@@ -54,6 +55,8 @@ if test $status -ne 0
 end
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
+
+load_nvm
 
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname).fish

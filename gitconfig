@@ -48,3 +48,5 @@
 
 [includeIf "gitdir:~/MarkForged/"]
 	path = ~/config/Markforged.gitconfig
+[commit]
+	template = /Users/lucas.pickering/MarkForged//Toolbox/git-commit-template.txt
