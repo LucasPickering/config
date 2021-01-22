@@ -10,9 +10,6 @@ fish/functions/*
 !fish/functions/custom.fish
 !fish/functions/repeat.py
 !fish/functions/dotenv.fish
-!fish/functions/load_nvm.fish
-!fish/functions/nvm.fish
-!fish/functions/nvm_find_nvmrc.fish
 
 server/.env
 server/vpn/vpn.auth

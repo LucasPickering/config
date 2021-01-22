@@ -56,8 +56,6 @@ end
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
-load_nvm
-
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname).fish
 test -r $host_config; and source $host_config
