@@ -10,6 +10,19 @@ This uses QMK firmware. The keymap is stored at `./qmk_firmware/keyboards/keebio
 
 This uses QMK firmware. No custom keymap yet. See [QMK Firmware](#qmk-firmware) for flashing instructions. The button to enter flashing mode is **on the bottom of the PCB**.
 
+### Keybinds
+
+| Keystroke    | Function        |
+| ------------ | --------------- |
+| Fn+Space     | Toggle LEDs     |
+| Fn+F9        | LED Mode        |
+| Fn+F10       | Incr Hue        |
+| Fn+F11       | Incr Sat        |
+| Fn+F12       | Incr Brightness |
+| Fn+Shift+F10 | Decr Hue        |
+| Fn+Shift+F11 | Decr Sat        |
+| Fn+Shift+F12 | Decr Brightness |
+
 ## Ducky One 2
 
 ### Keybinds
