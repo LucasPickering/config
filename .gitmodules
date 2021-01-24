@@ -1,10 +1,10 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "keebs/bdn9/qmk_firmware"]
-	path = keebs/bdn9/qmk_firmware
+[submodule "keebs/qmk_firmware"]
+	path = keebs/qmk_firmware
 	url = git@github.com:LucasPickering/qmk_firmware.git
-	branch = bdn9
+	branch = master
 [submodule "fish/pyenv"]
 	path = fish/pyenv
 	url = https://github.com/pyenv/pyenv
