@@ -17,6 +17,13 @@ function export_colors --description 'Export color scheme to a file'
     echo "Now, just copy that file to your remote machine and run it."
 end
 
+function open_pr --description "Open a new PR for this branch on GitHub"
+    set repo_url (git ls-remote --get-url origin | sed -E -e 's@git\@([^:]+):(.*)@https://\1/\2@' -e 's@\.git@@')
+    set src (git rev-parse --abbrev-ref HEAD)
+
+    open "$repo_url/compare/$src?expand=1"
+end
+
 function namespace --description 'Get current kube namespace'
     set -l ctx (kubectl config current-context 2> /dev/null)
     if test $status != 0
