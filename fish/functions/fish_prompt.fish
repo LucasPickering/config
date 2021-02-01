@@ -42,7 +42,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     set -l dt (date "+%H:%M:%S")
-    set -l vcs (fish_vcs_prompt)
+    set -l vcs (string trim (fish_vcs_prompt))
 
     # Color shortcuts
     set -l c_normal (set_color normal)
@@ -50,16 +50,16 @@ function fish_prompt --description 'Write out the prompt'
     set -l c_vcs (set_color green)
     set -l c_ctx (set_color red)
 
-    set -l first_line $c_dt "$dt " $c_cwd $cwd $c_vcs $vcs
-    set -l second_line $c_ctx "$dockermachinectx $kubectx $pyctx"
-    set -l final_line $c_normal '><> '
+    set -l first_line (string join ' ' $c_dt$dt $c_cwd$cwd $c_vcs$vcs)
+    set -l second_line (string join ' ' $c_ctx $dockermachinectx $kubectx $pyctx)
+    set -l final_line $c_cwd'õ> '$c_normal
 
     # If the prompt gets too big to fit on one line, break it into two
     set prompt_len (string length (strip_colors "$first_line $second_line"))
     set term_width (tput cols)
     if test $prompt_len -gt $term_width
-        echo -n -s $first_line \n $second_line \n $final_line
+        echo -n -s $first_line\n$second_line\n$final_line
     else
-        echo -n -s $first_line $second_line \n $final_line
+        echo -n -s $first_line $second_line\n$final_line
     end
 end
