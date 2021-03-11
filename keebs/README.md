@@ -8,7 +8,9 @@ This uses QMK firmware. The keymap is stored at `./qmk_firmware/keyboards/keebio
 
 ## CU80
 
-This uses QMK firmware. No custom keymap yet. See [QMK Firmware](#qmk-firmware) for flashing instructions. The button to enter flashing mode is **on the bottom of the PCB**.
+[See here](https://maz0r.github.io/cu80-flashguide/) for flashing instructions. Using VIA+ANSI firmware.
+
+**To enter bootloader:** Hold `Fn + Space` during bootup
 
 ### Keybinds
 
