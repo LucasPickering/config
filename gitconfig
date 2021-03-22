@@ -14,6 +14,7 @@
 	canv = "commit --amend --no-edit --no-verify"
 	co = "checkout"
 	cob = "checkout -b"
+	cog = !"git for-each-ref --format='%(refname:short)' 'refs/heads/*' | rg $@ | xargs git checkout #"
 	r = "rebase"
 	ri = "rebase -i"
 	default = !"git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
@@ -29,7 +30,8 @@
 	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
 	destroy = !"git pd $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
-	todo = !"git diff `git mbm` --diff-filter ACMR | rg '^\\+' | rg -C3 -i todo"
+	rg = !"git diff `git mbm` --diff-filter ACMR | rg '^\\+' | rg -C3"
+	todo = "rg -i todo"
 	pr = !"fish -c open_pr"
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lm = !"git l master HEAD"
