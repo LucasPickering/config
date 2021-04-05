@@ -87,7 +87,7 @@ ChallengeResponseAuthentication no
 UsePAM yes
 
 AllowAgentForwarding no
-AllowTcpForwarding no
+AllowTcpForwarding yes
 #GatewayPorts no
 X11Forwarding yes
 XAuthLocation /usr/bin/xauth
@@ -127,5 +127,4 @@ Subsystem	sftp	/usr/lib/openssh/sftp-server
 #	ForceCommand cvs server
 
 DenyUsers guest
-
 
