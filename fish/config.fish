@@ -14,6 +14,7 @@ alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules && npm install"
 alias ports="sudo lsof -i -P -n | rg LISTEN"
 alias nocolor="sed -E 's/\x1b\[[0-9;]*m//g'" # Strip ANSI colors from stdin
+alias npx="npx --no-install"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
