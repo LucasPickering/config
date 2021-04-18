@@ -89,7 +89,7 @@ UsePAM yes
 AllowAgentForwarding no
 AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding yes
+X11Forwarding no
 XAuthLocation /usr/bin/xauth
 #X11UseForwarding yes
 #X11DisplayOffset 10
