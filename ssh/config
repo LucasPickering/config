@@ -7,3 +7,6 @@ Host salamence
 	HostName salamence
 Host pridgerator-sbc sprucegoose-sbc
 	Hostname %h.corp.markforged.com
+Host home
+	HostName home
+	Port 22022
