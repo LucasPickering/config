@@ -1,4 +1,5 @@
 vim/.netrwhist
+.vscode/
 # Most of these are plugins
 fish/completions
 fish/conf.d/*
@@ -8,8 +9,9 @@ fish/functions/*
 !fish/functions/fish_prompt.fish
 !fish/functions/fish_title.fish
 !fish/functions/custom.fish
-!fish/functions/repeat.py
 !fish/functions/dotenv.fish
+!fish/functions/*.py
+fish/functions/__bass.py
 
 server/.env
 server/vpn/vpn.auth
