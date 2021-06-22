@@ -1,19 +1,16 @@
 {{/* create template */ -}}
 fields:
   project:
-    key: RP
+    key: SW
   issuetype:
     name: Task
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   assignee:
-    emailAddress: lucas.pickering@bitsighttech.com
-  labels:
-    - frontend
-  versions:
-    - name: Core UI
-    - name: Onboarding Workflow
-  timetracking:
-    originalEstimate:
+    emailAddress: lucas.pickering@markforged.com
+  swteam:
+    - IoT
+  components:
+    - K2
   description: |-
     {{ or .overrides.description .fields.description "" | indent 4 }}
