@@ -53,3 +53,5 @@
 
 [includeIf "gitdir:~/MarkForged/"]
 	path = ~/config/Markforged.gitconfig
+[pull]
+	ff = only
