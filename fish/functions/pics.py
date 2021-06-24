@@ -4,6 +4,8 @@ import argparse
 import glob
 import os.path
 import subprocess
+import sys
+from pathlib import Path
 
 
 def main():
@@ -13,12 +15,12 @@ def main():
     )
     parser.add_argument(
         "--local",
-        default="~/Pictures/Sort",
+        default=f"{Path.home()}/Pictures/Sort",
         help="Path to the local folder to store .NEF files",
     )
     parser.add_argument(
         "--nksc",
-        default="~/Google Drive/Pictures/Photos/Edited",
+        default=f"{Path.home()}/Google Drive/Pictures/Photos/Edited/",
         help="Path to the directory where NKSC_PARAM files are stored",
     )
 
@@ -38,7 +40,7 @@ def main():
     parser_clean.set_defaults(func=upload_edits)
     parser_clean = subparsers.add_parser(
         "backup",
-        help="Copy files on the SD card to a different directory",
+        help="Copy files from the local directory back onto the SD card",
     )
     parser_clean.set_defaults(func=backup_files)
 
@@ -53,47 +55,52 @@ def main():
 
 
 def copy_from_sd(args):
-    subprocess.check_output(
-        # Trailing slash tells rsync to copy contents, not the dir itself
-        rsync(args.sd_src + "/", args.local)
-    )
+    # Trailing slash tells rsync to copy contents, not the dir itself
+    rsync(args.sd_src + "/", args.local)
 
 
 def open_files(args):
-    subprocess.check_output(
-        [
-            "open",
-            *glob.glob(
-                os.path.join(args.local, "*.NEF"),
-            ),
-        ]
+    run_cmd(
+        "open",
+        *glob.glob(
+            os.path.join(args.local, "*.NEF"),
+        ),
     )
 
 
 def clean_files(args):
-    pass
+    pass  # TODO
 
 
 def upload_edits(args):
-    subprocess.check_output(
-        rsync(
-            os.path.join(args.local, "NKSC_PARAM"),
-            args.nksc,
-        )
+    rsync(
+        "--exclude",
+        "*",
+        "--include",
+        "*.nksc",
+        os.path.join(args.local, "NKSC_PARAM"),
+        args.nksc,
     )
 
 
 def backup_files(args):
-    subprocess.check_output(
-        rsync(
-            os.path.join(args.local, "NKSC_PARAM"),
-            args.nksc,
-        )
+    rsync(
+        # Trailing slash tells rsync to copy contents, not the dir itself
+        args.local + "/",
+        args.sd_backup,
     )
 
 
+def run_cmd(*args):
+    process = subprocess.Popen(
+        args, stderr=subprocess.STDOUT, stdout=subprocess.PIPE
+    )
+    for line in iter(process.stdout.readline, b""):
+        sys.stdout.write(line.decode(sys.stdout.encoding))
+
+
 def rsync(*args):
-    return ["rsync", "-rv", "--info=progress2", *args]
+    return run_cmd("rsync", "-rv", "--info=progress2", *args)
 
 
 if __name__ == "__main__":
