@@ -3,6 +3,7 @@
 import argparse
 import glob
 import os.path
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -34,15 +35,15 @@ def main():
     parser_open.set_defaults(func=open_files)
     parser_clean = subparsers.add_parser("clean", help="Delete files")
     parser_clean.set_defaults(func=clean_files)
-    parser_clean = subparsers.add_parser(
+    parser_upload_edits = subparsers.add_parser(
         "upload-edits", help="Copy NKSC_PARAM files to Google Drive"
     )
-    parser_clean.set_defaults(func=upload_edits)
-    parser_clean = subparsers.add_parser(
+    parser_upload_edits.set_defaults(func=upload_edits)
+    parser_backup = subparsers.add_parser(
         "backup",
         help="Copy files from the local directory back onto the SD card",
     )
-    parser_clean.set_defaults(func=backup_files)
+    parser_backup.set_defaults(func=backup_files)
 
     args = parser.parse_args()
 
@@ -69,7 +70,17 @@ def open_files(args):
 
 
 def clean_files(args):
-    pass  # TODO
+    to_delete = []
+    for path in [args.sd_src, args.sd_backup, args.local]:
+        if confirm(f"Delete contents of {path}?"):
+            to_delete.append(path)
+    if to_delete:
+        dirs = ", ".join(to_delete)
+        if confirm(f"Delete contents of the following directories? {dirs}"):
+            for path in to_delete:
+                rm_children(path)
+            return
+    print("Nothing deleted")
 
 
 def upload_edits(args):
@@ -101,6 +112,29 @@ def run_cmd(*args):
 
 def rsync(*args):
     return run_cmd("rsync", "-rv", "--info=progress2", *args)
+
+
+def confirm(prompt, default=False):
+    """
+    Prompt the user for a yes/no response
+    """
+    default_response = "Y/n" if default else "y/N"
+    response = input(f"{prompt} ({default_response}) ")
+
+    # Empty response, return default value
+    if not response.strip():
+        return default
+    if response.lower() in ("y", "yes"):
+        return True
+    return False
+
+
+def rm_children(directory):
+    """
+    Delete all children of a directory, without deleting the directory itself
+    """
+    for child in glob.glob(os.path.join(directory, "*")):
+        shutil.rmtree(child)
 
 
 if __name__ == "__main__":
