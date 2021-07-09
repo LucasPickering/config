@@ -5,8 +5,9 @@ end
 # Defined in /usr/local/Cellar/fish/3.1.2/share/fish/functions/fish_prompt.fish @ line 4
 function fish_prompt --description 'Write out the prompt'
     # Color the cwd differently based on host
-    switch (hostname)
-        case metagross metagross.home Lucario MF-0819
+    # Strip ".home" and ".local" extensions from hostname
+    switch (hostname | sed -e "s@\..*\$@@")
+        case metagross Lucario MF-0819
             set c_cwd (set_color cyan)
         case salamence
             set c_cwd (set_color yellow)
