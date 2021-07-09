@@ -30,8 +30,12 @@
 	return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
 	destroy = !"git pd $@ && git branch -D"
 	gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
-	rg = !"git diff `git mbm` --diff-filter ACMR | rg '^\\+' | rg -C3"
-	todo = "rg -i todo"
+	# Filter down just to matching files, then grep within those files. This isn't
+	# perfect because it will also include files where the matching string was
+	# removed, but I think it's the best we can do.
+	diff-grep = !"git diff `git mbm` --diff-filter ACMR -G $1 | rg '^[+]' | rg -e \"^[+]{3} b/.*$\" -C3 -e $1 #"
+	dg = "diff-grep"
+	todo = "diff-grep [Tt][Oo][Dd][Oo]"
 	pr = !"fish -c open_pr"
 	l = log --oneline --decorate --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
 	lm = !"git l `git default` HEAD"
