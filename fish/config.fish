@@ -45,11 +45,14 @@ end
 
 # Get directory of this script, for usage later
 # This has to go AFTER overriding PATH with our coreutils version (for Mac)
-set FISH_DIR (dirname (readlink -m (status --current-filename)))
+# TODO do we still need this? Remove it after a while if nothing breaks
+# set FISH_DIR (dirname (readlink -m (status --current-filename)))
 
 # Set up Pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+# pyenv docs say to add $PYENV_ROOT/bin instead, but that dir doesn't exist for
+# me so I'm going with this ¯\_(ツ)_/¯
+fish_add_path ~/.config/fish/pyenv/bin
 set -Ux PYENV_VIRTUALENV_DISABLE_PROMPT 1
 status is-login; and pyenv init --path | source
 pyenv init - | source
