@@ -8,7 +8,7 @@ function export_colors --description 'Export color scheme to a file'
     chmod +x $dest
 
     for i in (set -n | string match 'fish*_color*')
-    echo "set $i $$i" >> $dest
+        echo "set $i $$i" >> $dest
     end
 
     echo "Fish colors have been set" >> $dest

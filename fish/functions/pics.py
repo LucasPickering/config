@@ -48,7 +48,7 @@ def main():
     args = parser.parse_args()
 
     # Some additional derived paths
-    args.sd_src = os.path.join(args.sd, "DCIM/100D5100")
+    args.sd_src = os.path.join(args.sd, "DCIM")
     args.sd_backup = os.path.join(args.sd, "Backup")
 
     # Call the func corresponding to the given subcommand
@@ -56,8 +56,16 @@ def main():
 
 
 def copy_from_sd(args):
-    # Trailing slash tells rsync to copy contents, not the dir itself
-    rsync(args.sd_src + "/", args.local)
+    # Copy all .NEF files from the SD source folder. The folder can have
+    # multiple subdirs, and we want to flatten that directory structure while
+    # we copy. This could hypothetically cause collisions, but each folder will
+    # store 10k photos before rolling over so not really a concern.
+    rsync(
+        *glob.glob(args.sd_src + "/**/"),
+        args.local,
+        "--include=*.NEF",
+        "--exclude=*",
+    )
 
 
 def open_files(args):
