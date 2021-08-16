@@ -16,3 +16,4 @@ fish/functions/__bass.py
 server/.env
 server/vpn/vpn.auth
 jira/cookies.js
+.DS_Store

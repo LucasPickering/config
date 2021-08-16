@@ -60,3 +60,5 @@
 	path = ~/config/Markforged.gitconfig
 [pull]
 	ff = only
+[init]
+	defaultBranch = master
