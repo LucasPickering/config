@@ -6,17 +6,11 @@ password-source: keyring
 project: KEYC
 queries:
   me: |
-    assignee = currentUser() AND resolution = unresolved AND type != "Story" AND (labels IS EMPTY OR labels NOT IN ("ignore", "opsgenie_alert")) ORDER BY status DESC, priority DESC, updated DESC
+    assignee = currentUser() AND resolution = unresolved AND type != "Story" ORDER BY status DESC, priority DESC, updated DESC
   milestones: |
     assignee = currentUser() AND resolution = unresolved AND type = "Story" ORDER BY status DESC, priority DESC, updated DESC
-  vow: |
-    assignee = currentUser() AND resolution = unresolved AND type != "Story" AND affectedVersion = "Onboarding Workflow" ORDER BY status DESC, priority DESC, updated DESC
-  cui: |
-    assignee = currentUser() AND resolution = unresolved AND type != "Story" AND affectedVersion = "Core UI" ORDER BY status DESC, priority DESC, updated DESC
-  ignored: |
-    assignee = currentUser() AND resolution = unresolved AND labels = "ignore" ORDER BY status DESC, priority DESC, updated DESC
   l2w: |
-    assignee = currentUser() AND type != Deployment AND resolutiondate > startOfDay("-2w")
+    assignee = currentUser() AND resolutiondate > startOfDay("-2w")
 custom-commands:
   - name: q
     help: Run a named query
@@ -45,18 +39,6 @@ custom-commands:
       for issue in $(git cherry -v `git mbm` | grep -Eo '\b\w+-\d+' | uniq); do
         {{jira}} browse $issue;
       done
-
-  - name: commit
-    help: Assign the proper committed label for this week to the given ticket
-    args:
-      - name: ISSUES
-        required: true
-        repeat: true
-    script: |-
-      d=$(date -'dlast-sunday+1 day' +%Y%m%d)
-      {{range args.ISSUES}}
-        {{jira}} labels add {{.}} committed_${d}
-      {{end}}
 
   - name: milestone
     help: Create a milestone under an epic

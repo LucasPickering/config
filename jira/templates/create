@@ -7,7 +7,7 @@ fields:
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   assignee:
-    emailAddress: lucas.pickering@markforged.com
+    emailAddress: lucas@keycaliber.com
   swteam:
     - IoT
   components:
