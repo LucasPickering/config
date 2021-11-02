@@ -20,7 +20,7 @@ git submodule update
 echo "Initializing fish..."
 mkdir -p ~/.config
 delete_and_link ~/.config/fish fish
-echo "  You'll need to install fish and set it as your shell manually. Then run `fisher update`"
+echo "  You'll need to install fish and set it as your shell manually. Then run \`fisher update\`"
 
 # SSH
 echo "Initializing SSH config..."

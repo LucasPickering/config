@@ -24,6 +24,11 @@ function open_pr --description "Open a new PR for this branch on GitHub"
     open "$repo_url/compare/$src?expand=1"
 end
 
+function hostname_base --description "Get machine hostname, without extensions"
+    # Strip ".home" and ".local" extensions from hostname
+    echo (hostname | sed -e "s@\..*\$@@")
+end
+
 function namespace --description 'Get current kube namespace'
     set -l ctx (kubectl config current-context 2> /dev/null)
     if test $status != 0
@@ -38,10 +43,18 @@ function namespace --description 'Get current kube namespace'
     end
 end
 
-function kns
+function kns --description "Set kubernetes namespace"
     set -l ctx (kubectl config current-context)
     set -l new_ns $argv[1]
     kubectl config set-context $ctx --namespace $new_ns
+end
+
+function kex --description "Execute a command in a kubernetes pod" -a q
+    set command $argv[2..-1]
+    set -q command or set command "/bin/bash"
+    set podname (kubectl get pods | awk "/$q/"' {print $1}')
+    echo "Running `$command` in pod $podname"
+    kubectl exec -it $podname -- $command
 end
 
 function dotenv --description "Load environment variables from .env file"

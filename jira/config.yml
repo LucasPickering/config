@@ -1,10 +1,9 @@
-endpoint: https://www.mfjira.io
+endpoint: https://rosintlabs.atlassian.net
 editor: vim
-user: lucas.pickering
-# authentication-method: api-token
-authentication-method: session
+user: lucas@keycaliber.com
+authentication-method: api-token
 password-source: keyring
-project: SW
+project: KEYC
 queries:
   me: |
     assignee = currentUser() AND resolution = unresolved AND type != "Story" AND (labels IS EMPTY OR labels NOT IN ("ignore", "opsgenie_alert")) ORDER BY status DESC, priority DESC, updated DESC

@@ -56,8 +56,8 @@
 	process = git-lfs filter-process
 	required = true
 
-[includeIf "gitdir:~/MarkForged/"]
-	path = ~/config/Markforged.gitconfig
+[includeIf "gitdir:~/git/KeyCaliber/"]
+	path = ~/git/config/KeyCaliber.gitconfig
 [pull]
 	ff = only
 [init]

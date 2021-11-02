@@ -21,6 +21,10 @@ alias d="docker"
 alias dc="docker-compose"
 alias g="git"
 alias k="kubectl"
+alias kgp='kubectl get pods'
+alias kl='kubectl logs --follow'
+alias kfk='kubectl delete pod,svc --all --force'
+
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
 source ~/.config/fish/functions/custom.fish
@@ -65,5 +69,5 @@ end
 status --is-interactive; and pyenv virtualenv-init - | source
 
 # Load additional config based on hostname
-set host_config ~/.config/fish/config.(hostname).fish
+set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
