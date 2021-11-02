@@ -8,3 +8,10 @@ Host salamence
 Host home
 	HostName home
 	Port 22022
+# Use a different SSH key for personal GH repos
+Host github.com-personal
+	HostName github.com
+	User git
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id_rsa_personal
