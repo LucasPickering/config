@@ -6,9 +6,7 @@ password-source: keyring
 project: KEYC
 queries:
   me: |
-    assignee = currentUser() AND resolution = unresolved AND type != "Story" ORDER BY status DESC, priority DESC, updated DESC
-  milestones: |
-    assignee = currentUser() AND resolution = unresolved AND type = "Story" ORDER BY status DESC, priority DESC, updated DESC
+    assignee = currentUser() AND resolution = unresolved ORDER BY status DESC, priority DESC, updated DESC
   l2w: |
     assignee = currentUser() AND resolutiondate > startOfDay("-2w")
 custom-commands:
@@ -39,24 +37,6 @@ custom-commands:
       for issue in $(git cherry -v `git mbm` | grep -Eo '\b\w+-\d+' | uniq); do
         {{jira}} browse $issue;
       done
-
-  - name: milestone
-    help: Create a milestone under an epic
-    args:
-      - name: EPIC
-        required: true
-    script: |-
-      ticket=$({{jira}} create -t milestone | cut -f2 -d' ')
-      {{jira}} epic add {{args.EPIC}} $ticket
-
-  - name: cc
-    help: Clear remaining time and close
-    args:
-      - name: ISSUE
-        required: true
-    script: |-
-      {{jira}} edit -o timetracking.remainingEstimate="0m" {{args.ISSUE}}
-      # {{jira}} close --resolution=Fixed {{args.ISSUE}}
 
   - name: blocks
     help: Mark one ticket as blocking another
