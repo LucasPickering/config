@@ -1,6 +1,7 @@
 vim/.netrwhist
 .vscode/
 # Most of these are plugins
+fish/fishfile
 fish/completions
 fish/conf.d/*
 !fish/conf.d/colors.fish
@@ -15,5 +16,6 @@ fish/functions/__bass.py
 
 server/.env
 server/vpn/vpn.auth
+*.ovpn
 jira/cookies.js
 .DS_Store
