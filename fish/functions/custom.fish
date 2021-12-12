@@ -86,3 +86,16 @@ function dm-clr --description "Clear current docker machine"
     eval (docker-machine env -u)
     echo "SUCCESS: cleared"
 end
+
+function gibberish --description "Replace some bytes in a string with gibberish"
+    read -d '' -z lines
+    set gibberish '$' '¥' '&' 'Ķ' 'æ'
+
+    for char in (string split '' $lines)
+        if test $char != "\n" -a (random 0 10) = 0
+            echo -n (random choice $gibberish)
+        else
+            echo -n $char
+        end
+    end
+end
