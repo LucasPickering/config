@@ -8,22 +8,24 @@ This uses QMK firmware. The keymap is stored at `./qmk_firmware/keyboards/keebio
 
 ## CU80
 
-[See here](https://maz0r.github.io/cu80-flashguide/) for flashing instructions. Using VIA+ANSI firmware.
+[See here](https://maz0r.github.io/cu80-flashguide/) for flashing instructions. Using VIA+ANSI firmware. Once QMK is flashed, all further configuration is done in VIA.
 
-**To enter bootloader:** Hold `Fn + Space` during bootup
+**To enter bootloader:** Hold `ESC` during bootup
+
+VIA keybinding config is stored in this repo.
 
 ### Keybinds
 
-| Keystroke    | Function        |
-| ------------ | --------------- |
-| Fn+Space     | Toggle LEDs     |
-| Fn+F9        | LED Mode        |
-| Fn+F10       | Incr Hue        |
-| Fn+F11       | Incr Sat        |
-| Fn+F12       | Incr Brightness |
-| Fn+Shift+F10 | Decr Hue        |
-| Fn+Shift+F11 | Decr Sat        |
-| Fn+Shift+F12 | Decr Brightness |
+| Keystroke | Function        |
+| --------- | --------------- |
+| Fn+Space  | Toggle LEDs     |
+| Fn+F9     | LED Mode        |
+| Fn+Ins    | Incr Hue        |
+| Fn+Del    | Decr Hue        |
+| Fn+Home   | Incr Sat        |
+| Fn+End    | Decr Sat        |
+| Fn+PgUp   | Incr Brightness |
+| Fn+PgDn   | Decr Brightness |
 
 ## QMK Firmware
 
