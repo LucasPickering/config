@@ -6,7 +6,9 @@ password-source: keyring
 project: KEYC
 queries:
   me: |
-    assignee = currentUser() AND resolution = unresolved ORDER BY status DESC, priority DESC, updated DESC
+    assignee = currentUser() AND resolution = unresolved AND type != Epic ORDER BY status DESC, priority DESC, updated DESC
+  epics: |
+    assignee = currentUser() AND resolution = unresolved AND type = Epic ORDER BY status DESC, priority DESC, updated DESC
   l2w: |
     assignee = currentUser() AND resolutiondate > startOfDay("-2w")
 custom-commands:
