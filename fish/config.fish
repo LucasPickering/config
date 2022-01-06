@@ -23,6 +23,7 @@ alias k="kubectl"
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias kfk='kubectl delete pod,svc --all --force'
+alias tf='terraform'
 
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
