@@ -18,6 +18,7 @@ alias npx="npx --no-install"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
+alias dm="docker-machine"
 alias g="git"
 alias k="kubectl"
 alias kgp='kubectl get pods'
@@ -34,8 +35,14 @@ source ~/.config/fish/functions/custom.fish
 # OS-specific setup
 switch (uname)
     case Linux
-        alias copy="xsel -ib"
-        alias paste="xsel -ob"
+        # Ubuntu uses xsel, NixOS uses xclip
+        if type -q xsel
+            alias copy="xsel -ib"
+            alias paste="xsel -ob"
+        else if type -q xclip
+            alias copy="xclip -sel -i"
+            alias paste="xclip -o"
+        end
 
         set -Ux GPG_TTY (tty)
 
@@ -73,3 +80,8 @@ status --is-interactive; and pyenv virtualenv-init - | source
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
+
+# Enable direnv for nix
+if type -q direnv
+    direnv hook fish | source
+end

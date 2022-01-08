@@ -1,14 +1,13 @@
 { pkgs, lib, config, ... }: {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    binutils
     dconf
     discord
     file
     firefox
-    git
     guake
     htop
-    kitty
     pavucontrol
     pulseaudio
     runelite
@@ -16,7 +15,6 @@
     tree
     wget
     vim
-    vscode
     xclip
   ];
 }

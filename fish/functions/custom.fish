@@ -71,7 +71,7 @@ function dotenv --description "Load environment variables from .env file"
 end
 
 
-function dm-set --description "Set current docker machine"
+function dm_set --description "Set current docker machine"
     set machine $argv[1]
     if test -z $machine
         echo "ERROR: No argument supplied"
@@ -82,7 +82,7 @@ function dm-set --description "Set current docker machine"
     echo "SUCCESS: Set to $machine"
 end
 
-function dm-clr --description "Clear current docker machine"
+function dm_clr --description "Clear current docker machine"
     eval (docker-machine env -u)
     echo "SUCCESS: cleared"
 end
@@ -98,4 +98,9 @@ function gibberish --description "Replace some bytes in a string with gibberish"
             echo -n $char
         end
     end
+end
+
+function setup_lorri
+    lorri init
+    direnv allow
 end

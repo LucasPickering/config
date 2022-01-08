@@ -13,6 +13,7 @@
           "https://github.com/rycee/home-manager/archive/release-21.11.tar.gz"
         }/nixos")
       ./modules/desktop/module.nix
+      ./modules/development.nix
       ./modules/audio.nix
       ./modules/packages.nix
       ./modules/networking.nix
