@@ -6,7 +6,7 @@ end
 function fish_prompt --description 'Write out the prompt'
     # Color the cwd differently based on host
     switch (hostname_base)
-        case metagross Lucario garchomp
+        case metagross lucario garchomp
             set c_cwd (set_color cyan)
         case salamence
             set c_cwd (set_color yellow)

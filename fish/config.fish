@@ -24,6 +24,8 @@ alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias kfk='kubectl delete pod,svc --all --force'
 alias tf='terraform'
+alias nixre='sudo nixos-rebuild switch'
+alias pack='vim /etc/nixos/modules/packages.nix'
 
 
 set -Ux VIMINIT "source ~/.vim/vimrc"

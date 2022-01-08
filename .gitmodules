@@ -8,3 +8,6 @@
 [submodule "fish/pyenv"]
 	path = fish/pyenv
 	url = https://github.com/pyenv/pyenv
+[submodule "vim/pack/tpope/start/sleuth"]
+	path = vim/pack/tpope/start/sleuth
+	url = https://tpope.io/vim/sleuth.git

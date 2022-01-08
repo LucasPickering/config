@@ -19,3 +19,4 @@ server/vpn/vpn.auth
 *.ovpn
 jira/cookies.js
 .DS_Store
+secrets/
