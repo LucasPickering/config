@@ -22,11 +22,6 @@ mkdir -p ~/.config
 delete_and_link ~/.config/fish fish
 echo "  You'll need to install fish and set it as your shell manually. Then run \`fisher update\`"
 
-# SSH
-echo "Initializing SSH config..."
-mkdir -p ~/.ssh
-delete_and_link ~/.ssh/config ssh/config
-
 # Git
 echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
