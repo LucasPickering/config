@@ -14,7 +14,9 @@
     spotify
     tree
     wget
+    unzip
     vim
     xclip
+    zip
   ];
 }
