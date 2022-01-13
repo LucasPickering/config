@@ -12,6 +12,7 @@
     pulseaudio
     runelite
     spotify
+    tdesktop # telegram
     tree
     wget
     unzip
