@@ -21,7 +21,7 @@ use-popup=true
 use-scrollbar=true
 use-trayicon=true
 window-halignment=0
-window-height=39
+window-height=35
 window-losefocus=false
 window-refocus=false
 window-tabbar=true
@@ -32,8 +32,10 @@ show-hide='<Alt>grave'
 
 [keybindings/local]
 close-tab='<Primary>w'
+focus-terminal-down='<Primary><Super>Down'
 focus-terminal-left='<Primary><Super>Left'
 focus-terminal-right='<Primary><Super>Right'
+focus-terminal-up='<Primary><Super>Up'
 move-tab-left='<Shift><Alt>Left'
 move-tab-right='<Shift><Alt>Right'
 new-tab='<Primary>t'
