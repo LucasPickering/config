@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }: {
   users.mutableUsers = false;
 
+  users.users.root = {
+    hashedPassword = "*";
+  };
   users.users.lucas = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "audio" "docker" ];
