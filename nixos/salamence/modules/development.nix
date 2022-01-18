@@ -7,9 +7,11 @@
 #  services.vscode-server.enable = true;
   services.code-server.enable = true;
   home-manager.users.lucas = { programs.direnv.enable = true; };
+  virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
     code-server
+    docker
     docker-compose
     git
     python3
