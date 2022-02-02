@@ -10,7 +10,6 @@
     htop
     pavucontrol
     pulseaudio
-    runelite
     spotify
     tdesktop # telegram
     tree
