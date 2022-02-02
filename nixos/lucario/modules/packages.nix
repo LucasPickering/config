@@ -6,6 +6,7 @@
     discord
     file
     firefox
+    gimp
     guake
     htop
     pavucontrol
