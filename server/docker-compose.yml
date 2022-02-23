@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+  transmission-torrents:
+
 services:
   # https://github.com/dperson/openvpn-client/blob/master/docker-compose.yml
   vpn:
@@ -50,3 +53,16 @@ services:
       - vpn
     volumes:
       - /media/Torrents:/var/torrents:rw
+      - transmission-torrents:/root/.config/transmission-daemon/torrents:rw
+
+  plex:
+    image: linuxserver/plex
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      VERSION: docker
+    volumes:
+      - ./plex:/config:rw
+      - /media/Torrents:/var/media/torrents:ro
+      - /media/Movies:/var/media/movies:ro
+      - /media/TV Shows:/var/media/tv:ro

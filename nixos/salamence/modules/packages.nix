@@ -5,6 +5,7 @@
     dconf
     file
     htop
+    nodejs-16_x
     tree
     wget
     unzip

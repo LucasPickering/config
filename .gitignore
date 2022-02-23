@@ -16,6 +16,7 @@ fish/functions/__bass.py
 
 server/.env
 server/vpn/vpn.auth
+server/plex
 *.ovpn
 *.crt
 *.pem
