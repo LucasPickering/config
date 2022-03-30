@@ -20,4 +20,5 @@
     xclip
     zip
   ];
+  programs.steam.enable = true;
 }
