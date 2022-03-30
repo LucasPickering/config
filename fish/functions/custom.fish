@@ -18,7 +18,11 @@ function export_colors --description 'Export color scheme to a file'
 end
 
 function git_repo_url --description "Get the HTTP URL of the current repo"
-    git ls-remote --get-url origin | sed -E -e 's@git\@([^:]+):(.*)@https://\1/\2@' -e 's@\.git@@'
+    git ls-remote --get-url origin | sed -E -e 's@git\@([^:]+):(.*)@https://\1/\2@' -e 's@\.git$@@'
+end
+
+function github_api_url --description "Get the GitHub API HTTP URL of the current repo"
+    git ls-remote --get-url origin | sed -E -e 's@git\@([^:]+):(.*)@https://api.github.com/repos/\2@' -e 's@\.git$@@'
 end
 
 function open_pr --description "Open a new PR for this branch on GitHub"

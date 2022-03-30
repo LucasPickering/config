@@ -2,6 +2,7 @@
   ui = true
 [alias]
   a = "add"
+  actions = !"curl -s $(fish -c github_api_url)/actions/runs?per_page=5 | jq -r '.workflow_runs[] | [.run_number, .name, .conclusion, .html_url] | @tsv'"
   ai = "add -i"
   b = "branch"
   c = "commit"
