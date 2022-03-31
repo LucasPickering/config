@@ -9,8 +9,12 @@
     docker-compose
     gcc
     git
+    google-cloud-sdk
+    kubectl
+    kubernetes-helm
     python3
     rustup
+    terraform
     vscode
   ];
 }

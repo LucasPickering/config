@@ -15,7 +15,7 @@
     interfaces.eno1.useDHCP = false; # Not sure what this is
     interfaces.wlp4s0.useDHCP = false; # WiFi
     # RPi USB interface
-    interfaces.enp0s20f0u2 = {
+    interfaces.enp0s20f0u2i1 = {
       useDHCP = false;
       ipv4.addresses = [
         {
