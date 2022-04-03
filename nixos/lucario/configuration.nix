@@ -15,6 +15,7 @@
       ./modules/desktop/module.nix
       ./modules/development.nix
       ./modules/audio.nix
+      ./modules/gamer.nix
       ./modules/packages.nix
       ./modules/networking.nix
       ./modules/users.nix
