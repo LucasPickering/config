@@ -28,10 +28,9 @@ function fish_prompt --description 'Write out the prompt'
 
     # kube context
     if type -q kubectl
-        set -l kns (namespace)
-        if test -n $kns
-            set -l cluster (kubectl config current-context)
-            set kubectx "[$kns@$cluster]"
+        set -l kube_context (kns)
+        if test -n $kube_context
+            set kubectx "[$kube_context]"
         end
     end
 

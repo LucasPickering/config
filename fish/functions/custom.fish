@@ -37,24 +37,20 @@ function hostname_base --description "Get machine hostname, without extensions"
     echo (hostname | sed -e "s@\..*\$@@")
 end
 
-function namespace --description 'Get current kube namespace'
-    set -l ctx (kubectl config current-context 2> /dev/null)
-    if test $status != 0
-        echo ""
+function kns --description "Get/set kubernetes namespace"
+    if set -q argv[1]
+        set -l ctx (kubectl config current-context)
+        set -l new_ns $argv[1]
+        kubectl config set-context $ctx --namespace $new_ns
     else
-        kubectl config view 2> /dev/null |\
-        grep -A4 " context:" |\
-        egrep -A4 "cluster: $ctx\$" |\
-        grep namespace |\
-        tr -s ' ' |\
-        cut -d ' ' -f 3
+        set -l context_name (kubectl config current-context 2> /dev/null)
+        if test $status != 0
+            echo ""
+        else
+            set -l namespace (kubectl config view --minify -o jsonpath="{.contexts[?(@.name==\"$context_name\")].context.namespace}")
+            echo "$namespace@$context_name"
+        end
     end
-end
-
-function kns --description "Set kubernetes namespace"
-    set -l ctx (kubectl config current-context)
-    set -l new_ns $argv[1]
-    kubectl config set-context $ctx --namespace $new_ns
 end
 
 function kex --description "Execute a command in a kubernetes pod" -a q
