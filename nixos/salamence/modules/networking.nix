@@ -7,8 +7,8 @@
     wireless.enable = false;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = false;
 
-    # Needed for plex
-    firewall.allowedTCPPorts = [ 32400 3005 8324 32469 ];
+    # Needed for plex + minecraft
+    firewall.allowedTCPPorts = [ 32400 3005 8324 32469 25565 ];
     firewall.allowedUDPPorts = [ 1900 5353 32410 32412 32413 32414 ];
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.

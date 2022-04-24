@@ -13,6 +13,7 @@
     code-server
     docker
     docker-compose
+    docker-machine
     git
     python3
     rustup
