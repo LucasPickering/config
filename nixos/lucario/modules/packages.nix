@@ -9,6 +9,7 @@
     gimp
     guake
     htop
+    imagemagick
     pavucontrol
     pulseaudio
     spotify
