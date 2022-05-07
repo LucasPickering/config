@@ -5,15 +5,8 @@
   networking = {
     hostName = "lucario"; # Define your hostname.
     wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = false;
+    networkmanager.enable = true;
 
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    useDHCP = false;
-    interfaces.enp3s0.useDHCP = true; # Real ethernet
-    interfaces.eno1.useDHCP = false; # Not sure what this is
-    interfaces.wlp4s0.useDHCP = false; # WiFi
     # RPi USB interface
     interfaces.enp0s20f0u2i1 = {
       useDHCP = false;
@@ -32,4 +25,7 @@
       iptables -t nat -A POSTROUTING -o enp3s0 -j MASQUERADE
     ";
   };
+
+  # This always fails because the RPi interface doesn't go online
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
