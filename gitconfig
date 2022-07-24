@@ -4,6 +4,7 @@
   a = "add"
   actions = !"curl -s $(fish -c github_api_url)/actions/runs?per_page=5 | jq -r '.workflow_runs[] | [.run_number, .name, .conclusion, .html_url] | @tsv'"
   ai = "add -i"
+  alias = !"git config --get-regexp \"alias.$1$\" | cut -d ' ' -f2- #"
   b = "branch"
   c = "commit"
   ca = "commit --amend"
