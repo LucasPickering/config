@@ -1,9 +1,9 @@
-endpoint: https://rosintlabs.atlassian.net
+endpoint: https://bitsight.atlassian.net
 editor: vim
-user: lucas@keycaliber.com
+user: lucas.pickering@bitsighttech.com
 authentication-method: api-token
 password-source: keyring
-project: KEYC
+project: RP
 queries:
   me: |
     assignee = currentUser() AND resolution = unresolved AND type != Epic ORDER BY status DESC, priority DESC, updated DESC

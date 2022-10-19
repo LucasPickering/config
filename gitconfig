@@ -58,8 +58,8 @@
   process = git-lfs filter-process
   required = true
 
-[includeIf "gitdir:~/git/KeyCaliber/"]
-  path = ~/git/config/KeyCaliber.gitconfig
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:colorprinter/**"]
+  path = ~/config/BitSight.gitconfig
 [pull]
   ff = only
 [init]
