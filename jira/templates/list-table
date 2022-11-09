@@ -2,11 +2,11 @@
 {{$w := sub termWidth 28 -}}
 
 {{ "Issue" | printf "%-9s" -}}
-  | {{ "Summary" | printf (printf "%%-%ds" (sub $w 2)) -}}
-  | {{ "Status" | printf "%-17s" }}
-{{ "-" | rep 9 }}+{{ "-" | rep (sub $w 1) }}+{{ "-" | rep 18 -}}
+  | {{ "Summary" | printf (printf "%%-%ds" (sub $w 4)) -}}
+  | {{ "Status" | printf "%-19s" }}
+{{ "-" | rep 9 }}+{{ "-" | rep (sub $w 3) }}+{{ "-" | rep 20 -}}
 {{ range .issues}}
 {{ .key | printf "%-9s" -}}
-  | {{ .fields.summary | abbrev (sub $w 2) | printf (printf "%%-%ds" (sub $w 2)) -}}
-  | {{.fields.status.name | printf "%-17s" -}}
+  | {{ .fields.summary | abbrev (sub $w 4) | printf (printf "%%-%ds" (sub $w 4)) -}}
+  | {{.fields.status.name | printf "%-19s" -}}
 {{ end -}}

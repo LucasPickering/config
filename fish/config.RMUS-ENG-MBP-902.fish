@@ -1,3 +1,5 @@
+alias assume="source /usr/local/bin/assume.fish"
+alias creds="bass ./dev.sh api creds | source"
 alias j="jira"
 alias kdev="zli connect developer@development --targetGroup developers"
 
