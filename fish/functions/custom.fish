@@ -32,6 +32,17 @@ function open_pr --description "Open a new PR for this branch on GitHub"
     open "$repo_url/compare/$src?expand=1"
 end
 
+function checkout_jira --description "Create a new branch with a name based on a ticket"
+    set ticket $argv[1]
+    # TODO combine these requests
+    set key (jira view $ticket --gjq key | string lower)
+    # Get the ticket summary, as a list of words
+    set summary (jira view $ticket --gjq fields.summary | string lower | string split ' ')
+    # Grab the first 3 words from the ticket name
+    set branch_name (string join '-' $key $summary[1..3])
+    git checkout -b $branch_name
+end
+
 function hostname_base --description "Get machine hostname, without extensions"
     # Strip ".home" and ".local" extensions from hostname
     echo (hostname | sed -e "s@\..*\$@@")

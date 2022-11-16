@@ -1,12 +1,18 @@
 {{/* create template */ -}}
 fields:
   project:
-    key: KEYC
+    key: RP
   issuetype:
-    name: Task
+    name: Story
+  assignee:
+    emailAddress: lucas.pickering@bitsighttech.com
+  # Line of Business
+  customfield_13181:
+    name: SPM
+  # LoB Team
+  customfield_13213:
+    name: SPM Findings
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
-  assignee:
-    emailAddress: lucas@keycaliber.com
   description: |-
     {{ or .overrides.description .fields.description "" | indent 4 }}

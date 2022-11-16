@@ -1,7 +1,8 @@
 alias assume="source /usr/local/bin/assume.fish"
-alias creds="bass ./dev.sh api creds | source"
+alias creds="echo Use `assume` instead"
 alias j="jira"
 alias kdev="zli connect developer@development --targetGroup developers"
+alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 
 fish_add_path ~/.bskube/bin
 
