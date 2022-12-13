@@ -60,7 +60,7 @@
   process = git-lfs filter-process
   required = true
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.com:colorprinter/**"]
+[includeIf "hasconfig:remote.*.url:git@*:colorprinter/**"]
   path = ~/config/BitSight.gitconfig
 [pull]
   ff = only
