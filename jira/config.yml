@@ -31,7 +31,7 @@ custom-commands:
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
-      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '\b\w+-\d+')
+      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '^\w+-\d+')
 
   - name: goc
     help: Open all tickets referenced by commits in the current git branch
