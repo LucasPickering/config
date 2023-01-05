@@ -44,7 +44,7 @@
   scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
   sha = "rev-parse"
   todo = "diff-grep [Tt][Oo][Dd][Oo]"
-  um = !"default=$(git default); git fetch origin $default:$default"
+  um = !"branch=${1:-$(git default)}; echo Updating branch $branch; git fetch origin $branch:$branch"
 [user]
   email = lucas@lucaspickering.me
   name = Lucas Pickering
