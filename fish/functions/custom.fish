@@ -50,16 +50,20 @@ end
 
 function kns --description "Get/set kubernetes namespace"
     if set -q argv[1]
+        # Namespace given - set active context
         set -l ctx (kubectl config current-context)
         set -l new_ns $argv[1]
         kubectl config set-context $ctx --namespace $new_ns
     else
+        # No namespace given - just fetch the namespace/cluster
         set -l context_name (kubectl config current-context 2> /dev/null)
         if test $status != 0
             echo ""
         else
             set -l namespace (kubectl config view --minify -o jsonpath="{.contexts[?(@.name==\"$context_name\")].context.namespace}")
-            echo "$namespace@$context_name"
+            # Remove BastionZero prefix for BS clusters
+            set -l context_short (echo $context_name | sed 's/bzero-.*@//')
+            echo "$namespace@$context_short"
         end
     end
 end

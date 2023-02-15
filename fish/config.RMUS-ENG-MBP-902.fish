@@ -1,7 +1,10 @@
 alias j="jira"
-alias kdev="zli connect developer@development --targetGroup developers"
-alias kstg="zli connect developer@staging --targetGroup developers"
-alias kprd="zli connect developer@production --targetGroup developers"
+alias kdev="k config use-context bzero-developer@development"
+alias kprd="k config use-context bzero-developer@production"
+alias kstg="k config use-context bzero-developer@staging"
+alias kdevconnect="zli connect developer@development --targetGroup developers"
+alias kstgconnect="zli connect developer@staging --targetGroup developers"
+alias kprdconnect="zli connect developer@production --targetGroup developers"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 
 fish_add_path ~/.bskube/bin
