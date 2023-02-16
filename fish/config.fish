@@ -7,7 +7,6 @@ end
 
 
 alias src="source ~/.config/fish/config.fish"
-alias grep="grep --color=auto"  # Show color
 alias cls="printf '\ec'"
 alias repeat="~/.config/fish/functions/repeat.py"
 alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
@@ -18,16 +17,11 @@ alias npx="npx --no-install"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
-alias dm="docker-machine"
 alias g="git"
 alias k="kubectl"
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
-alias kfk='kubectl delete pod,svc --all --force'
 alias tf='terraform'
-alias nixre='sudo nixos-rebuild switch'
-alias pack='vim /etc/nixos/modules/packages.nix'
-
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
 source ~/.config/fish/functions/custom.fish
@@ -56,11 +50,6 @@ if test -d ~/.cargo
     set PATH $HOME/.cargo/bin $PATH
 end
 
-# Get directory of this script, for usage later
-# This has to go AFTER overriding PATH with our coreutils version (for Mac)
-# TODO do we still need this? Remove it after a while if nothing breaks
-# set FISH_DIR (dirname (readlink -m (status --current-filename)))
-
 # Set up Pyenv
 set -Ux PYENV_ROOT $HOME/.pyenv
 # pyenv docs say to add $PYENV_ROOT/bin instead, but that dir doesn't exist for
@@ -80,8 +69,3 @@ status --is-interactive; and pyenv virtualenv-init - | source
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
-
-# Enable direnv for nix
-if type -q direnv
-    direnv hook fish | source
-end
