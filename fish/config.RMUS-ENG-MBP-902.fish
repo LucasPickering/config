@@ -20,13 +20,17 @@ function creds
 end
 
 function pgforward --description "Port-forward kube to a postgres pod"
-    set pod_name (kubectl get pod -o name | sed 's@pod/@@' | grep postgres)
+    set pg_pods (kubectl get pod -o name | sed 's@pod/@@' | grep postgres)
+    set pod $pg_pods[1]
+    if test (count $pg_pods) -gt 1
+        echo "Multiple `postgres` pods detected, using the first"
+    end
     set external_port 5432
     set internal_port 5433
     set c_normal (set_color normal)
     set c_bold (set_color --bold red)
-    echo "Forwarding to pod $c_bold$pod_name$c_normal"
-    kubectl port-forward $pod_name $internal_port:$external_port
+    echo "Forwarding to pod $c_bold$pod$c_normal"
+    kubectl port-forward $pod $internal_port:$external_port
 end
 
 function docker_login

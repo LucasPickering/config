@@ -60,7 +60,7 @@ function kns --description "Get/set kubernetes namespace"
         if test $status != 0
             echo ""
         else
-            set -l namespace (kubectl config view --minify -o jsonpath="{.contexts[?(@.name==\"$context_name\")].context.namespace}")
+            set -l namespace (kubectl config view --minify -o jsonpath="{.contexts[?(@.name==\"$context_name\")].context.namespace}" 2> /dev/null)
             # Remove BastionZero prefix for BS clusters
             set -l context_short (echo $context_name | sed 's/bzero-.*@//')
             echo "$namespace@$context_short"
