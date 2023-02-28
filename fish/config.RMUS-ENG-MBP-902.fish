@@ -9,6 +9,7 @@ alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB
 
 fish_add_path ~/.bskube/bin
 
+set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
 
 function creds
