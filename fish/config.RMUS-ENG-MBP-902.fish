@@ -2,12 +2,10 @@ alias j="jira"
 alias kdev="k config use-context bzero-developer@development"
 alias kprd="k config use-context bzero-developer@production"
 alias kstg="k config use-context bzero-developer@staging"
-alias kdevconnect="zli connect developer@development --targetGroup developers"
-alias kstgconnect="zli connect developer@staging --targetGroup developers"
-alias kprdconnect="zli connect developer@production --targetGroup developers"
+alias kdevconnect="zli connect developer@development --targetGroup developers && kdev"
+alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
+alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
-
-fish_add_path ~/.bskube/bin
 
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
@@ -35,8 +33,8 @@ function pgforward --description "Port-forward kube to a postgres pod"
 end
 
 function docker_login
-    set region $argv[1]
-    test -z $region; and set region "us-east-1"
-    aws ecr get-login-password --region "$region" |\
-        docker login -u AWS --password-stdin 692674046581.dkr.ecr."$region".amazonaws.com
+    set profile $argv[1]
+    test -z $profile; and set profile "default"
+    aws --profile $profile ecr get-login-password --region us-east-1 | \
+        docker login -u AWS --password-stdin 078860163003.dkr.ecr.us-east-1.amazonaws.com
 end
