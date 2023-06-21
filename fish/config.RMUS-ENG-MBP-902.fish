@@ -35,6 +35,7 @@ end
 function docker_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
+    aws sso login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
