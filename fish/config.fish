@@ -21,6 +21,7 @@ alias g="git"
 alias k="kubectl"
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
+alias p="poetry"
 alias tf='terraform'
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
