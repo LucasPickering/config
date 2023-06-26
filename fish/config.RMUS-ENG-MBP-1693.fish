@@ -12,10 +12,10 @@ set -Ux SKIP_ESLINT_LOADER true
 
 function creds
     # Load AWS creds
-    source /usr/local/bin/assume.fish default
+    source /opt/homebrew/bin/assume.fish default
     # Use env-select to load more secrets This is ripped from
     # ~/git/portal/dev.sh api creds
-    es aws dev | source
+    es set aws dev
 end
 
 function ess
