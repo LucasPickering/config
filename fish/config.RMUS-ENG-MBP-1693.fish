@@ -13,9 +13,18 @@ set -Ux SKIP_ESLINT_LOADER true
 function creds
     # Load AWS creds
     source /usr/local/bin/assume.fish default
-    # Load JWT. This is ripped from ~/git/portal/dev.sh api creds
-    # We may want to rip the code for DB creds here too (TBD)
-    set -gx JWT_SECRET_KEY (aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:cp_jwt_secret_dev-eTk6oj | jq -r '.SecretString | fromjson | .dev_jwt_secret')
+    # Use env-select to load more secrets This is ripped from
+    # ~/git/portal/dev.sh api creds
+    es aws dev | source
+end
+
+function ess
+    set output (es $argv)
+    if test $status -eq 0
+        echo $output | source
+    else
+        echo "sad"
+    end
 end
 
 function pgforward --description "Port-forward kube to a postgres pod"

@@ -6,7 +6,7 @@ end
 function fish_prompt --description 'Write out the prompt'
     # Color the cwd differently based on host
     switch (hostname_base)
-        case metagross lucario RMUS-ENG-MBP-902
+        case metagross lucario RMUS-ENG-MBP-1693
             set c_cwd (set_color cyan)
         case salamence
             set c_cwd (set_color yellow)
@@ -20,11 +20,6 @@ function fish_prompt --description 'Write out the prompt'
 
     # cwd
     set -l cwd (pwd | sed s@^$HOME@~@)
-
-    # docker-machine context
-    if test -n "$DOCKER_MACHINE_NAME"
-        set dockermachinectx "[$DOCKER_MACHINE_NAME]"
-    end
 
     # kube context
     if type -q kubectl
@@ -45,12 +40,11 @@ function fish_prompt --description 'Write out the prompt'
 
     # Color shortcuts
     set -l c_normal (set_color normal)
-    set -l c_dt (set_color brred)
     set -l c_vcs (set_color green)
     set -l c_ctx (set_color red)
 
-    set -l first_line (string join ' ' $c_dt$dt $c_cwd$cwd $c_vcs$vcs)
-    set -l second_line (string join ' ' $c_ctx $dockermachinectx $kubectx $pyctx)
+    set -l first_line (string join ' ' $c_cwd$cwd $c_vcs$vcs)
+    set -l second_line (string join ' ' $c_ctx $kubectx $pyctx)
     set -l final_line $c_cwd'õ> '$c_normal
 
     # If the prompt gets too big to fit on one line, break it into two
@@ -61,4 +55,8 @@ function fish_prompt --description 'Write out the prompt'
     else
         echo -n -s $first_line $second_line\n$final_line
     end
+end
+
+function fish_right_prompt
+    echo -n (set_color brred) {$CMD_DURATION}ms
 end

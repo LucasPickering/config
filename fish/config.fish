@@ -44,28 +44,22 @@ switch (uname)
     case Darwin
         alias copy="pbcopy"
         alias paste="pbpaste"
+        fish_add_path /opt/homebrew/bin
         fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
 end
 
 if test -d ~/.cargo
-    set PATH $HOME/.cargo/bin $PATH
+    fish_add_path $HOME/.cargo/bin
 end
 
 # Set up Pyenv
-set -Ux PYENV_ROOT $HOME/.pyenv
-# pyenv docs say to add $PYENV_ROOT/bin instead, but that dir doesn't exist for
-# me so I'm going with this ¯\_(ツ)_/¯
-fish_add_path ~/.config/fish/pyenv/bin
-set -Ux PYENV_VIRTUALENV_DISABLE_PROMPT 1
-status is-login; and pyenv init --path | source
-pyenv init - | source
-# Install pyenv-virtualenv if it isn't already
-pyenv virtualenv --help 2>&1 > /dev/null
-if test $status -ne 0
-    echo "Installing pyenv-virtualenv"
-    git clone https://github.com/pyenv/pyenv-virtualenv.git (pyenv root)/plugins/pyenv-virtualenv
+# https://github.com/pyenv/pyenv#installation
+if type -q pyenv
+    set -Ux PYENV_ROOT $HOME/.pyenv
+    fish_add_path $PYENV_ROOT/bin
+    # status is-login; and pyenv init --path | source
+    pyenv init - | source
 end
-status --is-interactive; and pyenv virtualenv-init - | source
 
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname_base).fish
