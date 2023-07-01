@@ -49,8 +49,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # If the prompt gets too big to fit on one line, break it into two
     set prompt_len (string length (strip_colors "$first_line $second_line"))
-    set term_width (tput cols)
-    if test $prompt_len -gt $term_width
+    if test $prompt_len -gt $COLUMNS
         echo -n -s $first_line\n$second_line\n$final_line
     else
         echo -n -s $first_line $second_line\n$final_line
@@ -58,5 +57,7 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function fish_right_prompt
-    echo -n (set_color brred) {$CMD_DURATION}ms
+    set exit_code $status
+    set duration $CMD_DURATION
+    echo -n (set_color brred) $exit_code/{$duration}ms
 end
