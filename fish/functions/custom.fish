@@ -1,22 +1,6 @@
 # All custom functions can live here. These will be loaded manually
 # in config.fish
 
-function export_colors --description 'Export color scheme to a file'
-    set dest "$HOME/.config/fish/conf.d/colors.fish"
-    echo "#!/usr/bin/env fish" > $dest
-    echo "" >> $dest
-    chmod +x $dest
-
-    for i in (set -n | string match 'fish*_color*')
-        echo "set $i $$i" >> $dest
-    end
-
-    echo "Fish colors have been set" >> $dest
-
-    echo Exported your colors to (set_color cyan --underline)$dest(set_color normal)
-    echo "Now, just copy that file to your remote machine and run it."
-end
-
 function git_repo_url --description "Get the HTTP URL of the current repo"
     git ls-remote --get-url origin | sed -E -e 's@git\@([^:]+):(.*)@https://\1/\2@' -e 's@\.git$@@'
 end
@@ -74,59 +58,4 @@ function kex --description "Execute a command in a kubernetes pod" -a q
     set podname (kubectl get pods | awk "/$q/"' {print $1}')
     echo "Running `$command` in pod $podname"
     kubectl exec -it $podname -- $command
-end
-
-function dotenv --description "Load environment variables from .env file"
-  set -l envfile ".env"
-  if [ (count $argv) -gt 0 ]
-    set envfile $argv[1]
-  end
-
-  if test -e $envfile
-    for line in (cat $envfile)
-      set -xg (echo $line | cut -d = -f 1) (echo $line | cut -d = -f 2-)
-    end
-  end
-end
-
-
-function dm_set --description "Set current docker machine"
-    set machine $argv[1]
-    if test -z $machine
-        echo "ERROR: No argument supplied"
-        return
-    end
-
-    eval (docker-machine env $machine)
-    echo "SUCCESS: Set to $machine"
-end
-
-function dm_clr --description "Clear current docker machine"
-    eval (docker-machine env -u)
-    echo "SUCCESS: cleared"
-end
-
-function gibberish --description "Replace some bytes in a string with gibberish"
-    read -d '' -z lines
-    set gibberish '$' '¥' '&' 'Ķ' 'æ'
-
-    for char in (string split '' $lines)
-        if test $char != "\n" -a (random 0 10) = 0
-            echo -n (random choice $gibberish)
-        else
-            echo -n $char
-        end
-    end
-end
-
-function setup_lorri
-    lorri init
-    direnv allow
-end
-
-function dotenv
-  for i in (cat $argv)
-    set arr (echo $i |tr = \n)
-      set -gx $arr[1] $arr[2]
-  end
 end
