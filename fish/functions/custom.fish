@@ -59,3 +59,16 @@ function kex --description "Execute a command in a kubernetes pod" -a q
     echo "Running `$command` in pod $podname"
     kubectl exec -it $podname -- $command
 end
+
+function wget_sha256 --description "Get the SHA256 sum of a file over HTTP"
+    set url $argv[1]
+    set path (mktemp)
+    wget -q -O $path $url
+    set wget_status $status
+    if test $wget_status -gt 0
+        echo "wget failed with exit code $wget_status"
+        return $status
+    end
+    sha256sum $path
+    rm $path
+end
