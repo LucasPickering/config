@@ -52,10 +52,6 @@ if test -d ~/.cargo
     fish_add_path $HOME/.cargo/bin
 end
 
-if type -q env-select
-    env-select init | source
-end
-
 # Set up Pyenv
 # https://github.com/pyenv/pyenv#installation
 if type -q pyenv
