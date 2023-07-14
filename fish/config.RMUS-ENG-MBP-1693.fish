@@ -6,6 +6,7 @@ alias kdevconnect="zli connect developer@development --targetGroup developers &&
 alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
+alias pgdb='PGPASSWORD=$POSTGRES_PASSWORD psql --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
 
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
@@ -16,15 +17,6 @@ function creds
     # Use env-select to load more secrets This is ripped from
     # ~/git/portal/dev.sh api creds
     es set aws dev
-end
-
-function ess
-    set output (es $argv)
-    if test $status -eq 0
-        echo $output | source
-    else
-        echo "sad"
-    end
 end
 
 function pgforward --description "Port-forward kube to a postgres pod"
