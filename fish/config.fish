@@ -7,9 +7,7 @@ end
 
 
 alias src="source ~/.config/fish/config.fish"
-alias cls="printf '\ec'"
 alias repeat="~/.config/fish/functions/repeat.py"
-alias pyclean="fd -I __pycache__ -x rm -r; fd -I -e pyc -x rm"
 alias nuke="rm -rf node_modules && npm install"
 alias ports="sudo lsof -i -P -n | rg LISTEN"
 alias nocolor="sed -E 's/\x1b\[[0-9;]*m//g'" # Strip ANSI colors from stdin
