@@ -35,9 +35,7 @@ end
 function kns --description "Get/set kubernetes namespace"
     if set -q argv[1]
         # Namespace given - set active context
-        set -l ctx (kubectl config current-context)
-        set -l new_ns $argv[1]
-        kubectl config set-context $ctx --namespace $new_ns
+        kubectl config set-context --current --namespace $new_ns
     else
         # No namespace given - just fetch the namespace/cluster
         set -l context_name (kubectl config current-context 2> /dev/null)
