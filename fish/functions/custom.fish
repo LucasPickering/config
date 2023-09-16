@@ -32,8 +32,8 @@ function hostname_base --description "Get machine hostname, without extensions"
     echo (hostname | sed -e "s@\..*\$@@")
 end
 
-function kns --description "Get/set kubernetes namespace"
-    if set -q argv[1]
+function kns --description "Get/set kubernetes namespace" -a new_ns
+    if test -n "$new_ns"
         # Namespace given - set active context
         kubectl config set-context --current --namespace $new_ns
     else
@@ -50,10 +50,10 @@ function kns --description "Get/set kubernetes namespace"
     end
 end
 
-function kex --description "Execute a command in a kubernetes pod" -a q
+function kex --description "Execute a command in a kubernetes pod" -a query
     set command $argv[2..-1]
-    set -q command or set command "/bin/bash"
-    set podname (kubectl get pods | awk "/$q/"' {print $1}')
+    set -q command or set command "/bin/bash" # TODO this doesn't work
+    set podname (kubectl get pod -o custom-columns=:metadata.name --no-headers | grep $query)
     echo "Running `$command` in pod $podname"
     kubectl exec -it $podname -- $command
 end
