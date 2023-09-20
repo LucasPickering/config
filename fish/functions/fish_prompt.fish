@@ -59,5 +59,5 @@ end
 function fish_right_prompt
     set exit_code $status
     set duration $CMD_DURATION
-    echo -n (set_color brred) $exit_code/{$duration}ms
+    echo -n (set_color brred) $exit_code/(math $duration / 1000)s
 end
