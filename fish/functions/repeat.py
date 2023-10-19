@@ -27,7 +27,8 @@ def main():
     while args.n is None or i < args.n:
         i += 1
         print(f"\n===== Run #{i} =====")
-        proc = subprocess.run(" ".join(args.command), shell=True)
+        command = " ".join(args.command)
+        proc = subprocess.run(['fish', '-c', command])
         if (args.stop_on == PASS and proc.returncode == 0) or (
             args.stop_on == FAIL and proc.returncode != 0
         ):
