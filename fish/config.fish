@@ -46,8 +46,12 @@ switch (uname)
         fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
 end
 
+if test -d ~/.krew
+    fish_add_path ~/.krew/bin
+end
+
 if test -d ~/.cargo
-    fish_add_path $HOME/.cargo/bin
+    fish_add_path ~/.cargo/bin
 end
 
 # Set up Pyenv
