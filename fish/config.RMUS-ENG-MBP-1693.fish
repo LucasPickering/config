@@ -51,3 +51,11 @@ function copy_portal_db
     db_path=$db_path mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD production < $db_path
     echo "Snapshot left at $db_path, delete it!"
 end
+
+function jwt --description "Decode a JWT" -a jwt
+    set splits (echo $jwt | string split .)
+    set header $splits[1]
+    set claims $splits[2]
+    echo "Header:" (echo $header | base64 -d)
+    echo "Claims:" (echo $claims | base64 -d)
+end
