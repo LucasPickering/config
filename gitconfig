@@ -25,6 +25,7 @@
   # perfect because it will also include files where the matching string was
   # removed, but I think it's the best we can do.
   diff-grep = !"git diff `git mbm` --diff-filter ACMR -G $1 | rg '^[+]' | rg -e \"^[+]{3} b/.*$\" -C3 -e $1 #"
+  exclude = !"echo >> `git root`/.git/info/exclude"
   forget = "update-index --skip-worktree"
   gh = !"open `fish -c git_repo_url`"
   gone = !"git remote prune origin; git branch --merged | grep -Ev \"(\\*|master)\" | xargs git branch -d"
@@ -62,7 +63,7 @@
   process = git-lfs filter-process
   required = true
 
-[includeIf "hasconfig:remote.*.url:git@*:colorprinter/**"]
+[includeIf "hasconfig:remote.*.url:*:colorprinter/**"]
   path = ~/config/BitSight.gitconfig
 [pull]
   ff = only
