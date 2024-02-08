@@ -7,17 +7,10 @@ alias kstgconnect="zli connect developer@staging --targetGroup developers && kst
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 alias pgdb='PGPASSWORD=$POSTGRES_PASSWORD psql --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
+alias assume="source (brew --prefix)/bin/assume.fish"
 
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
-
-function creds
-    # Load AWS creds
-    source /opt/homebrew/bin/assume.fish default
-    # Use env-select to load more secrets This is ripped from
-    # ~/git/portal/dev.sh api creds
-    es set aws dev
-end
 
 function pgforward --description "Port-forward kube to a postgres service"
     set pg_services (kubectl get service -o name |  grep postgres)
