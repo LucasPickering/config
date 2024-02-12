@@ -63,6 +63,10 @@ if type -q pyenv
     pyenv init - | source
 end
 
+if type -q es
+    es --shell fish init | source
+end
+
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
