@@ -1,9 +1,11 @@
 alias j="jira"
 alias kdev="k config use-context bzero-developer@development"
-alias kprd="k config use-context bzero-developer@production"
 alias kstg="k config use-context bzero-developer@staging"
+alias kuat="k config use-context bzero-developer@uat"
+alias kprd="k config use-context bzero-developer@production"
 alias kdevconnect="zli connect developer@development --targetGroup developers && kdev"
 alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
+alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 alias pgdb='PGPASSWORD=$POSTGRES_PASSWORD psql --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
