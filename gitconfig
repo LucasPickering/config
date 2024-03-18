@@ -55,6 +55,7 @@
   editor = vim
 [fetch]
   recurseSubmodules = false
+	writeCommitGraph = true
 [push]
   default = simple
 [filter "lfs"]
@@ -69,3 +70,5 @@
   ff = only
 [init]
   defaultBranch = master
+[maintenance]
+	repo = /Users/lucas.pickering/git/portal

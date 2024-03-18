@@ -28,10 +28,16 @@ function pgforward --description "Port-forward kube to a postgres service"
     kubectl port-forward $service $internal_port:$external_port
 end
 
+function aws_login --description "AWS SSO login if not logged in already"
+    if not aws sts get-caller-identity &> /dev/null
+        aws sso login
+    end
+end
+
 function docker_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
-    aws sso login
+    aws_login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
