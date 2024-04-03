@@ -17,6 +17,7 @@
   cobj = !"fish -c \"checkout_jira $@\" #"
   cog = !"git for-each-ref --format='%(refname:short)' 'refs/heads/*' | rg -i $@ | xargs git checkout #"
   com = !"git checkout $@ && git merge --ff - #"
+  copr = !"git fetch origin pull/$1/head:pr-$1; git checkout pr-$1 #"
   d = "diff"
   default = !"git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
   destroy = !"git pd $@ && git branch -D"
