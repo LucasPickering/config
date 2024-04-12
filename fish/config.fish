@@ -21,6 +21,7 @@ alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias p="poetry"
 alias tf='terraform'
+alias repl="evcxr" # I just cannot remember this command
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
 source ~/.config/fish/functions/custom.fish
