@@ -62,5 +62,5 @@ function jwt --description "Decode a JWT" -a jwt
 end
 
 function bors --description "Connect to BORS"
-    psql postgresql://$BORS_DB_USER:$BORS_DB_PASS@$BORS_DB_HOST:$BORS_DB_PORT/$BORS_DB_NAME
+    psql postgresql://$BORS_DB_USER:$BORS_DB_PASS@$BORS_DB_HOST:$BORS_DB_PORT/$BORS_DB_NAME $argv
 end
