@@ -16,6 +16,32 @@ function open_pr --description "Open a new PR for this branch on GitHub"
     open "$repo_url/compare/$src?expand=1"
 end
 
+function init_branch_description --description "Set the description for a git branch to some default it it's empty"
+    set default "\
+- Write code
+- Write tests
+- Prep MR
+  - Check all TODOs
+  - Check diff
+  - Write description
+  - Passing tests
+- MR
+  - Add reviewers
+  - Approvals
+  - Passing tests
+  - Squash
+  - Merge
+- Log time
+- Close ticket"
+
+    set branch (git current)
+    set description (git config --get branch.$branch.description | string trim)
+    if test -z "$description"
+        git config --add branch.$branch.description $default
+    end
+    git branch --edit-description
+end
+
 function checkout_jira --description "Create a new branch with a name based on a ticket"
     set ticket $argv[1]
     # TODO combine these requests

@@ -6,6 +6,10 @@
   ai = "add -i"
   alias = !"git config --get-regexp \"alias.$1$\" | cut -d ' ' -f2- #"
   b = "branch"
+  # Get branch description
+  bd = !"git config --get branch.$(git current).description #"
+  # Edit branch description
+  bed = !"fish -c init_branch_description #"
   c = "commit"
   cv = "commit --no-verify"
   ca = "commit --amend"
@@ -18,6 +22,7 @@
   cog = !"git for-each-ref --format='%(refname:short)' 'refs/heads/*' | rg -i $@ | xargs git checkout #"
   com = !"git checkout $@ && git merge --ff - #"
   copr = !"git fetch origin pull/$1/head:pr-$1; git checkout pr-$1 #"
+  current = "rev-parse --abbrev-ref HEAD"
   d = "diff"
   default = !"git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
   destroy = !"git pd $@ && git branch -D"
@@ -38,14 +43,14 @@
   msg = log --format=%B -n 1
   pd = "push --no-verify -d origin"
   pr = !"fish -c open_pr"
-  pub = !"git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+  pub = !"git push -u origin $(git current)"
   r = "rebase"
   remember = "update-index --no-skip-worktree"
   return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
   ri = "rebase -i"
   root = "rev-parse --show-toplevel"
   s = "status"
-  scary = !"git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)"
+  scary = !"git fetch && git reset --hard origin/$(git current)"
   sha = "rev-parse"
   todo = "diff-grep [Tt][Oo][Dd][Oo]"
   um = !"branch=${1:-$(git default)}; echo Updating branch $branch; git fetch origin $branch:$branch"
@@ -56,7 +61,7 @@
   editor = vim
 [fetch]
   recurseSubmodules = false
-	writeCommitGraph = true
+  writeCommitGraph = true
 [push]
   default = simple
 [filter "lfs"]
@@ -72,4 +77,4 @@
 [init]
   defaultBranch = master
 [maintenance]
-	repo = /Users/lucas.pickering/git/portal
+  repo = /Users/lucas.pickering/git/portal

@@ -11,7 +11,7 @@ fields:
     name: SPM
   # LoB Team
   customfield_13213:
-    name: SPM Findings
+    name: SPM Risk Insights
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   description: |-
