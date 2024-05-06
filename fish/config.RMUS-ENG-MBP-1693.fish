@@ -47,7 +47,7 @@ function copy_portal_db
     cd ~/git/portal
     set db_path $HOME/Downloads/portal-(date +%Y-%m-%d).sql
     es set portal local
-    # docker-compose exec db /usr/bin/mysqldump -u$AWS_DB_USER -p$AWS_DB_PASSWORD production > $db_path
+    docker-compose exec db /usr/bin/mysqldump -u$AWS_DB_USER -p$AWS_DB_PASSWORD production > $db_path
     mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD -e 'DROP DATABASE IF EXISTS production; CREATE DATABASE production;'
     db_path=$db_path mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD production < $db_path
     echo "Snapshot left at $db_path, delete it!"
