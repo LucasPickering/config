@@ -6,12 +6,17 @@ fields:
     name: Story
   assignee:
     emailAddress: lucas.pickering@bitsighttech.com
+
   # Line of Business
   customfield_13181:
-    name: SPM
-  # LoB Team
+    value: {{ or .overrides.customfield_13181 .overrides.lob .fields.customfield_13181.value "SPM"}}
+  # LoB team
   customfield_13213:
-    name: SPM Risk Insights
+    value: {{ or .overrides.customfield_13213 .overrides.lob_team .fields.customfield_13213.value "SPM Risk Insights"}}
+  # Investment Category
+  customfield_13210:
+    value: {{ or .overrides.customfield_13210 .overrides.investment_category .fields.customfield_13210.value ""}}
+
   summary: >-
     {{ or .overrides.summary .fields.summary "" }}
   description: |-

@@ -5,13 +5,21 @@ fields:
     {{ or .overrides.summary .fields.summary }}
   assignee:
     emailAddress: {{ if .overrides.assignee }}{{.overrides.assignee}}{{else}}{{if .fields.assignee }}{{ .fields.assignee.emailAddress }}{{end}}{{end}}
+
+  # Line of Business
+  customfield_13181:
+    value: {{ or .overrides.customfield_13181 .overrides.lob .fields.customfield_13181.value}}
+  # LoB team
+  customfield_13213:
+    value: {{ or .overrides.customfield_13213 .overrides.lob_team .fields.customfield_13213.value}}
+  # Investment Category
+  customfield_13210:
+    value: {{ or .overrides.customfield_13210 .overrides.investment_category .fields.customfield_13210.value}}
+
 {{if .meta.fields.labels}}
   labels: {{range .fields.labels}}
     - {{.}}{{end}}{{if .overrides.labels}}{{range (split "," .overrides.labels)}}
     - {{.}}{{end}}{{end}}
 {{- end}}
-  timetracking:
-    originalEstimate: {{ or .fields.timetracking.originalEstimate "" }}
-    remainingEstimate: {{ or .overrides.remainingEstimate .fields.timetracking.remainingEstimate "" }}
   description: |~
     {{ or .overrides.description .fields.description "" | indent 4 }}

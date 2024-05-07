@@ -9,8 +9,8 @@ queries:
     assignee = currentUser() AND resolution = unresolved AND type != Epic ORDER BY status DESC, priority DESC, updated DESC
   epics: |
     assignee = currentUser() AND resolution = unresolved AND type = Epic ORDER BY status DESC, priority DESC, updated DESC
-  l2w: |
-    assignee = currentUser() AND resolutiondate > startOfDay("-2w")
+  needs-fields: |
+    creator = currentUser() AND created >= -7d AND "Line of Business[Dropdown]" is empty
 custom-commands:
   - name: q
     help: Run a named query
@@ -28,16 +28,32 @@ custom-commands:
     script: |-
       {{jira}} ls -t list-table -f priority,status,labels,versions,timetracking -q '{{args.QUERY}}'
 
+  - name: git
+    help: Get the ticket number from the current git branch
+    script: git rev-parse --abbrev-ref HEAD | grep -Eo '^RP-\d+'
+
   - name: go
     help: Open the ticket associated with the current git branch
     script: |-
-      {{jira}} browse $(git rev-parse --abbrev-ref HEAD | grep -Eo '^\w+-\d+')
+      {{jira}} browse $({{jira}} git)
 
   - name: goc
     help: Open all tickets referenced by commits in the current git branch
     script: |-
       for issue in $(git cherry -v `git mbm` | grep -Eo '\b\w+-\d+' | uniq); do
         {{jira}} browse $issue;
+      done
+
+  - name: fix-fields
+    help: TODO
+    script: |-
+
+  - name: fix-recent
+    help: TODO
+    script: |-
+      for issue in $({{jira}} ls -n needs-fields -f key); do
+        echo Fixing $issue
+        {{jira}} fix-fields $issue
       done
 
   - name: blocks
