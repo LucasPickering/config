@@ -29,10 +29,3 @@ delete_and_link ~/.gitconfig gitconfig
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
-
-# Tmux
-echo "Initializing tmux..."
-mkdir -p ~/.tmux/plugins
-delete_and_link ~/.tmux.conf tmux/tmux.conf
-delete_and_link ~/.tmux/plugins/tpm tmux/tpm
-echo "  Press <shortcut>+I to load tmux plugins"
