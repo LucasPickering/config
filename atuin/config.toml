@@ -1,0 +1,34 @@
+enter_accept = false
+[stats]
+common_prefix = ["sudo"]
+common_subcommands = [
+  "apt",
+  "cargo",
+  "composer",
+  "dnf",
+  "docker",
+  "git",
+  "go",
+  "ip",
+  "kubectl",
+  "nix",
+  "nmcli",
+  "npm",
+  "pecl",
+  "pnpm",
+  "podman",
+  "port",
+  "systemctl",
+  "tmux",
+  "yarn",
+]
+ignored_commands = [
+  "cd",
+  "ls",
+  "vi",
+]
+
+[keys]
+
+[sync]
+records = true

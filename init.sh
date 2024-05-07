@@ -29,3 +29,7 @@ delete_and_link ~/.gitconfig gitconfig
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
+
+# Atuin
+echo "Initializing Atuin..."
+delete_and_link ~/.config/atuin atuin

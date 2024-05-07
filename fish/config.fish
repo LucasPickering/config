@@ -64,6 +64,10 @@ if type -q pyenv
     pyenv init - | source
 end
 
+if type -q atuin
+    atuin init fish | source
+end
+
 if type -q es
     es --shell fish init | source
 end
