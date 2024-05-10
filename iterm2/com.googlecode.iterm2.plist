@@ -731,6 +731,10 @@
 	<real>0.0</real>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NeverWarnAboutShortLivedSessions_23A4844B-8489-4F98-8C54-C5BCB7216722</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_23A4844B-8489-4F98-8C54-C5BCB7216722_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2033,6 +2037,8 @@
 	<false/>
 	<key>TabStyle</key>
 	<integer>1</integer>
+	<key>TabStyleWithAutomaticOption</key>
+	<integer>4</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WordCharacters</key>
