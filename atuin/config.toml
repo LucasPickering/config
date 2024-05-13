@@ -1,4 +1,6 @@
-enter_accept = false
+enter_accept = true
+filter_mode = "session"
+
 [stats]
 common_prefix = ["sudo"]
 common_subcommands = [
