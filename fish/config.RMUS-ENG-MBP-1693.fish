@@ -9,6 +9,8 @@ alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 alias pgdb='PGPASSWORD=$POSTGRES_PASSWORD psql --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
+alias pgdb_dump='PGPASSWORD=$POSTGRES_PASSWORD pg_dump --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
+alias pgdb_restore='PGPASSWORD=$POSTGRES_PASSWORD pg_restore --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT --dbname=$POSTGRES_DB'
 alias assume="source (brew --prefix)/bin/assume.fish"
 
 set -Ux PTVSD 1
