@@ -72,3 +72,6 @@ end
 set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
 es --shell fish init | source
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
