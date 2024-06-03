@@ -14,13 +14,6 @@ fish/functions/*
 !fish/functions/*.py
 fish/functions/__bass.py
 
-server/.env
-server/vpn/vpn.auth
-server/plex
-server/minecraft/data
-*.ovpn
-*.crt
-*.pem
 jira/cookies.js
 .DS_Store
-secrets/
+.tmp*

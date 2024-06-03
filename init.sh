@@ -14,7 +14,6 @@ delete_and_link() {
 }
 
 git submodule init
-git submodule update
 
 # Fish
 echo "Initializing fish..."
@@ -30,6 +29,6 @@ delete_and_link ~/.gitconfig gitconfig
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
 
-# Atuin
-echo "Initializing Atuin..."
-delete_and_link ~/.config/atuin atuin
+# Zed
+echo "Initializing Zed..."
+delete_and_link ~/.config/zed zed
