@@ -564,6 +564,16 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>23A4844B-8489-4F98-8C54-C5BCB7216722</string>
+	<key>DimBackgroundWindows</key>
+	<false/>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
+	<key>DimOnlyText</key>
+	<false/>
+	<key>DisableFullscreenTransparency</key>
+	<false/>
+	<key>EnableDivisionView</key>
+	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -711,6 +721,8 @@
 	<false/>
 	<key>HideActivityIndicator</key>
 	<true/>
+	<key>HideScrollbar</key>
+	<false/>
 	<key>HotKeyBookmark</key>
 	<string>23A4844B-8489-4F98-8C54-C5BCB7216722</string>
 	<key>HotKeyTogglesWindow</key>
@@ -731,6 +743,8 @@
 	<real>0.0</real>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NeverBlockSystemShutdown</key>
+	<true/>
 	<key>NeverWarnAboutShortLivedSessions_23A4844B-8489-4F98-8C54-C5BCB7216722</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_23A4844B-8489-4F98-8C54-C5BCB7216722_selection</key>
@@ -2172,12 +2186,14 @@
 			<string>/Users/lucas</string>
 		</dict>
 	</array>
+	<key>OnlyWhenMoreTabs</key>
+	<true/>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
-	<false/>
+	<true/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>2</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -2195,10 +2211,6 @@
 		<dict>
 			<key>Action</key>
 			<string>kPasteFromSelectionPointerAction</string>
-			<key>Argument</key>
-			<string>{"ConvertUnicodePunctuation":true,"WaitForPrompts":false,"Substitution":"","EscapeForShell":false,"Base64":false,"TabStopSize":4,"Delay":0.01,"RemoveNewlines":false,"Regex":"","ConvertNewlines":true,"TabTransform":0,"BracketAllowed":true,"UseRegexSubstitution":false,"ChunkSize":1024,"RemoveControls":true}</string>
-			<key>Version</key>
-			<integer>1</integer>
 		</dict>
 		<key>Gesture,ThreeFingerSwipeDown,,</key>
 		<dict>
@@ -2225,12 +2237,16 @@
 	<true/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.39971594356796114</real>
 	<key>TabStyle</key>
 	<integer>1</integer>
-	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<key>UseBorder</key>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>WindowNumber</key>
+	<true/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
