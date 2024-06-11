@@ -8,5 +8,21 @@
 // from the command palette or from `Zed` application menu.
 {
   "ui_font_size": 16,
-  "buffer_font_size": 14
+  "buffer_font_size": 14,
+  "show_whitespaces": "all",
+  "wrap_guides": [80],
+  "scrollbar": {
+    "git_diff": false
+  },
+  "buffer_font_features": {
+    "calt": false
+  },
+  "format_on_save": "on",
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "rustfmt.extraArgs": ["+nightly"]
+      }
+    }
+  }
 }

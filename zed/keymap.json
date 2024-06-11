@@ -9,7 +9,9 @@
       "ctrl-backspace": "editor::DeleteToPreviousSubwordStart",
       "ctrl-delete": "editor::DeleteToNextSubwordEnd",
       "cmd-ctrl-up": "editor::MoveLineUp",
-      "cmd-ctrl-down": "editor::MoveLineDown"
+      "cmd-ctrl-down": "editor::MoveLineDown",
+      "ctrl-f12": "editor::FindAllReferences",
+      "cmd-\\": "pane::SplitRight"
     }
   }
 ]
