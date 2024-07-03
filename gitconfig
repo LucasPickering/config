@@ -46,6 +46,7 @@
   pr = !"fish -c open_pr"
   pub = !"git push -u origin $(git current)"
   r = "rebase"
+  rc = "rebase --continue"
   remember = "update-index --no-skip-worktree"
   return = !"git stash pop -q $(git stash list | grep $1 | cut -d: -f1); git forget"
   ri = "rebase -i"
