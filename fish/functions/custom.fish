@@ -84,15 +84,11 @@ function kex --description "Execute a command in a kubernetes pod" -a query
     kubectl exec -it $podname -- $command
 end
 
-function wget_sha256 --description "Get the SHA256 sum of a file over HTTP"
-    set url $argv[1]
-    set path (mktemp)
-    wget -q -O $path $url
-    set wget_status $status
-    if test $wget_status -gt 0
-        echo "wget failed with exit code $wget_status"
-        return $status
-    end
-    sha256sum $path
-    rm $path
+function add_pw --description "Add a new password to the keychain vault thing" -a name -a value
+    security add-generic-password -a $LOGNAME -s $name -w $value
+end
+
+
+function get_pw --description "Get a password from the keychain vault thing" -a name
+    security find-generic-password -a $LOGNAME -s $name -w
 end
