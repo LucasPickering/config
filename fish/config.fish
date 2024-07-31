@@ -6,6 +6,7 @@ if not functions -q fisher
 end
 
 
+alias cdroot="cd (git root)"
 alias src="source ~/.config/fish/config.fish"
 alias repeat="~/.config/fish/functions/repeat.py"
 alias nuke="rm -rf node_modules && npm install"
@@ -17,11 +18,14 @@ alias d="docker"
 alias dc="docker-compose"
 alias g="git"
 alias k="kubectl"
+alias kdp='kubectl describe pod'
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias p="poetry"
+alias pr="poetry run"
 alias tf='terraform'
 alias repl="evcxr" # I just cannot remember this command
+alias erd="erd --human --layout inverted"
 
 set -Ux VIMINIT "source ~/.vim/vimrc"
 source ~/.config/fish/functions/custom.fish
