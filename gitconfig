@@ -22,6 +22,7 @@
   cog = !"git for-each-ref --format='%(refname:short)' 'refs/heads/*' | rg -i $@ | xargs git checkout #"
   com = !"git checkout $@ && git merge --ff - #"
   copr = !"git fetch origin pull/$1/head:pr-$1; git checkout pr-$1 #"
+  cp = "cherry-pick"
   create-default = !"git symbolic-ref refs/remotes/origin/HEAD origin/$1 #"
   current = "rev-parse --abbrev-ref HEAD"
   d = "diff"
