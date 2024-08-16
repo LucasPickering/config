@@ -7,10 +7,14 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "theme": "Ayu Dark",
   "ui_font_size": 16,
   "buffer_font_size": 14,
   "show_whitespaces": "all",
   "wrap_guides": [80],
+  "inlay_hints": {
+    "enabled": true
+  },
   "scrollbar": {
     "git_diff": false
   },
@@ -29,10 +33,36 @@
       }
     }
   },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
-        "rustfmt.extraArgs": ["+nightly"]
+        "inlayHints": {
+          "closingBraceHints": {
+            "enable": false
+          },
+          "parameterHints": {
+            "enable": false
+          }
+        },
+        "imports": {
+          "prefix": "crate",
+          "granularity": {
+            "group": "crate"
+          }
+        },
+        "rustfmt": {
+          "extraArgs": ["+nightly"]
+        }
+      }
+    },
+    "taplo": {
+      "formatting": {
+        "compact_inline_tables": true
       }
     }
   }

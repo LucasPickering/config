@@ -1,0 +1,32 @@
+{
+  "Test Module": {
+    "prefix": "tests",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "    use super::*;",
+      "",
+      "    #[test]",
+      "    fn test_$1() {",
+      "        $0",
+      "    }",
+      "}"
+    ]
+  },
+  "Function": {
+    "prefix": "func",
+    "body": ["/// TODO", "fn ${1}($2) -> ${3:()} {", "    ${0:todo!()}", "}"]
+  },
+  "Deserialize": {
+    "prefix": "fn deserialize",
+    "body": [
+      "/// TODO",
+      "fn deserialize$1<'de, D>(deserializer: D) -> Result<T, D::Error>",
+      "where",
+      "    D: Deserializer<'de>,",
+      "{",
+      "    ${0:todo!()}",
+      "}"
+    ]
+  }
+}

@@ -11,7 +11,18 @@
       "cmd-ctrl-up": "editor::MoveLineUp",
       "cmd-ctrl-down": "editor::MoveLineDown",
       "ctrl-f12": "editor::FindAllReferences",
-      "cmd-\\": "pane::SplitRight"
+      "cmd-\\": "pane::SplitRight",
+      "cmd-o": "outline::Toggle",
+      "cmd-shift-o": "workspace::Open",
+      "cmd-enter": "editor::NewlineBelow",
+      "shift-f12": "editor::GoToTypeDefinition",
+      "cmd-alt-enter": "search::ReplaceAll"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "enter": "editor::Newline"
     }
   }
 ]

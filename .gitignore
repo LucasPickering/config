@@ -15,5 +15,9 @@ fish/functions/*
 fish/functions/__bass.py
 
 jira/cookies.js
+
+zed/embeddings/
+zed/prompts/
+
 .DS_Store
 .tmp*
