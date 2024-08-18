@@ -38,6 +38,10 @@
       "enabled": false
     }
   },
+  "experimental.theme_overrides": {
+    "editor.wrap_guide": "#c8ccd42d",
+    "scrollbar.track.border": "#00000000"
+  },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
@@ -46,6 +50,9 @@
             "enable": false
           },
           "parameterHints": {
+            "enable": false
+          },
+          "typeHints": {
             "enable": false
           }
         },
