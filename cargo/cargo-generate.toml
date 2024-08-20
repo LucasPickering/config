@@ -1,0 +1,7 @@
+[favorites.repo]
+git = "http://github.com/LucasPickering/rust-template"
+subfolder = "repo"
+
+[favorites.crate]
+git = "http://github.com/LucasPickering/rust-template"
+subfolder = "crate"

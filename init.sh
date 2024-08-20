@@ -32,3 +32,8 @@ delete_and_link ~/.vim vim
 # Zed
 echo "Initializing Zed..."
 delete_and_link ~/.config/zed zed
+
+echo "Initializing Cargo..."
+mkdir -p ~/.cargo
+delete_and_link ~/.cargo/config.toml cargo/config.toml
+delete_and_link ~/.cargo/cargo-generate.toml cargo/cargo-generate.toml
