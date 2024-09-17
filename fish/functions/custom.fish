@@ -90,5 +90,5 @@ end
 
 
 function get_pw --description "Get a password from the keychain vault thing" -a name
-    security find-generic-password -a $LOGNAME -s $name -w
+    security find-generic-password -s $name -w
 end
