@@ -45,6 +45,14 @@ function docker_login
         docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
 
+function helm_login
+    set profile $argv[1]
+    test -z $profile; and set profile "default"
+    aws_login
+    aws --profile $profile ecr get-login-password --region us-east-1 | \
+        helm registry login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
+end
+
 function copy_portal_db
     # Run `docker-compose run --rm db` in a separate window
     cd ~/git/portal
