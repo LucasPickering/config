@@ -64,6 +64,16 @@ function copy_portal_db
     echo "Snapshot left at $db_path, delete it!"
 end
 
+function pg_create --description "Create new DB and username in postgres"
+    set db_name $DATABASE_DB_NAME
+    set username $DATABASE_USERNAME
+    set password $DATABASE_PASSWORD
+    echo "Creating database $db_name with $username:$password"
+    # Extra "" needed to escape hyphens
+    psql -d postgres -c "CREATE USER \"$username\" WITH CREATEDB PASSWORD '\"$password\"'"
+    psql -d postgres -c "CREATE DATABASE \"$db_name\" WITH OWNER \"$username\""
+end
+
 function jwt --description "Decode a JWT" -a jwt
     set splits (echo $jwt | string split .)
     set header $splits[1]
