@@ -741,6 +741,8 @@
 	<integer>1048840</integer>
 	<key>HotkeyTermAnimationDuration</key>
 	<real>0.0</real>
+	<key>KillJobsInServersOnQuit</key>
+	<true/>
 	<key>MaxVertically</key>
 	<false/>
 	<key>NeverBlockSystemShutdown</key>
