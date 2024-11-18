@@ -1,15 +1,17 @@
 alias j="jira"
 alias kdev="k config use-context bzero-developer@development"
+alias kdev2="k config use-context bzero-developer@bitsight-development-us-east-1"
 alias kstg="k config use-context bzero-developer@staging"
 alias kuat="k config use-context bzero-developer@uat"
 alias kprd="k config use-context bzero-developer@production"
 alias kmini="k config use-context minikube"
 alias kdevconnect="zli connect developer@development --targetGroup developers && kdev"
+alias kdev2connect="zli connect developer@bitsight-development-us-east-1 --targetGroup developers && kdev2"
 alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
 alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
-alias pgdb='PGPASSWORD=$POSTGRES_PASSWORD psql --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
+alias pgdb='PGPASSWORD=$DATABASE_PASSWORD psql --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
 alias pgdb_dump='PGPASSWORD=$POSTGRES_PASSWORD pg_dump --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
 alias pgdb_restore='PGPASSWORD=$POSTGRES_PASSWORD pg_restore --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT --dbname=$POSTGRES_DB'
 alias assume="source (brew --prefix)/bin/assume.fish"
@@ -84,4 +86,8 @@ end
 
 function bors --description "Connect to BORS"
     psql postgresql://$BORS_DB_USER:$BORS_DB_PASS@$BORS_DB_HOST:$BORS_DB_PORT/$BORS_DB_NAME $argv
+end
+
+function get_secret --description "Get an AWS secret" -a secret
+    aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:$secret | jq -r .SecretString
 end
