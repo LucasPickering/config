@@ -66,7 +66,7 @@ function copy_portal_db
     echo "Snapshot left at $db_path, delete it!"
 end
 
-function pg_create --description "Create new DB and username in postgres"
+function pgcreate --description "Create new DB and username in postgres"
     set db_name $DATABASE_DB_NAME
     set username $DATABASE_USERNAME
     set password $DATABASE_PASSWORD
