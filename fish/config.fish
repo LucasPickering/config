@@ -23,6 +23,7 @@ alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias p="poetry"
 alias pr="poetry run"
+alias sl="slumber"
 alias tf='terraform'
 alias repl="evcxr" # I just cannot remember this command
 alias erd="erd --human --layout inverted"
