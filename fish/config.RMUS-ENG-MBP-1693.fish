@@ -12,16 +12,20 @@ alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
 alias pgdb='PGPASSWORD=$DATABASE_PASSWORD psql --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
-alias pgdb_dump='PGPASSWORD=$POSTGRES_PASSWORD pg_dump --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT $POSTGRES_DB'
-alias pgdb_restore='PGPASSWORD=$POSTGRES_PASSWORD pg_restore --host=$DB_HOSTNAME --user=$POSTGRES_USER --port=$DB_PORT --dbname=$POSTGRES_DB'
+alias pgdb_dump='PGPASSWORD=$DATABASE_PASSWORD pg_dump --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
+alias pgdb_restore='PGPASSWORD=$DATABASE_PASSWORD pg_restore --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT --dbname=$DATABASE_DB_NAME'
 alias assume="source (brew --prefix)/bin/assume.fish"
+alias asdf="assume default"
+
+# Auto-load AWS creds for actual shells
+status --is-interactive; and assume default
 
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
 
 function pgforward --description "Port-forward kube to a postgres service"
     set pg_services (kubectl get service -o name |  grep postgres)
-    set service $pg_services[1]
+    set service service/postgresql
     if test (count $pg_services) -gt 1
         echo "Multiple `postgres` services detected, using the first"
     end
@@ -82,10 +86,6 @@ function jwt --description "Decode a JWT" -a jwt
     set claims $splits[2]
     echo "Header:" (echo $header | base64 -d)
     echo "Claims:" (echo $claims | base64 -d)
-end
-
-function bors --description "Connect to BORS"
-    psql postgresql://$BORS_DB_USER:$BORS_DB_PASS@$BORS_DB_HOST:$BORS_DB_PORT/$BORS_DB_NAME $argv
 end
 
 function get_secret --description "Get an AWS secret" -a secret
