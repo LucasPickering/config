@@ -29,6 +29,10 @@ delete_and_link ~/.gitconfig gitconfig
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
 
+# Psql
+echo "Initializing psql..."
+delete_and_link ~/.psqlrc psqlrc
+
 # Zed
 echo "Initializing Zed..."
 delete_and_link ~/.config/zed zed
