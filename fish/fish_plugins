@@ -3,3 +3,5 @@ barnybug/docker-fish-completion
 danhper/fish-ssh-agent
 jorgebucaran/nvm.fish
 evanlucas/fish-kubectl-completions
+lucaspickering/env-select
+patrickf1/fzf.fish
