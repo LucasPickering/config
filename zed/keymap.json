@@ -16,7 +16,20 @@
       "cmd-shift-o": "workspace::Open",
       "cmd-enter": "editor::NewlineBelow",
       "shift-f12": "editor::GoToTypeDefinition",
-      "cmd-alt-enter": "search::ReplaceAll"
+      "cmd-f12": "editor::GoToImplementation",
+      "cmd-alt-enter": "search::ReplaceAll",
+      "ctrl-alt-cmd-left": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "left" }
+      ],
+      "ctrl-alt-cmd-right": [
+        "workspace::MoveItemToPaneInDirection",
+        { "direction": "right" }
+      ],
+      "f1": "editor::OpenDocs",
+      "cmd-alt-d": ["editor::SelectNext", { "replace_newest": true }],
+      "ctrl-shift-up": "editor::AddSelectionAbove",
+      "ctrl-shift-down": "editor::AddSelectionBelow"
     }
   },
   {

@@ -7,7 +7,47 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Ayu Dark",
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "agent": {
+    "always_allow_tool_actions": true,
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "version": "2"
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://192.168.0.65:11434",
+      "available_models": [
+        {
+          "name": "qwen3:1.7b",
+          "display_name": "qwen3:1.7b",
+          "max_tokens": 40000,
+          "keep_alive": "10m",
+          "supports_tools": true
+        },
+        {
+          "name": "gemma3:1b",
+          "display_name": "gemma3:1b",
+          "max_tokens": 40000,
+          "keep_alive": "10m",
+          "supports_tools": true
+        },
+        {
+          "name": "tinyllama:1.1b",
+          "display_name": "tinyllama:1.1b",
+          "max_tokens": 40000,
+          "keep_alive": "10m",
+          "supports_tools": true
+        }
+      ]
+    }
+  },
+  "theme": "Monokai Nebula",
   "ui_font_size": 16,
   "buffer_font_size": 14,
   "show_whitespaces": "all",
@@ -20,6 +60,18 @@
   },
   "buffer_font_features": {
     "calt": false
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 0,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    },
+    "cargo": null
   },
   "format_on_save": "on",
   "languages": {
@@ -40,7 +92,16 @@
   },
   "experimental.theme_overrides": {
     "editor.wrap_guide": "#c8ccd42d",
-    "scrollbar.track.border": "#00000000"
+    "scrollbar.track.border": "#00000000",
+    "predictive": "#a0a0a0",
+    "syntax": {
+      "comment": {
+        "color": "#ffa830"
+      },
+      "comment.doc": {
+        "color": "#ffa830"
+      }
+    }
   },
   "lsp": {
     "rust-analyzer": {
@@ -55,6 +116,9 @@
           "typeHints": {
             "enable": false
           }
+        },
+        "cargo": {
+          "targetDir": true
         },
         "imports": {
           "prefix": "crate",
