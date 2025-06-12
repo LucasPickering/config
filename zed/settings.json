@@ -11,7 +11,7 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
-    "always_allow_tool_actions": true,
+    "always_allow_tool_actions": false,
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
@@ -47,7 +47,7 @@
       ]
     }
   },
-  "theme": "Monokai Nebula",
+  "theme": "Tokyo Night Storm",
   "ui_font_size": 16,
   "buffer_font_size": 14,
   "show_whitespaces": "all",
@@ -83,6 +83,15 @@
           "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
         }
       }
+    },
+    "TypeScript": {
+      "language_servers": ["typescript-language-server", "!vtsls"]
+    },
+    "TSX": {
+      "language_servers": ["typescript-language-server", "!vtsls"]
+    },
+    "JavaScript": {
+      "language_servers": ["typescript-language-server", "!vtsls"]
     }
   },
   "git": {
@@ -120,6 +129,9 @@
         "cargo": {
           "targetDir": true
         },
+        "check": {
+          "command": "clippy"
+        },
         "imports": {
           "prefix": "crate",
           "granularity": {
@@ -131,9 +143,47 @@
         }
       }
     },
-    "taplo": {
-      "formatting": {
-        "compact_inline_tables": true
+    "svelte-language-server": {
+      "initialization_options": {
+        "configuration": {
+          "typescript": {
+            "inlayHints": {
+              "parameterNames": {
+                "enabled": "none"
+              },
+              "parameterTypes": {
+                "enabled": false
+              },
+              "variableTypes": {
+                "enabled": false,
+                "suppressWhenTypeMatchesName": false
+              },
+              "propertyDeclarationTypes": {
+                "enabled": false
+              },
+              "functionLikeReturnTypes": {
+                "enabled": false
+              },
+              "enumMemberValues": {
+                "enabled": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "none",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayEnumMemberValueHints": false
+        }
       }
     }
   }

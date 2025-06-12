@@ -1,0 +1,7 @@
+# https://zed.dev/docs/languages/toml
+# ln -s ~/config/zed/taplo.toml .taplo.toml && g exclude .taplo.toml
+[formatting]
+array_auto_collapse = false
+array_auto_expand = false
+compact_inline_tables = true
+reorder_keys = true
