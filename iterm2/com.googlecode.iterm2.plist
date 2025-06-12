@@ -729,8 +729,6 @@
 	<integer>1048840</integer>
 	<key>HotkeyTermAnimationDuration</key>
 	<real>0.0</real>
-	<key>KillJobsInServersOnQuit</key>
-	<true/>
 	<key>MaxVertically</key>
 	<false/>
 	<key>NeverWarnAboutShortLivedSessions_23A4844B-8489-4F98-8C54-C5BCB7216722</key>
@@ -1841,6 +1839,15 @@
 				<real>0.16498950123786926</real>
 				<key>Red Component</key>
 				<real>0.0</real>
+			</dict>
+			<key>Semantic History</key>
+			<dict>
+				<key>action</key>
+				<string>best editor</string>
+				<key>editor</key>
+				<string>com.github.atom</string>
+				<key>text</key>
+				<string></string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
