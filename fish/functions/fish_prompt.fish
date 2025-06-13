@@ -6,14 +6,10 @@ end
 function fish_prompt --description 'Write out the prompt'
     # Color the cwd differently based on host
     switch (hostname_base)
-        case metagross lucario RMUS-ENG-MBP-1693
+        case metagross bulbasaur RMUS-ENG-MBP-1693
             set c_cwd (set_color cyan)
-        case salamence
-            set c_cwd (set_color yellow)
-        case riolu
+        case riolu piplup squirtle
             set c_cwd (set_color purple)
-        case tyranitar
-            set c_cwd (set_color blue)
         case '*'
             set c_cwd (set_color red)
     end
