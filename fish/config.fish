@@ -27,6 +27,7 @@ alias sl="slumber"
 alias tf='terraform'
 alias repl="evcxr" # I just cannot remember this command
 alias erd="erd --human --layout inverted"
+alias z="zed"
 
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 set -Ux VIMINIT "source ~/.vim/vimrc"
