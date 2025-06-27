@@ -11,11 +11,12 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
-    "always_allow_tool_actions": false,
+    "default_profile": "write",
+    "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
