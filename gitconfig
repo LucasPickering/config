@@ -83,3 +83,5 @@
   defaultBranch = master
 [maintenance]
   repo = /Users/lucas.pickering/git/portal
+[trim]
+	bases = main
