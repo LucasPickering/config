@@ -10,15 +10,16 @@ alias kdev2connect="zli connect developer@bitsight-development-us-east-1 --targe
 alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
 alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
-alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD production'
+alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD --protocol tcp production'
+alias pgdb_url='echo "postgresql://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOSTNAME:$DATABASE_PORT/$DATABASE_DB_NAME"'
 alias pgdb='PGPASSWORD=$DATABASE_PASSWORD psql --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
 alias pgdb_dump='PGPASSWORD=$DATABASE_PASSWORD pg_dump --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
 alias pgdb_restore='PGPASSWORD=$DATABASE_PASSWORD pg_restore --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT --dbname=$DATABASE_DB_NAME'
 alias assume="source (brew --prefix)/bin/assume.fish"
-alias asdf="assume default"
+alias asdf="assume default --export"
 
 # Auto-load AWS creds for actual shells
-status --is-interactive; and assume default
+status --is-interactive; and asdf
 
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
@@ -65,7 +66,8 @@ function copy_portal_db
     set db_path $HOME/Downloads/portal-(date +%Y-%m-%d).sql
     es set portal local
     docker-compose exec db /usr/bin/mysqldump -u$AWS_DB_USER -p$AWS_DB_PASSWORD production > $db_path
-    mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD -e 'DROP DATABASE IF EXISTS production; CREATE DATABASE production;'
+    # This is a disaster and I didn't fix it
+    mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD -e "DROP DATABASE IF EXISTS production; CREATE DATABASE production;"
     db_path=$db_path mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD production < $db_path
     echo "Snapshot left at $db_path, delete it!"
 end
