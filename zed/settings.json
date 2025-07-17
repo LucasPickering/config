@@ -7,6 +7,15 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -18,7 +27,6 @@
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
     },
-    "version": "2"
   },
   "language_models": {
     "ollama": {
@@ -83,7 +91,8 @@
           "command": "ruff",
           "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
         }
-      }
+      },
+      "language_servers": ["basedpyright", "!pyright"]
     },
     "TypeScript": {
       "language_servers": ["typescript-language-server", "!vtsls"]
@@ -114,6 +123,14 @@
     }
   },
   "lsp": {
+    "basedpyright": {
+      "settings": {
+        "basedpyright.analysis": {
+          "inlayHints": false,
+          "reportUnusedCallResult": "none"
+        }
+      }
+    },
     "rust-analyzer": {
       "initialization_options": {
         "inlayHints": {
@@ -135,6 +152,9 @@
         },
         "imports": {
           "prefix": "crate",
+          "group": {
+            "enable": false
+          },
           "granularity": {
             "group": "crate"
           }
