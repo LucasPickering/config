@@ -26,7 +26,7 @@
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
-    },
+    }
   },
   "language_models": {
     "ollama": {
@@ -126,8 +126,15 @@
     "basedpyright": {
       "settings": {
         "basedpyright.analysis": {
-          "inlayHints": false,
-          "reportUnusedCallResult": "none"
+          "inlayHints": {
+            "callArgumentNames": false,
+            "variableTypes": false
+          },
+          "diagnosticSeverityOverrides": {
+            "reportAny": "none",
+            "reportImplicitStringConcatenation": "none",
+            "reportUnusedCallResult": "none"
+          }
         }
       }
     },
