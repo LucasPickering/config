@@ -57,6 +57,8 @@
   sha = "rev-parse"
   todo = "diff-grep [Tt][Oo][Dd][Oo]"
   um = !"branch=${1:-$(git default)}; echo Updating branch $branch; git fetch origin $branch:$branch"
+[advice]
+  skippedCherryPicks = false
 [user]
   email = lucas@lucaspickering.me
   name = Lucas Pickering
