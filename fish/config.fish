@@ -21,6 +21,7 @@ alias k="kubectl"
 alias kdp='kubectl describe pod'
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
+alias m="mise"
 alias p="poetry"
 alias pr="poetry run"
 alias sl="slumber"
