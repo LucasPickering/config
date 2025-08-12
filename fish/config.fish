@@ -29,6 +29,7 @@ alias tf='terraform'
 alias repl="evcxr" # I just cannot remember this command
 alias erd="erd --human --layout inverted"
 alias z="zed"
+alias pasta="paste"
 
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 set -Ux VIMINIT "source ~/.vim/vimrc"
