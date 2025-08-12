@@ -1843,11 +1843,11 @@
 			<key>Semantic History</key>
 			<dict>
 				<key>action</key>
-				<string>best editor</string>
+				<string>editor</string>
 				<key>editor</key>
-				<string>com.github.atom</string>
+				<string>dev.zed.zed</string>
 				<key>text</key>
-				<string></string>
+				<string>/usr/local/bin/zed \1</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
