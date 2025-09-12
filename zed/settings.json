@@ -20,40 +20,12 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
-    "default_profile": "write",
+    "default_profile": "ask",
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
-    }
-  },
-  "language_models": {
-    "ollama": {
-      "api_url": "http://192.168.0.65:11434",
-      "available_models": [
-        {
-          "name": "qwen3:1.7b",
-          "display_name": "qwen3:1.7b",
-          "max_tokens": 40000,
-          "keep_alive": "10m",
-          "supports_tools": true
-        },
-        {
-          "name": "gemma3:1b",
-          "display_name": "gemma3:1b",
-          "max_tokens": 40000,
-          "keep_alive": "10m",
-          "supports_tools": true
-        },
-        {
-          "name": "tinyllama:1.1b",
-          "display_name": "tinyllama:1.1b",
-          "max_tokens": 40000,
-          "keep_alive": "10m",
-          "supports_tools": true
-        }
-      ]
     }
   },
   "theme": "Tokyo Night Storm",
@@ -85,14 +57,25 @@
   "format_on_save": "on",
   "languages": {
     "Python": {
-      "wrap_guides": [100],
-      "format_on_save": {
-        "external": {
-          "command": "ruff",
-          "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
+      "wrap_guides": [80],
+      // https://docs.astral.sh/ruff/editors/setup/#zed
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            // Fix all auto-fixable lint violations
+            "source.fixAll.ruff": true,
+            // Organize imports
+            "source.organizeImports.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
         }
-      },
-      "language_servers": ["basedpyright", "!pyright"]
+      ],
+      "language_servers": ["basedpyright", "ruff", "!pyright"]
     },
     "TypeScript": {
       "language_servers": ["typescript-language-server", "!vtsls"]

@@ -1,0 +1,18 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+[
+  {
+    "label": "Open from revision",
+    // Generate a temp file with the contents from a specific revision
+    "command": "set revision master; set file (mktemp --dir)/$revision.$ZED_FILENAME; git show $revision:$ZED_RELATIVE_FILE > $file; zed $file",
+    // What to do with the terminal pane and tab, after the command was started:
+    // * `always` — always show the task's pane, and focus the corresponding tab in it (default)
+    // * `no_focus` — always show the task's pane, add the task's tab in it, but don't focus it
+    // * `never` — do not alter focus, but still add/reuse the task's tab in its pane
+    "reveal": "never",
+    // What to do with the terminal pane and tab, after the command had finished:
+    // * `never` — Do nothing when the command finishes (default)
+    // * `always` — always hide the terminal tab, hide the pane also if it was the last tab in it
+    // * `on_success` — hide the terminal tab on task success only, otherwise behaves similar to `always`
+    "hide": "on_success"
+  }
+]

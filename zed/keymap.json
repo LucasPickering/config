@@ -29,7 +29,8 @@
       "f1": "editor::OpenDocs",
       "cmd-alt-d": ["editor::SelectNext", { "replace_newest": true }],
       "ctrl-shift-up": "editor::AddSelectionAbove",
-      "ctrl-shift-down": "editor::AddSelectionBelow"
+      "ctrl-shift-down": "editor::AddSelectionBelow",
+      "cmd-shift-w": ["task::Spawn", { "task_name": "Open from revision" }]
     }
   },
   {
