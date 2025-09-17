@@ -1,3 +1,5 @@
 [user]
   email = lucas.pickering@bitsighttech.com
   name = Lucas Pickering
+[core]
+  excludesFile = "~/git/.gitignore"
