@@ -151,6 +151,13 @@
         },
         "rustfmt": {
           "extraArgs": ["+nightly"]
+        },
+        "workspace": {
+          "symbol": {
+            "search": {
+              "excludeImports": true
+            }
+          }
         }
       }
     },
