@@ -38,16 +38,10 @@ function pgforward --description "Port-forward kube to a postgres service"
     kubectl port-forward $service $internal_port:$external_port
 end
 
-function aws_login --description "AWS SSO login if not logged in already"
-    if not aws sts get-caller-identity &> /dev/null
-        aws sso login
-    end
-end
-
 function docker_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
-    aws_login
+    aws sso login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
@@ -55,7 +49,7 @@ end
 function helm_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
-    aws_login
+    aws sso login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         helm registry login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
@@ -92,4 +86,14 @@ end
 
 function get_secret --description "Get an AWS secret" -a secret
     aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:$secret | jq -r .SecretString
+end
+
+function jira_branch --description "Create a new Git branch for a jira ticket" -a ticket
+    set summary (jira view $ticket -t summary)
+    set prompt "Do not perform any actions. Do not return any text other than a 2-5 word summary of the given text. Exclude stop words and focus on unique and distinctive words. The text: $summary"
+    set shortened (copilot --model claude-sonnet-4 --prompt $prompt)
+    # Normalize the tag
+    set tag (echo $shortened | string lower | string replace -a -r '[^ a-z0-9_-]' '' | string trim | string replace -a ' ' '-')
+    set branch $ticket-$tag
+    git checkout -b $branch
 end
