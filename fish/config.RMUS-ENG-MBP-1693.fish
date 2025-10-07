@@ -1,4 +1,5 @@
 alias j="jira"
+alias jme="j issue list -q 'assignee = currentUser() AND resolution = unresolved and type != Epic'"
 alias kdev="k config use-context bzero-developer@development"
 alias kdev2="k config use-context bzero-developer@bitsight-development-us-east-1"
 alias kstg="k config use-context bzero-developer@staging"
@@ -38,16 +39,10 @@ function pgforward --description "Port-forward kube to a postgres service"
     kubectl port-forward $service $internal_port:$external_port
 end
 
-function aws_login --description "AWS SSO login if not logged in already"
-    if not aws sts get-caller-identity &> /dev/null
-        aws sso login
-    end
-end
-
 function docker_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
-    aws_login
+    aws sso login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
@@ -55,7 +50,7 @@ end
 function helm_login
     set profile $argv[1]
     test -z $profile; and set profile "default"
-    aws_login
+    aws sso login
     aws --profile $profile ecr get-login-password --region us-east-1 | \
         helm registry login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
@@ -92,4 +87,54 @@ end
 
 function get_secret --description "Get an AWS secret" -a secret
     aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:692674046581:secret:$secret | jq -r .SecretString
+end
+
+function jira_branch --description "Create a new Git branch for a jira ticket" -a ticket
+    # If ticket isn't provided, prompt for it
+    if test -z $ticket
+        set delimiter "::delimiter::"
+        set ticket_json (jme --raw \
+            | jq -c -r ".[] | \"\\(.key) \\(.fields.summary)$delimiter\\(.)\"" \
+            | gum choose --label-delimiter $delimiter --height 100)
+        # Abort if prompt was closed
+        if test $status -ne 0
+            return 1
+        end
+        set ticket (echo $ticket_json | jq -r '.key')
+        set summary (echo $ticket_json | jq -r '.fields.summary')
+    end
+
+    # If we didn't just load the summary above, get it now
+    if test -z $summary
+        set summary (jira issue view $ticket --raw | jq -r '.fields.summary')
+    end
+
+    set repo (git root)
+    set prompt "Do not perform any actions. Do not return any text other than a
+    1-5 word summary of the given text. Exclude stop words and focus on unique
+    and distinctive words. Do not include words from the current repo name ($repo)
+    The text: $summary"
+    set shortened (ai $prompt)
+    # Normalize the tag
+    set tag (echo $shortened | string lower | string replace -a -r '[^ a-z0-9_-]' '' | string trim | string replace -a ' ' '-')
+    # Let the user edit it
+    set branch (gum input --header "You like???" --value "$ticket-$tag")
+    # Abort if prompt was closed
+    if test $status -ne 0
+        return 1
+    end
+    git checkout -b $branch
+end
+
+function ai --description "Do something really important with the use of AI™ LLM© Intelligence®" -a prompt
+    if test -z $prompt
+        set prompt (gum input --header "What the fuck do you want to ask that piece of shit?")
+        # Abort if prompt was closed
+        if test $status -ne 0
+            return 1
+        end
+    end
+    set funny_name_haha "amorphous puddle of floating points" "almighty oracle of goop" "savior of the human race"
+    set zany (random choice $funny_name_haha)
+    gum spin --title "Asking the $zany..." -- copilot --model claude-sonnet-4 --prompt $prompt
 end
