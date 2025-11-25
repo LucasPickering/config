@@ -9,7 +9,6 @@ end
 alias cdroot="cd (git root)"
 alias src="source ~/.config/fish/config.fish"
 alias repeat="~/.config/fish/functions/repeat.py"
-alias nuke="rm -rf node_modules && npm install"
 alias ports="sudo lsof -i -P -n | rg LISTEN"
 alias nocolor="sed -E 's/\x1b\[[0-9;]*m//g'" # Strip ANSI colors from stdin
 alias npx="npx --no-install"

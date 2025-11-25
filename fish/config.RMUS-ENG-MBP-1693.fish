@@ -11,6 +11,7 @@ alias kdev2connect="zli connect developer@bitsight-development-us-east-1 --targe
 alias kstgconnect="zli connect developer@staging --targetGroup developers && kstg"
 alias kuatconnect="zli connect developer@uat --targetGroup developers && kuat"
 alias kprdconnect="zli connect developer@production --targetGroup developers && kprd"
+alias nuke="rm -rf node_modules && yarn install"
 alias portaldb='mysql --host=$AWS_DB_HOST --user=$AWS_DB_USER --password=$AWS_DB_PASSWORD --protocol tcp production'
 alias pgdb_url='echo "postgresql://$DATABASE_USERNAME:$DATABASE_PASSWORD@$DATABASE_HOSTNAME:$DATABASE_PORT/$DATABASE_DB_NAME"'
 alias pgdb='PGPASSWORD=$DATABASE_PASSWORD psql --host=$DATABASE_HOSTNAME --user=$DATABASE_USERNAME --port=$DATABASE_PORT $DATABASE_DB_NAME'
