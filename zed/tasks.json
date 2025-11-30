@@ -3,7 +3,7 @@
   {
     "label": "Open from revision",
     // Generate a temp file with the contents from a specific revision
-    "command": "set revision master; set file (mktemp --dir)/$revision.$ZED_FILENAME; git show $revision:$ZED_RELATIVE_FILE > $file; zed $file",
+    "command": "set revision master; set file (mktemp --dir)/$revision.$ZED_FILENAME; git show $revision:$ZED_RELATIVE_FILE > $file; zed $file:$ZED_ROW:$ZED_COLUMN",
     // What to do with the terminal pane and tab, after the command was started:
     // * `always` — always show the task's pane, and focus the corresponding tab in it (default)
     // * `no_focus` — always show the task's pane, add the task's tab in it, but don't focus it

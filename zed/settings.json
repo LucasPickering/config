@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_edit_predictions": false,
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
@@ -27,6 +28,10 @@
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
     }
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
   },
   "theme": "Tokyo Night Storm",
   "ui_font_size": 16,
@@ -51,8 +56,7 @@
       "padding": 4,
       "min_column": 0,
       "max_severity": null
-    },
-    "cargo": null
+    }
   },
   "format_on_save": "on",
   "languages": {
