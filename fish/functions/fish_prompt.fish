@@ -25,12 +25,6 @@ function fish_prompt --description 'Write out the prompt'
         end
     end
 
-    # pyenv context
-    if set -q PYENV_VIRTUAL_ENV
-        set -l pv (basename $PYENV_VIRTUAL_ENV)
-        set pyctx "[$pv]"
-    end
-
     set -l dt (date "+%H:%M:%S")
     set -l vcs (string trim (fish_vcs_prompt))
 

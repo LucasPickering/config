@@ -63,15 +63,6 @@ if test -d ~/.cargo
     fish_add_path ~/.cargo/bin
 end
 
-# Set up Pyenv
-# https://github.com/pyenv/pyenv#installation
-if type -q pyenv
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    fish_add_path $PYENV_ROOT/bin
-    # status is-login; and pyenv init --path | source
-    pyenv init - | source
-end
-
 if type -q es
     es --shell fish init | source
 end
