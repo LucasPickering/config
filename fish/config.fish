@@ -16,6 +16,7 @@ alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
 alias g="git"
+alias gl="gleam"
 alias k="kubectl"
 alias kdp='kubectl describe pod'
 alias kgp='kubectl get pods'
