@@ -5,7 +5,6 @@ if not functions -q fisher
     fish -c fisher
 end
 
-
 alias cdroot="cd (git root)"
 alias src="source ~/.config/fish/config.fish"
 alias repeat="~/.config/fish/functions/repeat.py"

@@ -1,25 +1,28 @@
 { pkgs, lib, config, ... }: {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    binutils
-    dconf
     discord
-    file
     firefox
-    gimp
-    guake
     htop
-    imagemagick
-    pavucontrol
-    pulseaudio
     spotify
-    tdesktop # telegram
-    tree
     wget
     unzip
     vim
     xclip
     zip
+
+    # Dev tools
+    gcc
+    ghostty
+    git
+    jq
+    rustup
+    zed-editor
+
+    # Games
+    runelite
+    libnotify # Runelite notifications
   ];
+  programs.fish.enable = true;
   programs.steam.enable = true;
 }
