@@ -63,8 +63,6 @@
 [user]
   email = lucas@lucaspickering.me
   name = Lucas Pickering
-[core]
-  editor = vim
 [fetch]
   recurseSubmodules = false
   writeCommitGraph = true

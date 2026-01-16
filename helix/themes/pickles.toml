@@ -1,0 +1,6 @@
+inherits = "tokyonight_storm"
+
+comment = { fg = "comment", modifiers = ["italic"] }
+
+[palette]
+comment = "#ffa830"

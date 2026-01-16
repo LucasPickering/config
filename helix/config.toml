@@ -1,0 +1,8 @@
+theme = "pickles"
+
+[editor.whitespace]
+render.space = "all"
+render.tab = "all"
+render.nbsp = "none"
+render.nnbsp = "none"
+render.newline = "none"

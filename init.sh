@@ -25,6 +25,10 @@ echo "  You'll need to install fish and set it as your shell manually. Then run 
 echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
 
+# Helix
+echo "Initializing helix..."
+delete_and_link ~/.config/helix helix
+
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
