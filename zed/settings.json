@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "disable_ai": true,
   "show_edit_predictions": false,
   "edit_predictions": {
     "mode": "subtle",
@@ -21,12 +22,12 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
     }
   },
   "telemetry": {
