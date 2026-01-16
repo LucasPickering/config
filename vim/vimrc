@@ -10,7 +10,6 @@ set cc=100
 set number relativenumber
 
 " Colors "
-colorscheme lumberjack
 syntax on
 
 " Disable beep "
