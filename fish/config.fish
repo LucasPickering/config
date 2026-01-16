@@ -71,8 +71,12 @@ if type -q mise
     mise activate fish | source
 end
 
+if type -q slumber
+    source (COMPLETE=fish slumber | psub)
+end
+
 # Load additional config based on hostname
 set host_config ~/.config/fish/config.(hostname_base).fish
 test -r $host_config; and source $host_config
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
