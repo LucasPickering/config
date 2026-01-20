@@ -18,12 +18,13 @@ function fish_prompt --description 'Write out the prompt'
     set -l cwd (pwd | sed s@^$HOME@~@)
 
     # kube context
-    if type -q kubectl
-        set -l kube_context (kns)
-        if test -n $kube_context
-            set kubectx "[$kube_context]"
-        end
-    end
+    # if type -q kubectl
+    #     set -l kube_context (kns)
+    #     if test -n $kube_context
+    #         set kubectx "[$kube_context]"
+    #     end
+    # end
+    set -l kubectx ""
 
     set -l dt (date "+%H:%M:%S")
     set -l vcs (string trim (fish_vcs_prompt))
