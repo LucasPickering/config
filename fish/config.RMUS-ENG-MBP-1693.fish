@@ -1,5 +1,6 @@
 alias j="jira"
 alias jme="j issue list -q 'assignee = currentUser() AND resolution = unresolved and type != Epic'"
+alias jqlog="jq --raw-input 'fromjson? // .'"
 alias kdev="k config use-context bzero-developer@development"
 alias kdev2="k config use-context bzero-developer@bitsight-development-us-east-1"
 alias kstg="k config use-context bzero-developer@staging"
