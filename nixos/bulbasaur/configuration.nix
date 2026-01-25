@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./packages.nix
+      ./usb-wakeup-disable.nix
     ];
 
   # Bootloader.
@@ -52,6 +53,14 @@
     layout = "us";
     variant = "";
   };
+  # Set USB wakeup
+  hardware.usb.wakeupDisabled = [
+    {
+      # Logitech mouse
+      vendor = "046d";
+      product = "c539";
+    }
+  ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -88,14 +97,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nix.extraOptions = ''
+    experimental-features = flakes nix-command
+  '';
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.ssh.startAgent = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

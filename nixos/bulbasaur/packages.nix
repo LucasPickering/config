@@ -5,9 +5,10 @@
     firefox
     htop
     spotify
-    wget
     unzip
+    usbutils
     vim
+    wget
     xclip
     zip
 
@@ -15,8 +16,12 @@
     gcc
     ghostty
     git
+    git-lfs
+    helix
     jq
+    mise
     rustup
+    watchexec
     zed-editor
 
     # Games
