@@ -2,10 +2,13 @@
 
 import argparse
 import subprocess
+from enum import Enum
 
-PASS = "pass"
-FAIL = "fail"
-NEVER = "never"
+
+class Condition(Enum):
+    PASS = "pass"
+    FAIL = "fail"
+    NEVER = "never"
 
 
 def main():
@@ -16,23 +19,33 @@ def main():
     parser.add_argument(
         "--stop-on",
         "-s",
-        choices=[PASS, FAIL, NEVER],
-        default=FAIL,
+        choices=[condition.value for condition in Condition],
+        default=Condition.FAIL,
         help="Whether to stop on the first success, failure, or never (default: never)",
     )
     parser.add_argument("command", nargs="+", help="Command to run")
     args = parser.parse_args()
 
     i = 0
+    passes = 0
+    fails = 0
     while args.n is None or i < args.n:
         i += 1
         print(f"\n===== Run #{i} =====")
         proc = subprocess.run(args.command)
-        if (args.stop_on == PASS and proc.returncode == 0) or (
-            args.stop_on == FAIL and proc.returncode != 0
-        ):
-            break
+        passed = proc.returncode == 0
+        if proc.returncode == 0:
+            # Command passed
+            passes += 1
+            if args.stop_on == Condition.PASS:
+                break
+        else:
+            fails += 1
+            # Command failed
+            if args.stop_on == Condition.FAIL:
+                break
 
+    print(f"{i} runs, {passes} passed, {fails} failed")
 
 if __name__ == "__main__":
     try:
