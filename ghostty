@@ -1,0 +1,24 @@
+background-opacity = 0.93
+# Disable ligatures
+font-feature = -calt, -liga, -dlig
+unfocused-split-fill = 888888
+quick-terminal-size = 100%
+quick-terminal-animation-duration = 0
+window-save-state = always
+
+keybind = global:super+grave_accent=toggle_quick_terminal
+# Tab navigation
+keybind = super+t=new_tab
+keybind = super+left=previous_tab
+keybind = super+right=next_tab
+# Pane navigation
+keybind = super+shift+\=new_split:right
+keybind = super+shift+-=new_split:down
+keybind = super+shift+h=goto_split:left
+keybind = super+left=goto_split:left
+keybind = super+shift+l=goto_split:right
+keybind = super+right=goto_split:right
+keybind = super+shift+k=goto_split:up
+keybind = super+up=goto_split:up
+keybind = super+shift+j=goto_split:down
+keybind = super+down=goto_split:down

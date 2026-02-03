@@ -25,6 +25,9 @@ echo "  You'll need to install fish and set it as your shell manually. Then run 
 echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
 
+# Ghostty
+delete_and_link ~/.config/ghostty/config ghostty
+
 # Helix
 echo "Initializing helix..."
 delete_and_link ~/.config/helix helix

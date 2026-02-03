@@ -8,8 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./misc.nix
       ./packages.nix
       ./usb-wakeup-disable.nix
+      # ./xremap.nix
     ];
 
   # Bootloader.
@@ -17,7 +19,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "bulbasaur"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -53,17 +54,6 @@
     layout = "us";
     variant = "";
   };
-  # Set USB wakeup
-  hardware.usb.wakeupDisabled = [
-    {
-      # Logitech mouse
-      vendor = "046d";
-      product = "c539";
-    }
-  ];
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -97,11 +87,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nix.extraOptions = ''
-    experimental-features = flakes nix-command
-  '';
-
-  programs.ssh.startAgent = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
