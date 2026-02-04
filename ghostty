@@ -14,11 +14,11 @@ keybind = super+right=next_tab
 # Pane navigation
 keybind = super+shift+\=new_split:right
 keybind = super+shift+-=new_split:down
-keybind = super+shift+h=goto_split:left
+keybind = super+h=goto_split:left
 keybind = super+left=goto_split:left
-keybind = super+shift+l=goto_split:right
+keybind = super+l=goto_split:right
 keybind = super+right=goto_split:right
-keybind = super+shift+k=goto_split:up
+keybind = super+k=goto_split:up
 keybind = super+up=goto_split:up
-keybind = super+shift+j=goto_split:down
+keybind = super+j=goto_split:down
 keybind = super+down=goto_split:down

@@ -21,3 +21,4 @@ zed/prompts/
 
 .DS_Store
 .tmp*
+nixos/**/result

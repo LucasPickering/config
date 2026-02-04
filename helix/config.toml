@@ -2,6 +2,7 @@ theme = "pickles"
 
 [editor]
 line-number = "relative"
+shell = ["fish", "-c"]
 
 [editor.cursor-shape]
 insert = "bar"

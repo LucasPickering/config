@@ -6,12 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      <home-manager/nixos>
       ./hardware-configuration.nix
-      ./misc.nix
-      ./packages.nix
+      ./input.nix
       ./usb-wakeup-disable.nix
-      # ./xremap.nix
     ];
 
   # Bootloader.
@@ -63,16 +62,11 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  programs.fish.enable = true;
+  programs.steam.enable = true;
+  programs.ssh.startAgent = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.fish;
@@ -80,9 +74,6 @@
     isNormalUser = true;
     description = "Lucas";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   # Allow unfree packages

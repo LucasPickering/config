@@ -1,18 +1,19 @@
 { pkgs, lib, config, ... }: {
+  nix.package = pkgs.nix;
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     discord
     firefox
     htop
     spotify
     unzip
     usbutils
-    vim
     wget
     xclip
     zip
 
     # Dev tools
+    fish
     gcc
     ghostty
     git
@@ -20,14 +21,14 @@
     helix
     jq
     mise
+    perf
     rustup
     watchexec
     zed-editor
 
     # Games
-    runelite
     libnotify # Runelite notifications
+    runelite
+    steam
   ];
-  programs.fish.enable = true;
-  programs.steam.enable = true;
 }
