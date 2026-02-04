@@ -7,6 +7,9 @@ shell = ["fish", "-c"]
 [editor.cursor-shape]
 insert = "bar"
 
+[editor.search]
+smart-case = false
+
 [editor.whitespace]
 render.space = "all"
 render.tab = "all"

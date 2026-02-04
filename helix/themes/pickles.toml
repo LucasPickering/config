@@ -2,5 +2,7 @@ inherits = "tokyonight_storm"
 
 comment = { fg = "comment", modifiers = ["italic"] }
 
+"markup.raw.inline" = { fg = "blue" }
+
 [palette]
 comment = "#ffa830"
