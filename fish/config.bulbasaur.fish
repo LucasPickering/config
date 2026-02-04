@@ -1,5 +1,6 @@
 alias nixedit="hx ~/config/nixos/bulbasaur/"
 alias nixsw="sudo nixos-rebuild switch"
+alias hm="home-manager"
 alias hmpkg="hx ~/config/nixos/bulbasaur/home/packages.nix"
 alias hmsw="home-manager switch"
 alias zed="zeditor"

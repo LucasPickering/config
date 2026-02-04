@@ -2,6 +2,8 @@
 
 {
   imports = [
+    <plasma-manager/modules>
+    ./desktop.nix
     ./packages.nix
   ];
 
