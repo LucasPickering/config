@@ -35,6 +35,11 @@ set -Ux VIMINIT "source ~/.vim/vimrc"
 set -gx EDITOR hx
 source ~/.config/fish/functions/custom.fish
 
+# Keybindings
+bind super-backspace backward-kill-line
+bind ctrl-k up-or-search
+bind ctrl-j down-or-search
+
 # OS-specific setup
 switch (uname)
     case Linux
