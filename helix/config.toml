@@ -13,3 +13,7 @@ render.tab = "all"
 render.nbsp = "none"
 render.nnbsp = "none"
 render.newline = "none"
+
+[keys.normal]
+C-j = "page_down"
+C-k = "page_up"
