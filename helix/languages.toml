@@ -7,3 +7,15 @@ soft-wrap.wrap-indicator = ""
 [[language]]
 name = "rust"
 rulers = [81]
+
+[language-server.rust-analyzer.config]
+cargo.targetDir = true
+check.command = "clippy"
+imports.prefix = "crate"
+imports.group.enable = false
+imports.granularity = "crate"
+inlayHints.closingBraceHints.enable = false
+inlayHints.parameterHints.enable = false
+inlayHints.typeHints.enable = false
+rustfmt.extraArgs = ["+nightly"]
+workspace.symbol.search.excludeImports = true
