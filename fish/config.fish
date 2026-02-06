@@ -39,6 +39,8 @@ source ~/.config/fish/functions/custom.fish
 bind super-backspace backward-kill-line
 bind ctrl-k up-or-search
 bind ctrl-j down-or-search
+bind ctrl-h beginning-of-line
+bind ctrl-l end-of-line
 
 # OS-specific setup
 switch (uname)
