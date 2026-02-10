@@ -9,6 +9,7 @@
     [
       <home-manager/nixos>
       ./hardware-configuration.nix
+      ./fans.nix
       ./input.nix
       ./usb-wakeup-disable.nix
     ];
@@ -16,6 +17,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Nix cleanup
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than +5"; # Keep past 5 generations
 
   networking.hostName = "bulbasaur"; # Define your hostname.
 

@@ -3,9 +3,13 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     discord
+    dua
     firefox
     htop
+    keyd
+    lm_sensors
     spotify
+    tailscale
     unzip
     usbutils
     wget
