@@ -27,6 +27,15 @@ status --is-interactive; and asdf
 set -Ux PTVSD 1
 set -Ux SKIP_ESLINT_LOADER true
 
+function jlog --description "View and add to Jira work log" -a time
+    set issue (git jira)
+    if test -n "$time"
+        jira issue worklog add --no-input (git jira) $time
+    else
+        jira issue view $issue --raw | jq -r .fields.timetracking.timeSpent
+    end
+end
+
 function pgforward --description "Port-forward kube to a postgres service"
     set pg_services (kubectl get service -o name |  grep postgres)
     set service service/postgresql
@@ -43,18 +52,18 @@ end
 
 function docker_login
     set profile $argv[1]
-    test -z $profile; and set profile "default"
+    test -z $profile; and set profile default
     aws sso login
-    aws --profile $profile ecr get-login-password --region us-east-1 | \
-        docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
+    aws --profile $profile ecr get-login-password --region us-east-1 \
+        | docker login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
 
 function helm_login
     set profile $argv[1]
-    test -z $profile; and set profile "default"
+    test -z $profile; and set profile default
     aws sso login
-    aws --profile $profile ecr get-login-password --region us-east-1 | \
-        helm registry login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
+    aws --profile $profile ecr get-login-password --region us-east-1 \
+        | helm registry login -u AWS --password-stdin 692674046581.dkr.ecr.us-east-1.amazonaws.com
 end
 
 function copy_portal_db
@@ -62,10 +71,10 @@ function copy_portal_db
     cd ~/git/portal
     set db_path $HOME/Downloads/portal-(date +%Y-%m-%d).sql
     es set portal local
-    docker-compose exec db /usr/bin/mysqldump -u$AWS_DB_USER -p$AWS_DB_PASSWORD production > $db_path
+    docker-compose exec db /usr/bin/mysqldump -u$AWS_DB_USER -p$AWS_DB_PASSWORD production >$db_path
     # This is a disaster and I didn't fix it
     mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD -e "DROP DATABASE IF EXISTS production; CREATE DATABASE production;"
-    db_path=$db_path mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD production < $db_path
+    db_path=$db_path mysql -u$AWS_DB_USER -p$AWS_DB_PASSWORD production <$db_path
     echo "Snapshot left at $db_path, delete it!"
 end
 
