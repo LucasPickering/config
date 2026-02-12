@@ -5,6 +5,12 @@ soft-wrap.wrap-at-text-width = true
 soft-wrap.wrap-indicator = ""
 
 [[language]]
+name = "markdown"
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+soft-wrap.wrap-indicator = ""
+
+[[language]]
 name = "rust"
 rulers = [81]
 
