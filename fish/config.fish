@@ -5,15 +5,14 @@ if not functions -q fisher
     fish -c fisher
 end
 
-alias cdroot="cd (git root)"
 alias src="source ~/.config/fish/config.fish"
-alias repeat="~/.config/fish/functions/repeat.py"
+
 alias ports="sudo lsof -i -P -n | rg LISTEN"
-alias nocolor="sed -E 's/\x1b\[[0-9;]*m//g'" # Strip ANSI colors from stdin
-alias npx="npx --no-install"
 alias c="cargo"
+alias cdroot="cd (git root)"
 alias d="docker"
 alias dc="docker-compose"
+alias erd="erd --human --layout inverted"
 alias g="git"
 alias gl="gleam"
 alias k="kubectl"
@@ -21,14 +20,14 @@ alias kdp='kubectl describe pod'
 alias kgp='kubectl get pods'
 alias kl='kubectl logs --follow'
 alias m="mise"
-alias p="poetry"
-alias pr="poetry run"
+alias npx="npx --no-install"
+alias pasta="paste" # Extremely important
+alias repeat="~/.config/fish/functions/repeat.py"
+alias repl="evcxr" # I just cannot remember this command
 alias sl="slumber"
 alias tf='terraform'
-alias repl="evcxr" # I just cannot remember this command
-alias erd="erd --human --layout inverted"
+alias y="yazi"
 alias z="zed"
-alias pasta="paste"
 
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 set -Ux VIMINIT "source ~/.vim/vimrc"
