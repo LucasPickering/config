@@ -1,0 +1,9 @@
+[Unit]
+Description = "Monitor applications for app-specific keybindings in keyd"
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/keyd-application-mapper -v
+
+[Install]
+WantedBy=default.target

@@ -6,7 +6,11 @@ quick-terminal-size = 100%
 quick-terminal-animation-duration = 0
 window-save-state = always
 
+# ctrl+` and super+` both open because keyd swaps ctrl-cmd
+# based on active window
 keybind = global:super+grave_accent=toggle_quick_terminal
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+# copy pasta
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 # Tab navigation
