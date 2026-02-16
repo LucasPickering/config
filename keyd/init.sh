@@ -15,4 +15,4 @@ ln -f -s $script_dir/app.conf ~/.config/keyd/app.conf
 bin="/usr/bin/keyd-application-mapper"
 file=~/.xprofile
 touch $file
-grep -q $bin $file || echo $bin >> $file
+grep -q $bin $file || echo "$bin -d" >> $file
