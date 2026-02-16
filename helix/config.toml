@@ -20,3 +20,6 @@ render.newline = "none"
 [keys.normal]
 C-j = "page_down"
 C-k = "page_up"
+C-b = ":buffer-close"
+"C-\\" = "vsplit"
+"C-/" = "toggle_comments"
