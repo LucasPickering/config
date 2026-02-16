@@ -10,15 +10,18 @@ window-save-state = always
 # based on active window
 keybind = global:super+grave_accent=toggle_quick_terminal
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
 # copy pasta
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
+
 # Tab navigation
 keybind = super+t=new_tab
 keybind = super+alt+left=previous_tab
 keybind = super+alt+h=previous_tab
 keybind = super+alt+right=next_tab
 keybind = super+alt+l=next_tab
+
 # Pane navigation
 keybind = super+shift+\=new_split:right
 keybind = super+shift+-=new_split:down
@@ -30,3 +33,6 @@ keybind = super+k=goto_split:up
 keybind = super+up=goto_split:up
 keybind = super+j=goto_split:down
 keybind = super+down=goto_split:down
+keybind = super+shift+equal=equalize_splits
+keybind = super+shift+h=move_tab:-1
+keybind = super+shift+l=move_tab:1
