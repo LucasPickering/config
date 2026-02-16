@@ -54,6 +54,9 @@ switch (uname)
         end
 
         set -Ux GPG_TTY (tty)
+        # https://forum.manjaro.org/t/howto-use-kwallet-as-a-login-keychain-for-storing-ssh-key-passphrases-on-kde/7088
+        set -Ux SSH_ASKPASS /usr/bin/ksshaskpass
+        set -Ux SSH_AUTH_SOCK "$XDG_RUNTIME_DIR"/ssh-agent.socket
 
     case Darwin
         alias copy="pbcopy"
