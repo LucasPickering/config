@@ -25,3 +25,5 @@ inlayHints.parameterHints.enable = false
 inlayHints.typeHints.enable = false
 rustfmt.extraArgs = ["+nightly"]
 workspace.symbol.search.excludeImports = true
+references.excludeImports = true
+references.excludeTests = true
