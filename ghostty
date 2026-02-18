@@ -1,9 +1,11 @@
 background-opacity = 0.93
 # Disable ligatures
 font-feature = -calt, -liga, -dlig
-unfocused-split-fill = 888888
+font-size = 11.5
 quick-terminal-size = 100%
 quick-terminal-animation-duration = 0
+unfocused-split-fill = 888888
+window-inherit-font-size = false
 window-save-state = always
 
 # ctrl+` and super+` both open because keyd swaps ctrl-cmd
