@@ -7,6 +7,12 @@ shell = ["fish", "-c"]
 [editor.cursor-shape]
 insert = "bar"
 
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.lsp]
+goto-reference-include-declaration = false
+
 [editor.search]
 smart-case = false
 
@@ -18,8 +24,11 @@ render.nnbsp = "none"
 render.newline = "none"
 
 [keys.normal]
+C-l = "jump_view_right"
+C-h = "jump_view_left"
 C-j = "page_down"
 C-k = "page_up"
 C-b = ":buffer-close"
 "C-\\" = "vsplit"
 "C-/" = "toggle_comments"
+S-ret = "insert_newline"
