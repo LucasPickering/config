@@ -33,6 +33,10 @@ delete_and_link ~/.config/ghostty/config ghostty
 echo "Initializing helix..."
 delete_and_link ~/.config/helix helix
 
+# Htop
+echo "Initializing htop..."
+delete_and_link ~/.config/htop/htoprc htoprc
+
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
