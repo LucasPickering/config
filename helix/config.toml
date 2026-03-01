@@ -24,11 +24,29 @@ render.nnbsp = "none"
 render.newline = "none"
 
 [keys.normal]
+X = "extend_line_above"
 C-l = "jump_view_right"
 C-h = "jump_view_left"
 C-j = "page_down"
 C-k = "page_up"
 C-b = ":buffer-close"
+C-d = ["select_mode", "search_selection"]
+C-r = ":reload"
+C-S-r = ":reload-all"
 "C-\\" = "vsplit"
 "C-/" = "toggle_comments"
 S-ret = "insert_newline"
+A-h = "extend_prev_sub_word_start"
+A-l= "extend_next_sub_word_end"
+
+[keys.select]
+C-d = "search_selection"
+
+# Git actions
+[keys.normal."`"]
+a = ":! git add ."
+c = ":! git commit -am 'WIP'"
+d = ":! git diff"
+n = ":! git can -a"
+s = ":! git status"
+t = ":! git todo"
