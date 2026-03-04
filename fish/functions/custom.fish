@@ -78,7 +78,7 @@ end
 
 function kex --description "Execute a command in a kubernetes pod" -a query
     set command $argv[2..-1]
-    set -q command or set command "/bin/bash" # TODO this doesn't work
+    set -q command or set command /bin/bash # TODO this doesn't work
     set podname (kubectl get pod -o custom-columns=:metadata.name --no-headers | grep $query)
     echo "Running `$command` in pod $podname"
     kubectl exec -it $podname -- $command
@@ -88,7 +88,11 @@ function add_pw --description "Add a new password to the keychain vault thing" -
     security add-generic-password -a $LOGNAME -s $name -w $value
 end
 
-
 function get_pw --description "Get a password from the keychain vault thing" -a name
     security find-generic-password -s $name -w
+end
+
+function git_diff_pretty --description "Browse git diff with fzf"
+    set preview "git diff $argv --color=always -- {-1}"
+    git diff $argv --name-only | fzf -m --ansi --preview $preview
 end

@@ -26,6 +26,7 @@
   create-default = !"git symbolic-ref refs/remotes/origin/HEAD origin/$1 #"
   current = "rev-parse --abbrev-ref HEAD"
   d = "diff"
+  dp = "!git_diff_pretty"
   default = !"git symbolic-ref refs/remotes/origin/HEAD --short | sed 's@^origin/@@'"
   destroy = !"git pd $@ && git branch -D"
   dg = "diff-grep"
