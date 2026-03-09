@@ -25,7 +25,7 @@ alias pasta="paste" # Extremely important
 alias repeat="~/.config/fish/functions/repeat.py"
 alias repl="evcxr" # I just cannot remember this command
 alias sl="slumber"
-alias tf='terraform'
+alias tf='tofu'
 alias y="yazi"
 alias z="zed"
 
