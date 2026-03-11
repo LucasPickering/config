@@ -26,6 +26,7 @@ echo "Initializing git..."
 delete_and_link ~/.gitconfig gitconfig
 
 # Ghostty
+echo "Initializing ghostty..."
 mkdir -p ~/.config/ghostty
 delete_and_link ~/.config/ghostty/config ghostty
 
