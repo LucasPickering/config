@@ -6,8 +6,10 @@ soft-wrap.wrap-indicator = ""
 
 [[language]]
 name = "markdown"
+formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
+auto-format = true
 soft-wrap.enable = true
-soft-wrap.wrap-at-text-width = true
+soft-wrap.wrap-at-text-width = false
 soft-wrap.wrap-indicator = ""
 
 [[language]]
