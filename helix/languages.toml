@@ -13,6 +13,16 @@ soft-wrap.wrap-at-text-width = false
 soft-wrap.wrap-indicator = ""
 
 [[language]]
+name = "python"
+language-servers = ["ruff", "ty"]
+rulers = [88]
+auto-format = true
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
 name = "rust"
 rulers = [81]
 
