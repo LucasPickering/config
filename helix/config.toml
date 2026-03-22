@@ -1,17 +1,23 @@
 theme = "pickles"
 
 [editor]
+bufferline = "multiple"
+color-modes = true
 line-number = "relative"
 shell = ["fish", "-c"]
+trim-final-newlines = true
+trim-trailing-whitespace = true
 
 [editor.cursor-shape]
 insert = "bar"
+select = "underline"
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
 
 [editor.lsp]
 goto-reference-include-declaration = false
+auto-signature-help = false
 
 [editor.search]
 smart-case = false
@@ -25,8 +31,6 @@ render.newline = "none"
 
 [keys.normal]
 X = "extend_line_above"
-C-l = "jump_view_right"
-C-h = "jump_view_left"
 C-j = "page_down"
 C-k = "page_up"
 C-b = ":buffer-close"
@@ -38,18 +42,42 @@ C-S-s = ":write-all"
 C-f = "save_selection"
 "C-\\" = "vsplit"
 "C-/" = "toggle_comments"
+"C-?" = "toggle_block_comments"
 S-ret = "insert_newline"
-A-h = "extend_prev_sub_word_start"
-A-l= "extend_next_sub_word_end"
+# Word nav
+C-h = "move_prev_word_start"
+C-l= "move_next_word_end"
+A-h = "move_prev_sub_word_start"
+A-l= "move_next_sub_word_end"
+# Pane nav
+Cmd-C-h = "jump_view_left"
+Cmd-C-j = "jump_view_down"
+Cmd-C-k = "jump_view_up"
+Cmd-C-l = "jump_view_right"
 
 [keys.select]
 C-d = "search_selection"
+"C-/" = "toggle_comments"
+"C-?" = "toggle_block_comments"
+# Word nav
+C-h = "extend_prev_word_start"
+C-l = "extend_next_word_start"
+A-h = "extend_prev_sub_word_start"
+A-l = "extend_next_sub_word_end"
+# Pane nav
+Cmd-C-h = "jump_view_left"
+Cmd-C-j = "jump_view_down"
+Cmd-C-k = "jump_view_up"
+Cmd-C-l = "jump_view_right"
 
 # Git actions
 [keys.normal."`"]
+# Commit commands echo to the status line because it forces helix to wait
+# for it to finish before reloading
 a = ":! git add ."
-c = ":! git commit -am 'WIP'"
+b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+c = [":echo %sh{git commit -am 'WIP'}", ":reload-all"]
 d = ":! git diff"
-n = ":! git can -a"
+n = [":echo %sh{git can -a}", ":reload-all"]
 s = ":! git status"
 t = ":! git todo"
