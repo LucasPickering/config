@@ -5,6 +5,10 @@ soft-wrap.wrap-at-text-width = true
 soft-wrap.wrap-indicator = ""
 
 [[language]]
+name = "ghostty"
+file-types = ["ghostty", {glob = "ghostty/config"}]
+
+[[language]]
 name = "markdown"
 formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
 auto-format = true
