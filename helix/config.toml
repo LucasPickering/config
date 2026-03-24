@@ -54,6 +54,9 @@ Cmd-C-h = "jump_view_left"
 Cmd-C-j = "jump_view_down"
 Cmd-C-k = "jump_view_up"
 Cmd-C-l = "jump_view_right"
+# Buffer nav
+C-n = ":buffer-previous"
+C-m = ":buffer-next"
 
 [keys.select]
 C-d = "search_selection"
