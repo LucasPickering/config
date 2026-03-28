@@ -5,6 +5,10 @@ soft-wrap.wrap-at-text-width = true
 soft-wrap.wrap-indicator = ""
 
 [[language]]
+name = "git-config"
+file-types = ["gitconfig", {glob = "gitconfig"}]
+
+[[language]]
 name = "ghostty"
 file-types = ["ghostty", {glob = "ghostty/config"}]
 
