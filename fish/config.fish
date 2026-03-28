@@ -40,6 +40,8 @@ bind ctrl-k up-or-search
 bind ctrl-j down-or-search
 bind ctrl-h beginning-of-line
 bind ctrl-l end-of-line
+bind alt-h backward-word
+bind alt-l forward-word
 
 # OS-specific setup
 switch (uname)
