@@ -9,6 +9,7 @@ cd $script_dir
 delete_and_link() {
     link_path=$1
     dest_path=$2
+    mkdir -p $(dirname $link_path)
     rm -rf $link_path
     ln -s $script_dir/$dest_path $link_path
 }
@@ -17,7 +18,6 @@ git submodule init
 
 # Fish
 echo "Initializing fish..."
-mkdir -p ~/.config
 delete_and_link ~/.config/fish fish
 echo "  You'll need to install fish and set it as your shell manually. Then run \`fisher update\`"
 
@@ -27,7 +27,6 @@ delete_and_link ~/.gitconfig gitconfig
 
 # Ghostty
 echo "Initializing ghostty..."
-mkdir -p ~/.config/ghostty
 delete_and_link ~/.config/ghostty/config config.ghostty
 
 # Helix
@@ -37,6 +36,13 @@ delete_and_link ~/.config/helix helix
 # Htop
 echo "Initializing htop..."
 delete_and_link ~/.config/htop/htoprc htoprc
+
+# Keyd
+echo "Initializing keyd..."
+delete_and_link ~/.config/keyd/app.conf keyd/app.conf
+# Requires sudo so we can't do this automatically
+echo "Run this manually:"
+echo "  sudo ln -s $script_dir/keyd/configs/ /etc/keyd"
 
 # Vim
 echo "Initializing Vim..."
