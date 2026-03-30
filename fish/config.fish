@@ -36,6 +36,7 @@ source ~/.config/fish/functions/custom.fish
 
 # Keybindings
 bind super-backspace backward-kill-line
+bind alt-backspace backward-kill-word
 bind ctrl-k up-or-search
 bind ctrl-j down-or-search
 bind ctrl-h beginning-of-line
