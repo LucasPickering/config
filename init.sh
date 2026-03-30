@@ -37,13 +37,6 @@ delete_and_link ~/.config/helix helix
 echo "Initializing htop..."
 delete_and_link ~/.config/htop/htoprc htoprc
 
-# Keyd
-echo "Initializing keyd..."
-delete_and_link ~/.config/keyd/app.conf keyd/app.conf
-# Requires sudo so we can't do this automatically
-echo "Run this manually:"
-echo "  sudo ln -s $script_dir/keyd/configs/ /etc/keyd"
-
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
@@ -57,6 +50,7 @@ echo "Initializing Zed..."
 delete_and_link ~/.config/zed zed
 
 echo "Initializing Cargo..."
-mkdir -p ~/.cargo
 delete_and_link ~/.cargo/config.toml cargo/config.toml
 delete_and_link ~/.cargo/cargo-generate.toml cargo/cargo-generate.toml
+
+echo "keyd: to initialize, run ./keyd/init.sh"
