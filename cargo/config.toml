@@ -4,3 +4,6 @@ c = "check"
 t = "test"
 r = "run"
 gen = "generate"
+
+[target.'cfg(target_os = "linux")']
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
