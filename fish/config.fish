@@ -5,7 +5,7 @@ if not functions -q fisher
     fish -c fisher
 end
 
-alias src="source ~/.config/fish/config.fish"
+alias src="source ~/.config/fish/config.fish; source ~/.config/fish/functions/custom.fish; source ~/.config/fish/functions/fish_prompt.fish"
 
 alias ports="sudo lsof -i -P -n | rg LISTEN"
 alias c="cargo"

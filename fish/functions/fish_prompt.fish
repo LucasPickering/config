@@ -1,8 +1,3 @@
-function strip_colors
-    echo -n -s (string replace -ra '\e\[[^m]*m' '' $argv[1])
-end
-
-# Defined in /usr/local/Cellar/fish/3.1.2/share/fish/functions/fish_prompt.fish @ line 4
 function fish_prompt --description 'Write out the prompt'
     set exit_code $status
     set duration $CMD_DURATION
@@ -32,7 +27,7 @@ function fish_prompt --description 'Write out the prompt'
     set -l c_vcs (set_color green)
     set -l c_ctx (set_color red)
     set -l c_time (set_color blue)
-    set -l c_cmd (set_color red)
+    set -l c_cmd (set_color blue)
 
     set -l first_line (string join ' ' $c_ctx$ctx_host $c_time$time $c_cwd$cwd $c_vcs$vcs)
     set -l cmd_line $c_cmd'> '$c_normal
