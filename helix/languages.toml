@@ -14,6 +14,7 @@ file-types = ["ghostty", {glob = "ghostty/config"}]
 
 [[language]]
 name = "markdown"
+comment-tokens = ["-"] # Continue list on newline
 formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
 auto-format = true
 soft-wrap.enable = true
