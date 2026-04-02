@@ -34,6 +34,7 @@ alias z="zed"
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 set -Ux VIMINIT "source ~/.vim/vimrc"
 set -gx EDITOR hx
+set -gx SUDO_EDITOR hx
 source ~/.config/fish/functions/custom.fish
 
 # Keybindings
