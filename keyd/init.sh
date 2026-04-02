@@ -3,7 +3,7 @@
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-sudo rm -rf /etc/keyd/
+sudo rm -f /etc/keyd
 sudo ln -s $script_dir/configs /etc/keyd
 
 mkdir -p ~/.config/keyd/
@@ -14,9 +14,17 @@ if id -nG "$USER" | grep -qw "keyd"; then
 fi
 
 # keyd-application-mapper can't run in systemd, needs
-# to go in the x server init
+# to go in KDE autostart
 # https://github.com/rvaiya/keyd/issues/104
-bin="/usr/bin/keyd-application-mapper"
-file=~/.xprofile
-touch $file
-grep -q $bin $file || echo "$bin -d" >> $file
+autostart_dir="$HOME/.config/autostart"
+mkdir -p $autostart_dir
+cat > "$autostart_dir/keyd-application-mapper.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/keyd-application-mapper
+Hidden=false
+NoDisplay=false
+X-KDE-Autostart-enabled=true
+Name=Keyd Application Mapper
+Comment=Start keyd application mapper
+EOF
