@@ -16,7 +16,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # If in SSH, always include the hostname
     if set -q SSH_CLIENT
-        set -l ctx_host "[$host]"
+        set ctx_host "[$host]"
     end
 
     set -l cwd (pwd | sed s@^$HOME@~@)
