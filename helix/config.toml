@@ -51,10 +51,10 @@ A-h = "move_prev_sub_word_start"
 A-l= "move_next_sub_word_end"
 C-backspace = "delete_word_backward"
 # Pane nav
-Cmd-C-h = "jump_view_left"
-Cmd-C-j = "jump_view_down"
-Cmd-C-k = "jump_view_up"
-Cmd-C-l = "jump_view_right"
+C-A-h = "jump_view_left"
+C-A-j = "jump_view_down"
+C-A-k = "jump_view_up"
+C-A-l = "jump_view_right"
 # Buffer nav
 C-n = ":buffer-previous"
 C-m = ":buffer-next"
@@ -69,10 +69,10 @@ C-l = "extend_next_word_start"
 A-h = "extend_prev_sub_word_start"
 A-l = "extend_next_sub_word_end"
 # Pane nav
-Cmd-C-h = "jump_view_left"
-Cmd-C-j = "jump_view_down"
-Cmd-C-k = "jump_view_up"
-Cmd-C-l = "jump_view_right"
+C-A-h = "jump_view_left"
+C-A-j = "jump_view_down"
+C-A-k = "jump_view_up"
+C-A-l = "jump_view_right"
 
 # Git actions
 [keys.normal."`"]
