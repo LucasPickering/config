@@ -5,31 +5,31 @@ soft-wrap.wrap-at-text-width = true
 soft-wrap.wrap-indicator = ""
 
 [[language]]
-name = "git-config"
 file-types = ["gitconfig", {glob = "gitconfig"}]
+name = "git-config"
 
 [[language]]
-name = "ghostty"
 file-types = ["ghostty", {glob = "ghostty/config"}]
+name = "ghostty"
 
 [[language]]
-name = "markdown"
+auto-format = true
 comment-tokens = ["-"] # Continue list on newline
 formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
-auto-format = true
+name = "markdown"
 soft-wrap.enable = true
 soft-wrap.wrap-at-text-width = false
 soft-wrap.wrap-indicator = ""
 
 [[language]]
-name = "python"
-language-servers = ["ruff", "ty"]
-rulers = [88]
 auto-format = true
+language-servers = ["ruff", "ty"]
+name = "python"
+rulers = [88]
 
 [language-server.ruff]
-command = "ruff"
 args = ["server"]
+command = "ruff"
 
 [[language]]
 name = "rust"
@@ -38,13 +38,26 @@ rulers = [81]
 [language-server.rust-analyzer.config]
 cargo.targetDir = true
 check.command = "clippy"
-imports.prefix = "crate"
-imports.group.enable = false
 imports.granularity = "crate"
+imports.group.enable = false
+imports.prefix = "crate"
 inlayHints.closingBraceHints.enable = false
 inlayHints.parameterHints.enable = false
 inlayHints.typeHints.enable = false
-rustfmt.extraArgs = ["+nightly"]
-workspace.symbol.search.excludeImports = true
 references.excludeImports = true
 references.excludeTests = true
+rustfmt.extraArgs = ["+nightly"]
+workspace.symbol.search.excludeImports = true
+
+[[language]]
+auto-format = true
+formatter = {command = "taplo", args = [
+  "format",
+  "-o=align_comments=false",
+  "-o=array_auto_expand=false",
+  "-o=array_auto_collapse=false",
+  "-o=compact_inline_tables=true",
+  "-o=reorder_keys=true",
+  "-",
+]}
+name = "toml"
