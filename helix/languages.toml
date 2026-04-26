@@ -14,6 +14,19 @@ name = "ghostty"
 
 [[language]]
 auto-format = true
+formatter = {command = "dprint", args = ["fmt", "--stdin", "js"]}
+name = "javascript"
+
+[[language]]
+language-servers = ["jinja-lsp"]
+name = "jinja"
+
+[language-server.jinja-lsp]
+command = "jinja-lsp"
+timeout = 5
+
+[[language]]
+auto-format = true
 comment-tokens = ["-"] # Continue list on newline
 formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
 name = "markdown"
@@ -23,7 +36,7 @@ soft-wrap.wrap-indicator = ""
 
 [[language]]
 auto-format = true
-language-servers = ["ruff", "ty"]
+language-servers = ["ty", "ruff"]
 name = "python"
 rulers = [88]
 
