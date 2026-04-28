@@ -70,3 +70,8 @@ formatter = {command = "taplo", args = [
   "-",
 ]}
 name = "toml"
+
+[[language]]
+auto-format = true
+formatter = {command = "dprint", args = ["fmt", "--stdin", "ts"]}
+name = "typescript"
