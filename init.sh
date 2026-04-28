@@ -16,6 +16,10 @@ delete_and_link() {
 
 git submodule init
 
+# Dprint
+echo "Initializing dprint..."
+delete_and_link ~/.config/dprint/dprint.jsonc dprint.jsonc
+
 # Fish
 echo "Initializing fish..."
 delete_and_link ~/.config/fish fish
