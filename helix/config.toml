@@ -4,6 +4,7 @@ theme = "pickles"
 bufferline = "multiple"
 color-modes = true
 line-number = "relative"
+rulers = [81]
 shell = ["fish", "-c"]
 trim-final-newlines = true
 trim-trailing-whitespace = true
@@ -16,58 +17,58 @@ select = "underline"
 cursor-line = "hint"
 
 [editor.lsp]
-goto-reference-include-declaration = false
 auto-signature-help = false
+goto-reference-include-declaration = false
 
 [editor.search]
 smart-case = false
 
 [editor.whitespace]
+render.nbsp = "none"
+render.newline = "none"
+render.nnbsp = "none"
 render.space = "all"
 render.tab = "all"
-render.nbsp = "none"
-render.nnbsp = "none"
-render.newline = "none"
 
 [keys.normal]
-X = "extend_line_above"
-C-j = "page_down"
-C-k = "page_up"
-C-b = ":buffer-close"
-C-d = ["select_mode", "search_selection"]
-C-r = ":reload"
-C-S-r = ":reload-all"
-C-s = ":write"
-C-S-s = ":write-all"
-C-f = "save_selection"
-"C-\\" = "vsplit"
 "C-/" = "toggle_comments"
 "C-?" = "toggle_block_comments"
+C-S-r = ":reload-all"
+C-S-s = ":write-all"
+"C-\\" = "vsplit"
+C-b = ":buffer-close"
+C-d = ["select_mode", "search_selection"]
+C-f = "save_selection"
+C-j = "page_down"
+C-k = "page_up"
+C-r = ":reload"
+C-s = ":write"
 S-ret = "insert_newline"
+X = "extend_line_above"
 # Word nav
-C-h = "move_prev_word_start"
-C-l= "move_next_word_end"
 A-h = "move_prev_sub_word_start"
-A-l= "move_next_sub_word_end"
+A-l = "move_next_sub_word_end"
 C-backspace = "delete_word_backward"
+C-h = "move_prev_word_start"
+C-l = "move_next_word_end"
 # Pane nav
 C-A-h = "jump_view_left"
 C-A-j = "jump_view_down"
 C-A-k = "jump_view_up"
 C-A-l = "jump_view_right"
 # Buffer nav
-C-n = ":buffer-previous"
 C-m = ":buffer-next"
+C-n = ":buffer-previous"
 
 [keys.select]
-C-d = "search_selection"
 "C-/" = "toggle_comments"
 "C-?" = "toggle_block_comments"
+C-d = "search_selection"
 # Word nav
-C-h = "extend_prev_word_start"
-C-l = "extend_next_word_start"
 A-h = "extend_prev_sub_word_start"
 A-l = "extend_next_sub_word_end"
+C-h = "extend_prev_word_start"
+C-l = "extend_next_word_start"
 # Pane nav
 C-A-h = "jump_view_left"
 C-A-j = "jump_view_down"

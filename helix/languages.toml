@@ -44,10 +44,6 @@ rulers = [88]
 args = ["server"]
 command = "ruff"
 
-[[language]]
-name = "rust"
-rulers = [81]
-
 [language-server.rust-analyzer.config]
 cargo.targetDir = true
 check.command = "clippy"
