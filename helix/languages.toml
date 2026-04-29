@@ -15,6 +15,7 @@ name = "ghostty"
 [[language]]
 auto-format = true
 formatter = {command = "dprint", args = ["fmt", "--stdin", "js"]}
+language-servers = ["deno-lsp"]
 name = "javascript"
 
 [[language]]
@@ -74,4 +75,12 @@ name = "toml"
 [[language]]
 auto-format = true
 formatter = {command = "dprint", args = ["fmt", "--stdin", "ts"]}
+language-servers = ["deno-lsp"]
 name = "typescript"
+
+[language-server.deno-lsp]
+args = ["lsp"]
+command = "deno"
+
+[language-server.deno-lsp.config.deno]
+enable = true
