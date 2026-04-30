@@ -84,3 +84,11 @@ command = "deno"
 
 [language-server.deno-lsp.config.deno]
 enable = true
+
+[language-server.tinymist.config]
+preview.background.args = [
+  "--data-plane-host=127.0.0.1:0",
+  "--invert-colors=never",
+  "--open",
+]
+preview.background.enabled = true
