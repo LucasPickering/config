@@ -20,6 +20,8 @@ keybind = super+shift+k=reset
 keybind = super+shift+,=reload_config
 keybind = super+shift+p=toggle_command_palette
 keybind = super+f=start_search
+# Unbind open_config
+keybind = ctrl+,=unbind
 
 # Tab navigation
 keybind = super+t=new_tab
