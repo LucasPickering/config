@@ -23,6 +23,9 @@ goto-reference-include-declaration = false
 [editor.search]
 smart-case = false
 
+[editor.statusline]
+right = ["file-indent-style", "file-type", "diagnostics", "selections", "position"]
+
 [editor.whitespace]
 render.nbsp = "none"
 render.newline = "none"
@@ -44,6 +47,7 @@ C-k = "page_up"
 C-r = ":reload"
 C-s = ":write"
 S-ret = "insert_newline"
+S-tab = "jump_backward"
 X = "extend_line_above"
 # Word nav
 A-h = "move_prev_sub_word_start"
