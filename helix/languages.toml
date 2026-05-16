@@ -28,6 +28,15 @@ timeout = 5
 
 [[language]]
 auto-format = true
+indent = {tab-width = 2, unit = "    "}
+language-servers = ["kdl-lsp"]
+name = "kdl"
+
+[language-server.kdl-lsp]
+command = "kdl-lsp"
+
+[[language]]
+auto-format = true
 comment-tokens = ["-"] # Continue list on newline
 formatter = {command = "dprint", args = ["fmt", "--stdin", "md"]}
 name = "markdown"
