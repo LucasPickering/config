@@ -23,6 +23,12 @@ keybind = super+f=start_search
 # Unbind open_config
 keybind = ctrl+,=unbind
 
+# Scroll
+keybind = page_up=scroll_page_up
+keybind = page_down=scroll_page_down
+keybind = ctrl+shift+k=scroll_page_lines:-10
+keybind = ctrl+shift+j=scroll_page_lines:10
+
 # Tab navigation
 keybind = super+t=new_tab
 keybind = super+alt+left=previous_tab
