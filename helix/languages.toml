@@ -76,6 +76,12 @@ name = "toml"
 auto-format = true
 formatter = {command = "dprint", args = ["fmt", "--stdin", "ts"]}
 language-servers = ["deno-lsp"]
+name = "tsx"
+
+[[language]]
+auto-format = true
+formatter = {command = "dprint", args = ["fmt", "--stdin", "ts"]}
+language-servers = ["deno-lsp"]
 name = "typescript"
 
 [language-server.deno-lsp]
