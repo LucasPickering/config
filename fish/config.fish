@@ -29,7 +29,7 @@ alias sc="systemctl"
 alias sl="slumber"
 alias tf='tofu'
 alias y="yazi"
-alias z="zed"
+alias z="zig"
 
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 set -Ux VIMINIT "source ~/.vim/vimrc"
