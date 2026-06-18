@@ -1,2 +1,0 @@
-{{/* summary template */ -}}
-{{ .fields.summary }}

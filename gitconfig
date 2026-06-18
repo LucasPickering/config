@@ -75,13 +75,9 @@
   process = git-lfs filter-process
   required = true
 
-[includeIf "hasconfig:remote.*.url:*:colorprinter/**"]
-  path = ~/config/BitSight.gitconfig
 [pull]
   ff = only
 [init]
   defaultBranch = master
-[maintenance]
-  repo = /Users/lucas.pickering/git/portal
 [trim]
 	bases = main

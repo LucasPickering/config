@@ -1,8 +1,0 @@
-[alias]
-  jira = !"git rev-parse --abbrev-ref HEAD | grep -Eo '^RP-\\d+'"
-  jb = !"fish -c \"jira_branch $1\" #"
-[user]
-  email = lucas.pickering@bitsighttech.com
-  name = Lucas Pickering
-[core]
-  excludesFile = "~/git/.gitignore"
