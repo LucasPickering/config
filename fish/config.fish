@@ -28,6 +28,7 @@ alias repl="evcxr" # I just cannot remember this command
 alias sc="systemctl"
 alias sl="slumber"
 alias tf='tofu'
+alias wx="watchexec"
 alias y="yazi"
 alias z="zig"
 
