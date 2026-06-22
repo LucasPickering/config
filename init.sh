@@ -41,6 +41,10 @@ delete_and_link ~/.config/helix helix
 echo "Initializing htop..."
 delete_and_link ~/.config/htop/htoprc htoprc
 
+# Jujutsu
+echo "Initializing jj..."
+delete_and_link ~/.config/jj/config.toml jj.toml
+
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
