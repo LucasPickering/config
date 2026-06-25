@@ -5,4 +5,5 @@ email = "lucas@lucaspickering.me"
 name = "Lucas Pickering"
 
 [aliases]
+bk = ["bookmark"]
 sq = ["squash"]
