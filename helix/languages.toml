@@ -27,6 +27,12 @@ command = "jinja-lsp"
 timeout = 5
 
 [[language]]
+name = "jjdescription"
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+soft-wrap.wrap-indicator = ""
+
+[[language]]
 auto-format = true
 indent = {tab-width = 2, unit = "    "}
 language-servers = ["kdl-lsp"]
