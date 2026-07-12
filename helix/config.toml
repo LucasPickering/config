@@ -79,7 +79,7 @@ C-A-j = "jump_view_down"
 C-A-k = "jump_view_up"
 C-A-l = "jump_view_right"
 
-# Git actions
+# Jujutsu actions
 [keys.normal."`"]
 # Commit commands echo to the status line because it forces helix to wait
 # for it to finish before reloading
@@ -88,5 +88,5 @@ b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 c = [":echo %sh{git commit -am 'WIP'}", ":reload-all"]
 d = ":! git diff"
 n = [":echo %sh{git can -a}", ":reload-all"]
-s = ":! git status"
+s = ":! jj status"
 t = ":! git todo"
