@@ -94,6 +94,8 @@ language-servers = ["deno-lsp"]
 name = "tsx"
 
 [[language]]
+auto-format = true
+formatter = {command = "typstyle"}
 name = "typst"
 soft-wrap.enable = true
 soft-wrap.wrap-at-text-width = true
