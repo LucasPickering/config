@@ -1,18 +1,14 @@
-#!/bin/sh
+#!/bin/fish
 
-set -e
-
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set script_dir (dirname (realpath (status filename)))
 
 cd $script_dir
 
-delete_and_link() {
-    link_path=$1
-    dest_path=$2
-    mkdir -p $(dirname $link_path)
+function delete_and_link -a link_path -a dest_path
+    mkdir -p (dirname $link_path)
     rm -rf $link_path
     ln -s $script_dir/$dest_path $link_path
-}
+end
 
 git submodule init
 
@@ -23,7 +19,7 @@ delete_and_link ~/.config/dprint/dprint.jsonc dprint.jsonc
 # Fish
 echo "Initializing fish..."
 delete_and_link ~/.config/fish fish
-echo "  You'll need to install fish and set it as your shell manually. Then run \`fisher update\`"
+echo "  You'll need to set fish as your shell manually. Then run \`fisher update\`"
 
 # Git
 echo "Initializing git..."
@@ -31,7 +27,15 @@ delete_and_link ~/.gitconfig gitconfig
 
 # Ghostty
 echo "Initializing ghostty..."
-delete_and_link ~/.config/ghostty/config config.ghostty
+delete_and_link ~/.config/ghostty/config ghostty/config.ghostty
+# Link OS-specific ghostty config
+switch (uname)
+    case Linux
+        delete_and_link ~/.config/ghostty/system.ghostty ghostty/linux.ghostty
+
+    case Darwin
+        delete_and_link ~/.config/ghostty/system.ghostty ghostty/macos.ghostty
+end
 
 # Helix
 echo "Initializing helix..."

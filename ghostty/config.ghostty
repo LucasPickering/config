@@ -1,8 +1,10 @@
+# System-specific settings go in a separate file that gets symlinked by init
+config-file = ./system.ghostty
+
 background-opacity = 0.93
 bell-features = no-attention,title
 # Disable ligatures
 font-feature = -calt, -liga, -dlig
-font-size = 13
 quick-terminal-size = 100%
 quick-terminal-animation-duration = 0
 unfocused-split-fill = 888888
