@@ -49,6 +49,10 @@ delete_and_link ~/.config/htop/htoprc htoprc
 echo "Initializing jj..."
 delete_and_link ~/.config/jj/config.toml jj.toml
 
+# Mise
+echo "Initializing mise..."
+delete_and_link ~/.config/mise/config.toml mise_config.toml
+
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
