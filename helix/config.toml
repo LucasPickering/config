@@ -83,10 +83,9 @@ C-A-l = "jump_view_right"
 [keys.normal."`"]
 # Commit commands echo to the status line because it forces helix to wait
 # for it to finish before reloading
-a = ":! git add ."
 b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 c = [":echo %sh{git commit -am 'WIP'}", ":reload-all"]
 d = ":! git diff"
-n = [":echo %sh{git can -a}", ":reload-all"]
+n = [":echo %sh{jj squash}", ":reload-all"]
 s = ":! jj status"
 t = ":! git todo"
