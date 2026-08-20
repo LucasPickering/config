@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 set script_dir (dirname (realpath (status filename)))
 
