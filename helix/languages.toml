@@ -14,17 +14,19 @@ name = "ghostty"
 
 [[language]]
 auto-format = true
+formatter = {command = "dprint", args = ["fmt", "--stdin", "html"]}
+name = "html"
+
+[[language]]
+auto-format = true
 formatter = {command = "dprint", args = ["fmt", "--stdin", "js"]}
 language-servers = ["deno-lsp"]
 name = "javascript"
 
 [[language]]
-language-servers = ["jinja-lsp"]
+auto-format = true
+formatter = {command = "dprint", args = ["fmt", "--stdin", "html"]}
 name = "jinja"
-
-[language-server.jinja-lsp]
-command = "jinja-lsp"
-timeout = 5
 
 [[language]]
 name = "jjdescription"
