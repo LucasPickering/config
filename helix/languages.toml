@@ -88,6 +88,14 @@ formatter = {command = "taplo", args = [
 name = "toml"
 
 [[language]]
+file-types = ["txt"]
+name = "text"
+scope = "text.text"
+soft-wrap.enable = true
+soft-wrap.wrap-at-text-width = true
+soft-wrap.wrap-indicator = ""
+
+[[language]]
 auto-format = true
 formatter = {command = "dprint", args = ["fmt", "--stdin", "ts"]}
 language-servers = ["deno-lsp"]
