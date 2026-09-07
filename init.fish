@@ -53,6 +53,10 @@ delete_and_link ~/.config/jj/config.toml jj.toml
 echo "Initializing mise..."
 delete_and_link ~/.config/mise/config.toml mise_config.toml
 
+# Slumber
+echo "Initializing slumber..."
+delete_and_link (slumber config --path) slumber.yml
+
 # Vim
 echo "Initializing Vim..."
 delete_and_link ~/.vim vim
@@ -60,10 +64,6 @@ delete_and_link ~/.vim vim
 # Psql
 echo "Initializing psql..."
 delete_and_link ~/.psqlrc psqlrc
-
-# Zed
-echo "Initializing Zed..."
-delete_and_link ~/.config/zed zed
 
 echo "Initializing Cargo..."
 delete_and_link ~/.cargo/config.toml cargo/config.toml
