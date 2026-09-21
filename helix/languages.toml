@@ -24,7 +24,7 @@ language-servers = ["deno-lsp"]
 name = "javascript"
 
 [[language]]
-auto-format = true
+auto-format = false
 formatter = {command = "dprint", args = ["fmt", "--stdin", "html"]}
 name = "jinja"
 
