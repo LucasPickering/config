@@ -35,6 +35,14 @@ soft-wrap.wrap-at-text-width = true
 soft-wrap.wrap-indicator = ""
 
 [[language]]
+formatter = {command = "dprint", args = ["fmt", "--stdin", "json"]}
+name = "json"
+
+[[language]]
+formatter = {command = "dprint", args = ["fmt", "--stdin", "json"]}
+name = "jsonc"
+
+[[language]]
 auto-format = true
 indent = {tab-width = 2, unit = "    "}
 language-servers = ["kdl-lsp"]
