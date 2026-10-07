@@ -1,9 +1,11 @@
 [alias]
 b = "build"
 c = "check"
-t = "test"
-r = "run"
 gen = "generate"
+r = "run"
+t = "test"
 
-[target.'cfg(target_os = "linux")']
+# Use mold on the Linux box. The x86 filter keeps it off when cross-compiling
+# Mac->RPi
+[target.'cfg(and(target_os = "linux", target_arch = "x86_64"))']
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
