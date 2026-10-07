@@ -1,2 +1,5 @@
 [settings.cargo]
 binstall = true
+
+[tools]
+watchexec = "latest"
