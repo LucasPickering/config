@@ -12,11 +12,16 @@ l = ["log", "-r", "root()..@"]
 lg = ["log", "-r", "all()"]
 sq = ["squash"]
 
+[git]
+private-commits = "private()"
+
 [revsets]
 bookmark-advance-to = 'closest_pushable(@)'
 
 [revset-aliases]
-# Closest revision that is mutable, described and either non-empty or a merge
-'closest_pushable(to)' = '''
-  heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))
-'''
+# Closest revision that is mutable, described, not private, and either non-empty or a merge
+"closest_pushable(to)" = """
+  heads(::to & mutable() & ~description(exact:"") & ~private() & (~empty() | merges()))
+"""
+# Prevent pushing anything explicitly labeled "private" (via git.private-commits)
+"private()" = "description('private:*')"
