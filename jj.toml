@@ -10,6 +10,7 @@ bk = ["bookmark"]
 dup = ["duplicate"]
 l = ["log", "-r", "root()..@"]
 lg = ["log", "-r", "all()"]
+lm = ["log", "-r", "root()..@ | ancestors(trunk(), 3)"]
 sq = ["squash"]
 
 [git]
