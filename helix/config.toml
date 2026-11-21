@@ -21,6 +21,7 @@ cursor-line = "hint"
 
 [editor.lsp]
 auto-signature-help = false
+display-inlay-hints = false
 goto-reference-include-declaration = false
 
 [editor.search]
