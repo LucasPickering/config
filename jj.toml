@@ -5,13 +5,15 @@ email = "lucas@lucaspickering.me"
 name = "Lucas Pickering"
 
 [aliases]
-abn = ["abandon"]
-bk = ["bookmark"]
-dup = ["duplicate"]
-l = ["log", "-r", "root()..@"]
-lg = ["log", "-r", "all()"]
-lm = ["log", "-r", "root()..@ | ancestors(trunk(), 3)"]
-sq = ["squash"]
+abn = {definition = ["abandon"], doc = "abandon"}
+bk = {definition = ["bookmark"], doc = "bookmark"}
+dup = {definition = ["duplicate"], doc = "duplicate"}
+l = {definition = ["log", "-r", "root()..@"], doc = "log all history"}
+ld.definition = ["log", "-r", "dangling() | parents(roots(trunk()..heads(dangling())))"] # Dangling + shared commit w/ trunk()
+ld.doc = "log dangling"
+lg = {definition = ["log", "-r", "all()"], doc = "log all branches"}
+lm = {definition = ["log", "-r", "root()..@ | ancestors(trunk(), 3)"], doc = "log current and trunk"}
+sq = {definition = ["squash"], doc = "squash"}
 
 [git]
 private-commits = "private()"
@@ -26,3 +28,5 @@ bookmark-advance-to = 'closest_pushable(@)'
 """
 # Prevent pushing anything explicitly labeled "private" (via git.private-commits)
 "private()" = "description('private:*')"
+# Revisions that aren't bookmarked
+"dangling()" = "~ ::bookmarks()"
