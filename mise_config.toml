@@ -2,4 +2,5 @@
 binstall = true
 
 [tools]
+deno = "latest"
 watchexec = "latest"
